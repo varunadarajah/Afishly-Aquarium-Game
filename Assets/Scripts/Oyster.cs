@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Clam : MonoBehaviour
+public class Oyster : MonoBehaviour
 {
-    public Game game;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +14,5 @@ public class Clam : MonoBehaviour
     void Update()
     {
         
-    }
-
-    void OnMouseDown()
-    {
-        game.pearls++;
     }
 }

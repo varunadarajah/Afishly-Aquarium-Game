@@ -8,6 +8,9 @@ public class Game : MonoBehaviour
     public int pearls = 0;
     public TMP_Text pearlText;
 
+    public GameObject CenterRock;
+    public GameObject oysterObj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +22,10 @@ public class Game : MonoBehaviour
     {
         // update currency
         pearlText.text = pearls + "";
+    }
+
+    void buyOyster()
+    {
+        Instantiate(oysterObj, CenterRock.transform);
     }
 }
