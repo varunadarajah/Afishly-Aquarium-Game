@@ -24,7 +24,7 @@ public class Game : MonoBehaviour
         pearlText.text = pearls + "";
     }
 
-    void buyOyster()
+    public void createOyster()
     {
         Instantiate(oysterObj, CenterRock.transform);
     }

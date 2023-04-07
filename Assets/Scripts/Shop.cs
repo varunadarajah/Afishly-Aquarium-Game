@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public Game game;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,23 @@ public class Shop : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnMouseDown()
+    {
+        purchaseOyster();
+    }
+
+    bool purchaseOyster()
+    {
+        if(game.pearls >= 50)
+        {
+            game.createOyster();
+            game.pearls -= 50;
+            //close menu
+            return true;
+        }
+
+        return false;
     }
 }
