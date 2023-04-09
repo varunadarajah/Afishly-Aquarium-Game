@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Clam : MonoBehaviour
+public class TabButton : MonoBehaviour
 {
-    public Game game;
-    public int pearlPerTap = 5;
+    public TabManager tabs;
+
+    public SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +18,11 @@ public class Clam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnMouseDown()
     {
-        game.pearls += pearlPerTap;
+        tabs.SelectTab(this);
     }
 }
