@@ -8,8 +8,14 @@ public class Game : MonoBehaviour
     public int pearls = 0;
     public TMP_Text pearlText;
 
+    //public List<Fish> fishInventory;
+
     public GameObject CenterRock;
     public GameObject oysterObj;
+
+    // stats variables
+    public int totalPearls = 0;
+    public int totalClicks = 0;
 
     // Start is called before the first frame update
     void Start()
