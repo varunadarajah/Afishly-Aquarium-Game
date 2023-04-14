@@ -27,11 +27,20 @@ public class UnlockOysterScript : MonoBehaviour
     }
 
     void OnMouseDown()
+{
+    if (currentLevel == 0)
     {
         unlockOyster();
+    }
+    else if (currentLevel == 1)
+    {
         purchaseLevel2();
+    }
+    else if (currentLevel == 2)
+    {
         purchaseLevel3();
     }
+}
 
     void IncreaseLevel()
     {
