@@ -27,11 +27,20 @@ public class UnlockMusselScript : MonoBehaviour
     }
 
     void OnMouseDown()
+{
+    if (currentLevel == 0)
     {
         unlockMussel();
+    }
+    else if (currentLevel == 1)
+    {
         purchaseLevel2();
+    }
+    else if (currentLevel == 2)
+    {
         purchaseLevel3();
     }
+}
 
     void IncreaseLevel()
     {
