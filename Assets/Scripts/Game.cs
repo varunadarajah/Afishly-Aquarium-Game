@@ -9,11 +9,10 @@ public class Game : MonoBehaviour
     public TMP_Text pearlText;
 
     public List<Fish> fishInventory;
-    public int fishInventoryMax = 10;
-    public TMP_Text fishText;
 
-    public GameObject CenterRock;
-    public GameObject oysterObj;
+    public List<Fish> activeFish;
+    public int activeFishMax = 10;
+    public TMP_Text fishText;
 
     // stats variables
     public int totalPearls = 0;
@@ -32,11 +31,6 @@ public class Game : MonoBehaviour
         pearlText.text = pearls + "";
 
         // update fish count
-        fishText.text = fishInventory.Count + "/" + fishInventoryMax;
-    }
-
-    public void createOyster()
-    {
-        Instantiate(oysterObj, CenterRock.transform);
+        fishText.text = activeFish.Count + "/" + activeFishMax;
     }
 }

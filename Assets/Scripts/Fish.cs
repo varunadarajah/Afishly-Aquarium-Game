@@ -9,6 +9,8 @@ public class Fish : MonoBehaviour
     public string dateObtained;
     public Color fishColor;
 
+    public int rarity;
+
     // Start is called before the first frame update
     void Start()
     {

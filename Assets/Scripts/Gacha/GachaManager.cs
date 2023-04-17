@@ -14,6 +14,8 @@ public class GachaManager : MonoBehaviour
     public TMP_Text selectedText;
     public TMP_Text costText;
 
+    public GameObject FishParentObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,12 @@ public class GachaManager : MonoBehaviour
         }
         boxes.RemoveAt(0); // removes empty parent object from list
         selectedBox = boxes[0];
+
+        selectedBox.gameObject.SetActive(true);
+        for(int i = 1; i < boxes.Count; i++)
+        {
+            boxes[i].gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -36,6 +44,7 @@ public class GachaManager : MonoBehaviour
 
     public void ScrollLeft()
     {
+        selectedBox.gameObject.SetActive(false);
         if (boxes.IndexOf(selectedBox) == 0)
         {
             selectedBox = boxes[boxes.Count - 1];
@@ -44,11 +53,13 @@ public class GachaManager : MonoBehaviour
         {            
             selectedBox = boxes[(boxes.IndexOf(selectedBox) - 1)];
         }
+        selectedBox.gameObject.SetActive(true);
     }
 
     public void ScrollRight()
     {
-        if(boxes.IndexOf(selectedBox) == boxes.Count-1)
+        selectedBox.gameObject.SetActive(false);
+        if (boxes.IndexOf(selectedBox) == boxes.Count-1)
         {
             selectedBox = boxes[0];
         }
@@ -56,6 +67,7 @@ public class GachaManager : MonoBehaviour
         {
             selectedBox = boxes[(boxes.IndexOf(selectedBox) + 1)];
         }
+        selectedBox.gameObject.SetActive(true);
     }
 
     public void buyBox()
@@ -63,7 +75,9 @@ public class GachaManager : MonoBehaviour
         if(game.pearls >= selectedBox.cost)
         {
             game.pearls -= selectedBox.cost;
-            game.fishInventory.Add(selectedBox.OpenBox());
+            Fish newFish = selectedBox.OpenBox();
+            Instantiate(newFish, FishParentObject.transform);
+            game.fishInventory.Add(newFish);
         }
     }
 }
