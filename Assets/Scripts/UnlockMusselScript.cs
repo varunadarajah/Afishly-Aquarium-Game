@@ -27,7 +27,7 @@ public class UnlockMusselScript : MonoBehaviour
     }
 
     void OnMouseDown()
-{
+    {
     if (currentLevel == 0)
     {
         unlockMussel();
@@ -40,7 +40,7 @@ public class UnlockMusselScript : MonoBehaviour
     {
         purchaseLevel3();
     }
-}
+    }
 
     void IncreaseLevel()
     {
@@ -53,7 +53,6 @@ public class UnlockMusselScript : MonoBehaviour
         {
             ToggleObject();
             IncreaseLevel();
-            StartCoroutine(IncreasePearls());
             accessLevel1 = false;
             musselLevelText.text = "Level Up\n100";
             musselLevelDescription.text = "Lv 1 Mussel\n5\t per second\n\n\n\n5 > 6 per second";
@@ -86,33 +85,11 @@ public class UnlockMusselScript : MonoBehaviour
             musselLevelText.text = "Level Up\n300";
             musselLevelDescription.text = "Lv 3 Mussel\n8\t per second\n\n\n\n8 > 10 per second";
             game.pearls -= 200;
-            //close menu
             return true;
         }
         return false;
     }
 
-    IEnumerator IncreasePearls() {
-        while (true) {
-            yield return new WaitForSeconds(1f); // Wait for 1 second
-
-            int pearlsPerSecond = 5;
-
-        // Increase pearls per second to 6 at level 2
-            if (currentLevel == 2)
-            {
-              pearlsPerSecond = 6;
-            }
-
-          if (currentLevel == 3)
-            {
-            pearlsPerSecond = 8;
-            }
-
-        // Increase pearls in the other object by pearlsPerSecond
-        game.pearls += pearlsPerSecond;
-        }
-    }
     void ToggleObject()
     {
         if (objectToToggle != null)
