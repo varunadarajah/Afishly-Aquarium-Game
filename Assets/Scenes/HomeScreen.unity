@@ -4554,10 +4554,10 @@ MonoBehaviour:
   gachaName: Turtle Box
   cost: 50
   possibleFishes:
-  - {fileID: 8698624623328755314, guid: 4f1d5047669e7ea48aabea38001bf999, type: 3}
-  - {fileID: 1429426119926878454, guid: 8e29e0610dfa29d46bd248f75c6967cd, type: 3}
-  - {fileID: 155239668629951189, guid: 3e6c91d836f63d044a01a4d907cce527, type: 3}
-  - {fileID: 5111820872974376110, guid: d59c50e8ed6a59e48a4110f2cf16be78, type: 3}
+  - {fileID: 613152143043523492, guid: 4f1d5047669e7ea48aabea38001bf999, type: 3}
+  - {fileID: 2964195923123645414, guid: 8e29e0610dfa29d46bd248f75c6967cd, type: 3}
+  - {fileID: 7839200941687872059, guid: 3e6c91d836f63d044a01a4d907cce527, type: 3}
+  - {fileID: 7266478742154036057, guid: d59c50e8ed6a59e48a4110f2cf16be78, type: 3}
   fishRarity: 
 --- !u!212 &876286348
 SpriteRenderer:
@@ -6562,7 +6562,6 @@ GameObject:
   - component: {fileID: 1208108510}
   - component: {fileID: 1208108513}
   - component: {fileID: 1208108512}
-  - component: {fileID: 1208108511}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -6590,36 +6589,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -309.5}
   m_SizeDelta: {x: 20.47998, y: 21.47998}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1208108511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208108509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e0cef9a09915d6419fe524073347bcd, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1208108512
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11350,10 +11319,10 @@ MonoBehaviour:
   gachaName: Axolotl Box
   cost: 20
   possibleFishes:
-  - {fileID: 8208034025953685142, guid: 248604eabffb5724087dcf7f58e1914f, type: 3}
-  - {fileID: 3739245629437408711, guid: ae4467690490b5e4b90681a467ee7554, type: 3}
-  - {fileID: 8101611146327094026, guid: 72ec5d197847f2e4ba0c8c886016647a, type: 3}
-  - {fileID: 3235123827244720169, guid: ded50a9d2a867de418dc8ff740f511d1, type: 3}
+  - {fileID: 8753742041258040649, guid: 248604eabffb5724087dcf7f58e1914f, type: 3}
+  - {fileID: 1900803985459047243, guid: ae4467690490b5e4b90681a467ee7554, type: 3}
+  - {fileID: 8507077224936150334, guid: 72ec5d197847f2e4ba0c8c886016647a, type: 3}
+  - {fileID: 4351313684888160231, guid: ded50a9d2a867de418dc8ff740f511d1, type: 3}
   fishRarity: 
 --- !u!212 &2137540635
 SpriteRenderer:
