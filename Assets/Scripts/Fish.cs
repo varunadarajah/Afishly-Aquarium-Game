@@ -9,14 +9,14 @@ public class Fish : MonoBehaviour
     public string dateObtained;
     public Color fishColor;
 
-    SpriteRenderer colorSprite;
+    public SpriteRenderer colorSprite;
 
     public int rarity;
 
     // Start is called before the first frame update
     void Start()
     {
-        dateObtained = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yyyy");
+        dateObtained = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yy");
         fishColor = Color.white;
         colorSprite = GetComponentsInChildren<SpriteRenderer>()[1]; // gets silloute sprite
     }

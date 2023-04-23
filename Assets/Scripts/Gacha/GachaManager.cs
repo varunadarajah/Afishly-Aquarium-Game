@@ -76,8 +76,8 @@ public class GachaManager : MonoBehaviour
         {
             game.pearls -= selectedBox.cost;
             Fish newFish = selectedBox.OpenBox();
-            Instantiate(newFish, FishParentObject.transform);
-            game.fishInventory.Add(newFish);
+            Fish f = Instantiate(newFish, FishParentObject.transform);
+            game.fishInventory.Add(f);
         }
     }
 }
