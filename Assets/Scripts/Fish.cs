@@ -9,17 +9,36 @@ public class Fish : MonoBehaviour
     public string dateObtained;
     public Color fishColor;
 
+    public SpriteRenderer colorSprite;
+
     public int rarity;
 
-    // Start is called before the first frame update
     void Start()
     {
-        dateObtained = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yyyy");
+        dateObtained = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yy");
+
+        // get the hex string from the HSBSliderScript
+        HSBSliderScript hsbSliderScript = FindObjectOfType<HSBSliderScript>();
+        string hexColor = hsbSliderScript.hexText.text;
+
+        // check if hexColor is a valid hex string
+        Color newColor;
+        if (ColorUtility.TryParseHtmlString(hexColor, out newColor))
+        {
+            fishColor = newColor;
+        }
+        else
+        {
+            fishColor = Color.white; // set to default color
+        }
+
+    colorSprite = GetComponentsInChildren<SpriteRenderer>()[1]; // gets silloute sprite
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        colorSprite.color = fishColor;
     }
 }
