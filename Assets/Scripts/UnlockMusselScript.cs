@@ -9,6 +9,8 @@ public class UnlockMusselScript : MonoBehaviour
     public int musselPearls;
     public TMP_Text musselLevelText;
     public TMP_Text musselLevelDescription;
+    public TMP_Text musselUpgradeValue; 
+    string spriteAsset = "<sprite name=\"Pearl\">";
     public GameObject objectToToggle; // Reference to the object toggle
     bool accessLevel1 = true;
     bool accessLevel2 = true;
@@ -54,8 +56,9 @@ public class UnlockMusselScript : MonoBehaviour
             ToggleObject();
             IncreaseLevel();
             accessLevel1 = false;
-            musselLevelText.text = "Level Up\n100";
-            musselLevelDescription.text = "Lv 1 Mussel\n5\t per second\n\n\n\n5 > 6 per second";
+            musselLevelText.text = "Level Up\n100 " + spriteAsset;
+            musselLevelDescription.text = "Lv 1 Mussel\n5 " + spriteAsset + "per second";
+            musselUpgradeValue.text = "5 > 6 " + spriteAsset + "per second";
             game.pearls -= 50;
             return true; 
         }
@@ -68,8 +71,9 @@ public class UnlockMusselScript : MonoBehaviour
         {
             IncreaseLevel();
             accessLevel2 = false;
-            musselLevelText.text = "Level Up\n200";
-            musselLevelDescription.text = "Lv 2 Mussel\n6\t per second\n\n\n\n6 > 8 per second";
+            musselLevelText.text = "Level Up\n200 " + spriteAsset;
+            musselLevelDescription.text = "Lv 2 Mussel\n6 " + spriteAsset + "per second";
+            musselUpgradeValue.text = "6 > 8 " + spriteAsset + "per second";
             game.pearls -= 100;
             return true; 
         }
@@ -82,8 +86,9 @@ public class UnlockMusselScript : MonoBehaviour
         {
             IncreaseLevel();
             accessLevel3 = false;
-            musselLevelText.text = "Level Up\n300";
-            musselLevelDescription.text = "Lv 3 Mussel\n8\t per second\n\n\n\n8 > 10 per second";
+            musselLevelText.text = "Level Up\n300 " + spriteAsset;
+            musselLevelDescription.text = "Lv 3 Mussel\n8 " + spriteAsset + "per second";
+            musselUpgradeValue.text = "8 > 10 " + spriteAsset + "per second";
             game.pearls -= 200;
             return true;
         }
