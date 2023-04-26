@@ -7,9 +7,8 @@ public class FishViewManager : MonoBehaviour
 {
     public Game game;
 
-    public List<Fish> fishes;
     int ownedCount = 0;
-    int activeCount = 0;
+    public int activeCount = 0;
 
     public TMP_Text breedText;
     public TMP_Text ownedText;
@@ -41,8 +40,11 @@ public class FishViewManager : MonoBehaviour
         {
             if(f.fishBreed.Equals(breedName))
             {
-                fishes.Add(f);
                 ownedCount++;
+                if(f.isActive)
+                {
+                    activeCount++;
+                }
 
                 // adds view boxes for each fish in list
                 GameObject newBox = Instantiate(fishViewObj, fishBoxesTab.transform);
@@ -54,9 +56,17 @@ public class FishViewManager : MonoBehaviour
         breedText.text = breedName;
     }
 
+    public void SellFish(Fish f)
+    {
+        string breedName = f.fishBreed;
+        game.pearls += f.sellPrice;
+        game.fishInventory.Remove(f);
+        Destroy(f.gameObject);
+        SetFish(breedName);
+    }
+
     void Reset()
     {
-        fishes.Clear();
         ownedCount = 0;
         activeCount = 0;
 

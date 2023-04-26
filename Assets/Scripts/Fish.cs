@@ -8,10 +8,12 @@ public class Fish : MonoBehaviour
     public string fishName;
     public string dateObtained;
     public Color fishColor;
+    public bool isActive = false;
 
     public SpriteRenderer colorSprite;
 
     public int rarity;
+    public int sellPrice;
 
     void Start()
     {
@@ -32,7 +34,8 @@ public class Fish : MonoBehaviour
             fishColor = Color.white; // set to default color
         }
 
-    colorSprite = GetComponentsInChildren<SpriteRenderer>()[1]; // gets silloute sprite
+        colorSprite = GetComponentsInChildren<SpriteRenderer>()[1]; // gets silloute sprite
+        gameObject.SetActive(false);
     }
 
 
