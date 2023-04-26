@@ -10,10 +10,11 @@ public class LevelUpClamScript : MonoBehaviour
     public Clam clamUpgrade;
     public TMP_Text clamLevelText;
     public TMP_Text clamLevelDescription;
+    public TMP_Text clamUpgradeValue;
+    string spriteAsset = "<sprite name=\"Pearl\">";
     bool accessLevel2 = true;
     bool accessLevel3 = true;
     bool accessLevel4 = true;
-    public GameObject otherGameObject; // Declare and assign a value to the otherGameObject
 
     // Start is called before the first frame update
     void Start()
@@ -55,8 +56,9 @@ public class LevelUpClamScript : MonoBehaviour
             IncreaseLevel();
             clamUpgrade.pearlPerTap += 1;
             accessLevel2 = false;
-            clamLevelText.text = "Level Up\n100";
-            clamLevelDescription.text = "Lv 2 Regular Clam\n6     per tap\n\n\n\n6 > 8 per tap";
+            clamLevelText.text = "Level Up\n100 " + spriteAsset;
+            clamLevelDescription.text = "Lv 2 Regular Clam\n6 " + spriteAsset + "per tap";
+            clamUpgradeValue.text = "6 > 8 " + spriteAsset + "per tap";
             game.pearls -= 50;
             return true;
         }
@@ -70,8 +72,9 @@ public class LevelUpClamScript : MonoBehaviour
             IncreaseLevel();
             clamUpgrade.pearlPerTap += 2;
             accessLevel3 = false;
-            clamLevelText.text = "Level Up\n200";
-            clamLevelDescription.text = "Lv 3 Regular Clam\n8     per tap\n\n\n\n8 > 10 per tap";
+            clamLevelText.text = "Level Up\n200 " + spriteAsset;
+            clamLevelDescription.text = "Lv 3 Regular Clam\n8 " + spriteAsset + "per tap";
+            clamUpgradeValue.text = "8 > 10 " + spriteAsset + "per tap";
             game.pearls -= 100;
             //close menu
             return true;
@@ -86,8 +89,9 @@ public class LevelUpClamScript : MonoBehaviour
         IncreaseLevel();
         clamUpgrade.pearlPerTap += 2;
         accessLevel4 = false;
-        clamLevelText.text = "Level Up\n500";
-        clamLevelDescription.text = "Lv 4 Regular Clam\n10\t per tap\n\n\n\n10 > 15 per tap";
+        clamLevelText.text = "Level Up\n500 " + spriteAsset;
+        clamLevelDescription.text = "Lv 4 Regular Clam\n10 " + spriteAsset + "per tap";
+        clamUpgradeValue.text = "10 > 15 " + spriteAsset + "per tap";
         game.pearls -= 200;
 
         return true;

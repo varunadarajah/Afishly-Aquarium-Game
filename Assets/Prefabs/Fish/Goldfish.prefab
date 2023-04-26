@@ -186,4 +186,6 @@ MonoBehaviour:
   fishName: Goldfish
   dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
+  colorSprite: {fileID: 0}
   rarity: 40
+  sellPrice: 100

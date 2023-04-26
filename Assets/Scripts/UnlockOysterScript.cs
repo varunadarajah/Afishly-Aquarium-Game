@@ -8,8 +8,9 @@ public class UnlockOysterScript : MonoBehaviour
     public int currentLevel = 0; // Add a level variable to keep track of the object's level
     public TMP_Text oysterLevelText;
     public TMP_Text oysterLevelDescription;
+    public TMP_Text oysterUpgradeValue; 
+    string spriteAsset = "<sprite name=\"Pearl\">";
     public GameObject objectToToggle; // Reference to the object toggle
-    public GameObject pearlToggle;
     bool accessLevel1 = true;
     bool accessLevel2 = true;
     bool accessLevel3 = true;
@@ -52,11 +53,11 @@ public class UnlockOysterScript : MonoBehaviour
         if(game.pearls >= 50 && currentLevel == 0 && accessLevel1)
         {
             ToggleObject();
-            PearlToggle();
             IncreaseLevel();
             accessLevel1 = false;
-            oysterLevelText.text = "Level Up\n100";
-            oysterLevelDescription.text = "Lv 1 Oyster\n50\t per tap\n\n\n\n10 second cooldown";
+            oysterLevelText.text = "Level Up\n100 " + spriteAsset;
+            oysterLevelDescription.text = "Lv 1 Oyster\n50 " + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "50 > 100 " + spriteAsset + "per tap\n10 second cooldown";
             game.pearls -= 50;
             return true; 
         }
@@ -69,8 +70,9 @@ public class UnlockOysterScript : MonoBehaviour
         {
             IncreaseLevel();
             accessLevel2 = false;
-            oysterLevelText.text = "Level Up\n200";
-            oysterLevelDescription.text = "Lv 2 Oyster\n100\t per tap\n\n\n\n10 second cooldown";
+            oysterLevelText.text = "Level Up\n200 " + spriteAsset;
+            oysterLevelDescription.text = "Lv 2 Oyster\n100 " + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "100 > 300 " + spriteAsset + "per tap\n10 second cooldown";
             game.pearls -= 100;
             return true; 
         }
@@ -83,8 +85,9 @@ public class UnlockOysterScript : MonoBehaviour
         {
             IncreaseLevel();
             accessLevel3 = false;
-            oysterLevelText.text = "Level Up\n300";
-            oysterLevelDescription.text = "Lv 3 Oyster\n300\t per tap\n\n\n\n10 second cooldown";
+            oysterLevelText.text = "Level Up\n300 " + spriteAsset;
+            oysterLevelDescription.text = "Lv 3 Oyster\n300 " + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "300 > 500 " + spriteAsset + "per tap\n10 second cooldown";
             game.pearls -= 200;
             //close menu
             return true;
@@ -97,14 +100,6 @@ public class UnlockOysterScript : MonoBehaviour
         if (objectToToggle != null)
         {
             objectToToggle.SetActive(!objectToToggle.activeSelf); // Toggle the active state of the other object
-        }
-    }
-
-     void PearlToggle()
-    {
-        if (pearlToggle != null)
-        {
-            pearlToggle.SetActive(!pearlToggle.activeSelf); // Toggle the active state of the other object
         }
     }
 }
