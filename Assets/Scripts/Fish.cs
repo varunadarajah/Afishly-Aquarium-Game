@@ -15,8 +15,12 @@ public class Fish : MonoBehaviour
     public int rarity;
     public int sellPrice;
 
+    public float speed;
+    public bool isMovingRight = true;
+
     void Start()
     {
+        speed = .2f;
         dateObtained = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yy");
 
         // get the hex string from the HSBSliderScript
@@ -35,13 +39,41 @@ public class Fish : MonoBehaviour
         }
 
         colorSprite = GetComponentsInChildren<SpriteRenderer>()[1]; // gets silloute sprite
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
-
 
     // Update is called once per frame
     void Update()
     {
         colorSprite.color = fishColor;
+
+        Vector3 pos = transform.position;
+        if (pos.x > 1)
+        {
+            isMovingRight = false;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Background"; 
+            colorSprite.sortingLayerName = "Background";
+            transform.localScale = new Vector3(30f, 30f, 1f);    
+        }
+        else if (pos.x < -1)
+        {
+            isMovingRight = true;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Fish"; 
+            colorSprite.sortingLayerName = "Fish";
+             transform.localScale = new Vector3(60f, 60f, 1f);
+        }
+
+        if (isMovingRight)
+        {
+            pos.x += speed * Time.deltaTime;
+        }
+        else
+        {
+            pos.x -= speed * Time.deltaTime;
+        }
+
+        transform.position = pos;
     }
 }

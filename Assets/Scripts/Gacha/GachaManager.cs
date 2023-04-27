@@ -15,6 +15,7 @@ public class GachaManager : MonoBehaviour
     public TMP_Text costText;
 
     public GameObject FishParentObject;
+    string spriteAsset = "<sprite name=\"Pearl\">";
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class GachaManager : MonoBehaviour
     void Update()
     {
         selectedText.text = selectedBox.gachaName;
-        costText.text = selectedBox.cost + "";
+        costText.text = "Open\n " + selectedBox.cost + " " + spriteAsset+ "";
     }
 
     public void ScrollLeft()
