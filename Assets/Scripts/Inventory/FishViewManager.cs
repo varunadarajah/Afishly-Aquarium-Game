@@ -19,6 +19,8 @@ public class FishViewManager : MonoBehaviour
 
     public List<GameObject> boxes;
 
+    public FilterBoxManager filter; // sorting after updates
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +55,7 @@ public class FishViewManager : MonoBehaviour
             }
         }
 
-        breedText.text = breedName;
+        breedText.text = breedName;        
     }
 
     public void SellFish(Fish f)

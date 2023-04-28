@@ -46,7 +46,7 @@ public class FishActiveToggle : MonoBehaviour
 
     public void toggleActive()
     {
-        if(isActive)
+        if (isActive)
         {
             box.fish.isActive = false;
             box.fish.gameObject.SetActive(false);
@@ -56,8 +56,8 @@ public class FishActiveToggle : MonoBehaviour
 
             // move slider circle
             sliderCircleOff();
-        } 
-        else
+        }
+        else if (box.fm.game.activeFish.Count < box.fm.game.activeFishMax)
         {
             box.fish.isActive = true;
             box.fish.gameObject.SetActive(true);
@@ -68,7 +68,10 @@ public class FishActiveToggle : MonoBehaviour
             // move slider circle
             sliderCircleOn();
         }
-        
+
+        // sorting
+        FilterBoxManager filter = box.fm.filter;
+        filter.SelectTab(filter.curSelectedTab);
     }
 
     void sliderCircleOff()

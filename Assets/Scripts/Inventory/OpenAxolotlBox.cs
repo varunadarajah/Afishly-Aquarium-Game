@@ -10,6 +10,9 @@ public class OpenAxolotlBox : MonoBehaviour
     public GameObject toggleUpArrow;
     public GameObject toggleDownArrow;
     public GameObject expandWindow;
+    public GameObject toggleTurtleUpArrow;
+    public GameObject toggleTurtleDownArrow;
+    public GameObject closeTurtleBox;
 
     private bool isMoving = false;
 
@@ -57,5 +60,17 @@ public class OpenAxolotlBox : MonoBehaviour
         {
             expandWindow.SetActive(!expandWindow.activeSelf);
         }
+        if (closeTurtleBox != null)
+        {
+            closeTurtleBox.SetActive(false);
+        }
+        if (toggleTurtleUpArrow != null)
+        {
+            toggleTurtleUpArrow.SetActive(true);
+        }
+        if (toggleTurtleDownArrow != null)
+        {
+            toggleTurtleDownArrow.SetActive(false);
     }
+}
 }

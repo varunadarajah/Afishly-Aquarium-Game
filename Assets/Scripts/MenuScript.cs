@@ -6,6 +6,8 @@ public class MenuScript : MonoBehaviour
     public GameObject objectToMove;
     public float targetYPosition = -1f;
     public float slideDuration = 1f;
+    public GameObject toggleFishview;
+    public GameObject toggleFishBoxPage;
 
     private bool isMoving = false;
 
@@ -35,5 +37,17 @@ public class MenuScript : MonoBehaviour
 
         objectToMove.transform.position = targetPosition;
         isMoving = false;
+        toggleArrow();
+    }
+void toggleArrow()
+    {
+     if (toggleFishview != null)
+        {
+            toggleFishview.SetActive(false);
+        }
+        if (toggleFishBoxPage != null)
+        {
+            toggleFishBoxPage.SetActive(true);
+        }
     }
 }
