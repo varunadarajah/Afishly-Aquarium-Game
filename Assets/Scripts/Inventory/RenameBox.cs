@@ -24,5 +24,9 @@ public class RenameBox : MonoBehaviour
             box.fish.fishName = newName;
             Destroy(gameObject);
         }
+
+        //sorting
+        FilterBoxManager filter = box.fm.filter;
+        filter.SelectTab(filter.curSelectedTab);
     }
 }

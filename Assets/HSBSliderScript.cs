@@ -12,6 +12,8 @@ public class HSBSliderScript : MonoBehaviour
     public Slider brightnessSlider;
     public TMP_Text hexText;
 
+    public Image saturationSliderColor;
+    public Image brightnessSliderColor;
 
     public void onEdit() {
         float hueValue = hueSlider.value; // Value between 0 and 1
@@ -20,6 +22,9 @@ public class HSBSliderScript : MonoBehaviour
 
         Color color = Color.HSVToRGB(hueValue, saturationValue, brightnessValue);
         spriteRenderer.color = color;
+
+        saturationSliderColor.color = Color.HSVToRGB(hueValue, 1, 1);
+        brightnessSliderColor.color = Color.HSVToRGB(hueValue, 1, 1);
 
         // Convert color to hexadecimal string
         string hexString = ColorUtility.ToHtmlStringRGB(color);

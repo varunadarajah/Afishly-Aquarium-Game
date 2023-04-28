@@ -22,6 +22,7 @@ public class BuyButton : MonoBehaviour
     void OnMouseDown()
     {
         gm.buyBox();
+
         foreach (FishUnlockData fishUnlockData in fishUnlockDataArray)
         {
             UnlockFish(fishUnlockData);

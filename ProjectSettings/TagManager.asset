@@ -50,12 +50,12 @@ TagManager:
   - name: Mollusks
     uniqueID: 1460887641
     locked: 0
+  - name: Fish
+    uniqueID: 2594079479
+    locked: 0
   - name: UI
     uniqueID: 1359317203
     locked: 0
   - name: Store
     uniqueID: 2156503417
-    locked: 0
-  - name: New Layer 6
-    uniqueID: 2175675055
     locked: 0
