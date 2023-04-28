@@ -12,6 +12,9 @@ public class Fish : MonoBehaviour
 
     public SpriteRenderer colorSprite;
 
+    public SpriteRenderer fishShadow;
+    public float shadowStrengh = 0.43f; // 1f is full opacity, 0 is transparent
+
     public int rarity;
     public int sellPrice;
 
@@ -39,6 +42,8 @@ public class Fish : MonoBehaviour
         }
 
         colorSprite = GetComponentsInChildren<SpriteRenderer>()[1]; // gets silloute sprite
+        fishShadow.color = new Color(0f, 0f, 0f, shadowStrengh); // sets shadow strength
+
         gameObject.SetActive(false);
     }
 
@@ -54,7 +59,9 @@ public class Fish : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
             gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Background"; 
             colorSprite.sortingLayerName = "Background";
-            transform.localScale = new Vector3(30f, 30f, 1f);    
+            transform.localScale = new Vector3(30f, 30f, 1f);
+
+            fishShadow.gameObject.SetActive(true); // enable shadow gameobject
         }
         else if (pos.x < -1)
         {
@@ -62,7 +69,9 @@ public class Fish : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 180, 0);
             gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Fish"; 
             colorSprite.sortingLayerName = "Fish";
-             transform.localScale = new Vector3(60f, 60f, 1f);
+            transform.localScale = new Vector3(60f, 60f, 1f);
+
+            fishShadow.gameObject.SetActive(false); // disable shadow gameobject
         }
 
         if (isMovingRight)

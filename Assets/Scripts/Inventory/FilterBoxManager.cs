@@ -26,31 +26,36 @@ public class FilterBoxManager : MonoBehaviour
 
     public void SelectTab(FilterTabButton t)
     {
-        curSelectedTab = t;
-        ResetTabs();
-        t.img.sprite = tabSelected;
-
-        int index = t.transform.GetSiblingIndex();
-        
-        switch(index)
+        if (t != null) // if menu activated
         {
-            case 0:
-                sortAsc();
-                break;
-            case 1:
-                sortDesc();
-                break;
-            case 2:
-                sortActive();
-                break;
-            case 3:
-                sortInvactive();
-                break;
-            case 4:
-                sortAlphabetical();
-                break;
-        }
+            curSelectedTab = t;
 
+
+            ResetTabs();
+            t.img.sprite = tabSelected;
+
+
+            int index = t.transform.GetSiblingIndex();
+
+            switch (index)
+            {
+                case 0:
+                    sortAsc();
+                    break;
+                case 1:
+                    sortDesc();
+                    break;
+                case 2:
+                    sortActive();
+                    break;
+                case 3:
+                    sortInvactive();
+                    break;
+                case 4:
+                    sortAlphabetical();
+                    break;
+            }
+        }
     }
 
      public void UnselectTab()
