@@ -12,9 +12,9 @@ public class LevelUpClamScript : MonoBehaviour
     public TMP_Text clamLevelDescription;
     public TMP_Text clamUpgradeValue;
     string spriteAsset = "<sprite name=\"Pearl\">";
-    bool accessLevel2 = true;
-    bool accessLevel3 = true;
-    bool accessLevel4 = true;
+    public bool accessLevel2 = true;
+    public bool accessLevel3 = true;
+    public bool accessLevel4 = true;
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +28,8 @@ public class LevelUpClamScript : MonoBehaviour
 
     }
 
-    void OnMouseDown()
-{
+    public void OnMouseDown()
+    {
     if (currentLevel == 1)
     {
         purchaseLevel2();
@@ -42,14 +42,14 @@ public class LevelUpClamScript : MonoBehaviour
     {
         purchaseLevel4();
     }
-}
+    }
 
-    void IncreaseLevel()
+    public void IncreaseLevel()
     {
         currentLevel++; // Increase the level of the object by 1
     }
 
-    bool purchaseLevel2()
+    public bool purchaseLevel2()
     {
         if (game.pearls >= 50 && currentLevel == 1 && accessLevel2)
         {
@@ -65,7 +65,7 @@ public class LevelUpClamScript : MonoBehaviour
         return false;
     }
 
-    bool purchaseLevel3()
+    public bool purchaseLevel3()
     {
         if (game.pearls >= 100 && currentLevel == 2 && accessLevel3)
         {
@@ -82,8 +82,8 @@ public class LevelUpClamScript : MonoBehaviour
         return false;
     }
 
-   bool purchaseLevel4()
-{
+   public bool purchaseLevel4()
+    {
     if (game.pearls >= 200 && currentLevel == 3 && accessLevel4)
     {
         IncreaseLevel();
@@ -98,7 +98,4 @@ public class LevelUpClamScript : MonoBehaviour
     }
     return false;
 }
-
-
-
 }
