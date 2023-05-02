@@ -15,6 +15,13 @@ public class HSBSliderScript : MonoBehaviour
     public Image saturationSliderColor;
     public Image brightnessSliderColor;
 
+    private void Start()
+    {
+        // set color sliders
+        saturationSliderColor.color = Color.HSVToRGB(0, 1, 1);
+        brightnessSliderColor.color = Color.HSVToRGB(0, 1, 1);
+    }
+
     public void onEdit() {
         float hueValue = hueSlider.value; // Value between 0 and 1
         float saturationValue = saturationSlider.value; // Value between 0 and 1
