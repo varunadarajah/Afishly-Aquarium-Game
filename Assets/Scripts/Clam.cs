@@ -5,7 +5,7 @@ using UnityEngine;
 public class Clam : MonoBehaviour
 {
     public Game game;
-    public int pearlPerTap = 5;
+    public int pearlPerTap = 100;
     Animator clamAnimation;
     // Start is called before the first frame update
     void Start()
