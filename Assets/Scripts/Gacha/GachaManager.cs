@@ -7,6 +7,12 @@ public class GachaManager : MonoBehaviour
 {
     public Game game;
 
+    public GameObject transitionScreen;
+    public float fadeTime = .5f;
+
+    private Material screenMaterial;
+    private Color screenColor;
+
     public GameObject GachaBoxes;
     public List<GachaBox> boxes;
 
@@ -34,6 +40,17 @@ public class GachaManager : MonoBehaviour
         {
             boxes[i].gameObject.SetActive(false);
         }
+        
+        // Get the Material of the transition screen object
+        Renderer screenRenderer = transitionScreen.GetComponent<Renderer>();
+        screenMaterial = screenRenderer.material;
+
+        // Get the initial color of the Material
+        screenColor = screenMaterial.color;
+
+        // Set the alpha value to 0 to make the object transparent
+        screenColor.a = 0f;
+        screenMaterial.color = screenColor;
     }
 
     // Update is called once per frame
@@ -79,6 +96,34 @@ public class GachaManager : MonoBehaviour
             Fish newFish = selectedBox.OpenBox();
             Fish f = Instantiate(newFish, FishParentObject.transform);
             game.fishInventory.Add(f);
-        }
+            transitionScreen.SetActive(true);
+            StartCoroutine(FadeInTransitionScreen());
     }
+
+    IEnumerator FadeInTransitionScreen()
+    {
+        float elapsedTime = 0f;
+
+        yield return new WaitForSeconds(1f);
+
+        // Set the alpha value to 0 to make the object transparent
+        screenColor.a = 0f;
+        screenMaterial.color = screenColor;
+
+        // Gradually increase the alpha value over time
+        while (elapsedTime < fadeTime)
+        {
+            float alpha = Mathf.Lerp(0f, 1f, elapsedTime / fadeTime);
+            screenColor.a = alpha;
+            screenMaterial.color = screenColor;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Set the alpha value to 1 to make the object opaque
+        screenColor.a = 1f;
+        screenMaterial.color = screenColor;
+    }
+}
 }
