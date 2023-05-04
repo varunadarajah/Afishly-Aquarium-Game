@@ -59,6 +59,9 @@ TagManager:
   - name: Store
     uniqueID: 2156503417
     locked: 0
+  - name: Decor
+    uniqueID: 2319468905
+    locked: 0
   - name: Transition
     uniqueID: 765910177
     locked: 0

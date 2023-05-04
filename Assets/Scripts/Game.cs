@@ -9,6 +9,9 @@ public class Game : MonoBehaviour
     public TMP_Text pearlText;
 
     public List<Fish> fishInventory;
+    public DecorInventory decorInventory;
+
+    public List<GameObject> activeDecor;
 
     public List<Fish> activeFish;
     public int activeFishMax = 10;

@@ -111,6 +111,8 @@ MonoBehaviour:
   sellPrice: 100
   speed: 0
   isMovingRight: 1
+  minY: 0
+  verticalSpeed: 0.05
 --- !u!1 &2991932980157722752
 GameObject:
   m_ObjectHideFlags: 0

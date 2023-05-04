@@ -22,9 +22,9 @@ public class Fish : MonoBehaviour
     public bool isMovingRight = true;
 
     // Add new variables for the fish's vertical movement
-    // public float minY;
-    // public float verticalSpeed = 0.1f;
-    // private float direction = 1f;
+    public float minY;
+    public float verticalSpeed = 0.05f;
+    private float direction1 = 1f;
     
 
     public void Start()
@@ -104,27 +104,41 @@ public class Fish : MonoBehaviour
             pos.x -= speed * Time.deltaTime;
         }
 
-    //  pos.y += verticalSpeed * direction * Time.deltaTime;
+     pos.y += verticalSpeed * direction1 * Time.deltaTime;
 
-    // //keeps the fish inside of the screen
-    // if (pos.y > 1 || pos.y < -.6)
+    if (gameObject.GetComponent<SpriteRenderer>().sortingLayerName == "Background")
+    {
+        if (pos.y > .9 || pos.y < -0.6f)
+        { 
+            direction1 *= -1f;
+        }
+    }
+
+    if (gameObject.GetComponent<SpriteRenderer>().sortingLayerName == "Fish")
+    {
+        if (pos.y > .9 || pos.y < -.9)
+        { 
+            direction1 *= -1f;
+        }
+    }
+
+    //  if (pos.y > 1 || pos.y < -1)
     // {
-    //     direction *= -1f;
+    //     direction1 *= -1f;
     // }
 
-    // // Randomly change the vertical direction if the fish hits the left or right edge of the screen
-    // if (pos.x > 1 || pos.x < -1)
-    // {
-    //     if (Random.value > 0.5f)
-    //     {
-    //         direction = 1f;
-    //     }
-    //     else
-    //     {
-    //         direction = -1f;
-    //     }
-    // }
-    // Change y position of fish if it hits the x edges of the screen
+    // Randomly change the vertical direction if the fish hits the left or right edge of the screen
+    if (pos.x > 1 || pos.x < -1)
+    {
+        if (Random.value > 0.5f)
+        {
+            direction1 = 1f;
+        }
+        else
+        {
+            direction1 = -1f;
+        }
+    }
         transform.position = pos;
     }
 

@@ -279,3 +279,4 @@ MonoBehaviour:
   sellPrice: 100
   speed: 0
   isMovingRight: 1
+  verticalSpeed: 0.05
