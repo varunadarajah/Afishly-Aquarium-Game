@@ -10,6 +10,9 @@ public class TransitionScript : MonoBehaviour
     private Color screenColor;
     private bool inputEnabled = false;
 
+    public GameObject displayFish;
+    public GameObject continueText;
+
     public void OnMouseDown()
     {
         if (inputEnabled)
@@ -26,13 +29,16 @@ public class TransitionScript : MonoBehaviour
 
     private IEnumerator HideTransitionScreen()
     {
+        Destroy(displayFish);
         Renderer screenRenderer = transitionScreen.GetComponent<Renderer>();
+        continueText.SetActive(false);
+        transitionScreen.SetActive(false);
         screenMaterial = screenRenderer.material;
         screenColor = screenMaterial.color;
         screenColor.a = 0f;
         screenMaterial.color = screenColor;
-        yield return StartCoroutine(Start());
-        transitionScreen.SetActive(false);
+        
+        yield return new WaitForSeconds(1.0f);
     }
 }
 
