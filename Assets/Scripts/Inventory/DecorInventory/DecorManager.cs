@@ -26,7 +26,7 @@ public class DecorManager : MonoBehaviour
 
     public void placeDecor()
     {
-        if (inactiveCount > 0) { 
+        // if (inactiveCount > 0) { 
         float xPos = Random.Range(minX, maxX);
 
         GameObject newDecor = Instantiate(decorPrefab, decorPlace.transform);
@@ -36,7 +36,7 @@ public class DecorManager : MonoBehaviour
 
         inactiveCount--;
         activeCount++;
-        }
+        // }
     }
 
     public void storeDecor()

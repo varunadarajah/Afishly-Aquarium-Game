@@ -26,36 +26,37 @@ public class PlantRock : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // Find the object by name
-        GameObject objectToCheck = GameObject.Find(objectNameToCheck);
+    // Find the object by name
+    GameObject objectToCheck = GameObject.Find(objectNameToCheck);
 
-        if (objectToCheck != null && objectToCheck.activeSelf && !selected)
+    if (objectToCheck != null && objectToCheck.activeSelf)
+    {
+        // Set the transparency of the previously clicked object back to normal
+        if (prevClickedObject != null && prevClickedObject.GetComponent<PlantRock>() != null)
         {
-            selected = true;
-            // Set the transparency of the previously clicked object back to normal
-            if (prevClickedObject != null && prevClickedObject.GetComponent<PlantRock>() != null)
-            {
-                prevClickedObject.GetComponent<PlantRock>().selected = false;
-                Renderer prevRenderer = prevClickedObject.GetComponent<Renderer>();
-                Color prevColor = prevRenderer.material.color;
-                prevColor.a = prevClickedObject.GetComponent<PlantRock>().selected ? 0.5f : 1f;
-                prevRenderer.material.color = prevColor;
-            }
-
-            // Set the transparency of the current object to half
-            Color color = renderer.material.color;
-            color.a = selected ? 0.5f : 1f;
-            renderer.material.color = color;
-
-            // Set the current object as the previously clicked object
-            prevClickedObject = gameObject;
+            prevClickedObject.GetComponent<PlantRock>().selected = false;
+            Renderer prevRenderer = prevClickedObject.GetComponent<Renderer>();
+            Color prevColor = prevRenderer.material.color;
+            prevColor.a = prevClickedObject.GetComponent<PlantRock>().selected ? 0.5f : 1f;
+            prevRenderer.material.color = prevColor;
         }
-        if (canMove == true && selected == true) 
-            {
-            isPickedUp = true;
-            mousePositionOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            }
+
+        // Set the transparency of the current object to half
+        selected = true;
+        Color color = renderer.material.color;
+        color.a = selected ? 0.5f : 1f;
+        renderer.material.color = color;
+
+        // Set the current object as the previously clicked object
+        prevClickedObject = gameObject;
     }
+    if (canMove == true && selected == true) 
+        {
+        isPickedUp = true;
+        mousePositionOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+}
+
 
 
     private void OnMouseUp()
