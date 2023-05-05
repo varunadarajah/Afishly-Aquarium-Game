@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TabManager : MonoBehaviour
 {
+    public TabButton defaultTab; // tab to open with on start
     public List<TabButton> tabButtons;
     public TabButton curSelectedTab;
 
@@ -20,8 +21,14 @@ public class TabManager : MonoBehaviour
 
     void Start()
     {
-        // set Clams tab to active by default
-        SelectTab(tabButtons[1]);
+        if(defaultTab == null)
+        {
+            SelectTab(tabButtons[0]);
+        }
+        else
+        {
+            SelectTab(defaultTab);
+        }
     }
 
     public void AddTab(TabButton t)
