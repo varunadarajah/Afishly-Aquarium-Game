@@ -26,7 +26,7 @@ public class TransitionScript : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         inputEnabled = true;
     }
-
+    
     private IEnumerator HideTransitionScreen()
     {
         Destroy(displayFish);
