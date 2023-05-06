@@ -14,6 +14,11 @@ public class DecorManager : MonoBehaviour
     public int inactiveCount = 0;
     public int activeCount = 0;
 
+    public float minX = -.3f;
+    public float maxX = .3f;
+    public float minY = -.9f;
+    public float maxY = -.6f;
+
     public void buy()
     {
         inactiveCount++;
@@ -21,13 +26,16 @@ public class DecorManager : MonoBehaviour
 
     public void placeDecor()
     {
-        if(inactiveCount > 0)
-        {
-            GameObject newDecor = Instantiate(decorPrefab, decorPlace.transform);
-            game.activeDecor.Add(newDecor);
+        if (inactiveCount > 0) { 
+        float xPos = Random.Range(minX, maxX);
 
-            inactiveCount--;
-            activeCount++;
+        GameObject newDecor = Instantiate(decorPrefab, decorPlace.transform);
+        newDecor.transform.position = new Vector3(xPos, newDecor.transform.position.y, newDecor.transform.position.z);
+
+        game.activeDecor.Add(newDecor);
+
+        inactiveCount--;
+        activeCount++;
         }
     }
 

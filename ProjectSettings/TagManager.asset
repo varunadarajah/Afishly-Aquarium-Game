@@ -50,6 +50,9 @@ TagManager:
   - name: Mollusks
     uniqueID: 1460887641
     locked: 0
+  - name: Decor
+    uniqueID: 2319468905
+    locked: 0
   - name: Fish
     uniqueID: 2594079479
     locked: 0
@@ -58,9 +61,6 @@ TagManager:
     locked: 0
   - name: Store
     uniqueID: 2156503417
-    locked: 0
-  - name: Decor
-    uniqueID: 2319468905
     locked: 0
   - name: Transition
     uniqueID: 765910177

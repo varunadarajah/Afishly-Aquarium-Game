@@ -7,19 +7,33 @@ public class Mussel : MonoBehaviour
     public Game game;
     public UnlockMusselScript curr;
 
+    public GameObject EditMode;
+
+    private IEnumerator pearlsCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
         if (curr.currentLevel == 1)
         {
-            StartCoroutine(IncreasePearls());
+            pearlsCoroutine = IncreasePearls();
+            StartCoroutine(pearlsCoroutine);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (EditMode.activeSelf == true && pearlsCoroutine != null)
+        {
+            StopCoroutine(pearlsCoroutine);
+            pearlsCoroutine = null;
+        }
+        else if (EditMode.activeSelf == false && pearlsCoroutine == null)
+        {
+            pearlsCoroutine = IncreasePearls();
+            StartCoroutine(pearlsCoroutine);
+        }
     }
 
     IEnumerator IncreasePearls()
