@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6205350286863168846}
+  m_Father: {fileID: 1551472596311525635}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5589083642085769145
@@ -92,7 +92,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6205350286863168846}
+  - component: {fileID: 1551472596311525635}
   - component: {fileID: 4088479779864414539}
   - component: {fileID: 6031620321261751593}
   - component: {fileID: 2949390304058598350}
@@ -103,23 +103,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6205350286863168846
-Transform:
+--- !u!224 &1551472596311525635
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505896878976125313}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -750, z: -1}
-  m_LocalScale: {x: 25, y: 25, z: 25}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 25, y: 24.457672, z: 25.224499}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7349883429403473593}
   - {fileID: 5224146405014432591}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: -750}
+  m_SizeDelta: {x: 7.23, y: 7.6}
+  m_Pivot: {x: 0.5, y: -7.99}
 --- !u!212 &4088479779864414539
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -185,12 +190,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectNameToCheck: EditMode
-  objectNameToCompare: RockCollider
   selected: 0
   GreenOutline: {fileID: 440700893176803097}
   RedOutline: {fileID: 7725975244167329385}
   canMove: 0
   isPickedUp: 0
+  midMaxHeight: 0
+  sideMaxHeight: 0
 --- !u!60 &2949390304058598350
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -552,7 +558,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6205350286863168846}
+  m_Father: {fileID: 1551472596311525635}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3421313215752185030

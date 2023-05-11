@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3708490255180846687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -700, z: -1}
+  m_LocalPosition: {x: 0, y: -750, z: -1}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1975498391
   m_SortingLayer: 4
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a25d01ab1f6234b48a743cc340c74451, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,12 +101,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectNameToCheck: EditMode
-  objectNameToCompare: RockCollider
   selected: 0
   GreenOutline: {fileID: 6376326178996237351}
   RedOutline: {fileID: 8731090852451006846}
   canMove: 0
   isPickedUp: 0
+  midMaxHeight: 0
+  sideMaxHeight: 0
 --- !u!60 &1470189374189601544
 PolygonCollider2D:
   m_ObjectHideFlags: 0

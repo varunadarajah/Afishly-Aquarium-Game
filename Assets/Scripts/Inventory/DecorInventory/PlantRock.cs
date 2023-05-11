@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlantRock : MonoBehaviour
 {
     public string objectNameToCheck = "EditMode"; // The name of the object to check for
-    public string objectNameToCompare = "RockCollider";
 
     public bool selected = false;
 
@@ -65,7 +64,7 @@ public class PlantRock : MonoBehaviour
                 }
             }
         }
-
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y - 0.001f);
     }
     private void OnEnable()
     {
