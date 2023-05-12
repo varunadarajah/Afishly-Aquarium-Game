@@ -22,6 +22,14 @@ public class PlantRock : MonoBehaviour
     public double midMaxHeight;
     public double sideMaxHeight;
 
+        private Transform parentTransform; // Reference to the parent transform
+
+private void Start() {
+            parentTransform = transform.parent; // Get the parent transform
+
+}
+
+
     void Update ()
     {
         if (canMove == true && selected == true)
@@ -64,8 +72,8 @@ public class PlantRock : MonoBehaviour
                 }
             }
         }
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y - 0.001f);
-    }
+        transform.parent.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.y - 0.001f);
+}
     private void OnEnable()
     {
         renderer = GetComponent<Renderer>();
@@ -97,11 +105,11 @@ public class PlantRock : MonoBehaviour
         // sets the current object as the previously clicked object
         prevClickedObject = gameObject;
 
-        if (canMove == true)
+          if (canMove == true)
         {
             isPickedUp = true;
-            mousePositionOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            
+            mousePositionOffset = parentTransform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
             // disables colliders of all other prefabs
             PlantRock[] plantRocks = FindObjectsOfType<PlantRock>();
             foreach (PlantRock plantRock in plantRocks)
@@ -129,8 +137,8 @@ public class PlantRock : MonoBehaviour
         if (isPickedUp)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3(mousePosition.x + mousePositionOffset.x, mousePosition.y + mousePositionOffset.y, transform.position.z);
-            mousePositionOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition); // Update the mousePositionOffset
+            parentTransform.position = new Vector3(mousePosition.x + mousePositionOffset.x, mousePosition.y + mousePositionOffset.y, parentTransform.position.z);
+            mousePositionOffset = parentTransform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
 

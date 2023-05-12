@@ -11,6 +11,11 @@ public class EditMode : MonoBehaviour
 
     private void OnMouseDown()
     {
+      Collider2D[] childColliders = parentObject.GetComponentsInChildren<Collider2D>(true);
+        foreach (Collider2D childCollider in childColliders)
+        {
+          childCollider.enabled = true;
+        }
         EditModeButtons.SetActive(true);
         HomeButton.SetActive(false);
     }

@@ -33,11 +33,11 @@ public class Fish : MonoBehaviour
 
     public void Start()
     {
-        GameObject Random = GameObject.Find("Random");
+        GameObject Random = GameObject.Find("RandomButton");
         random = Random.GetComponent<RandomScript>();
-        GameObject LeftToRight = GameObject.Find("LeftToRight");
+        GameObject LeftToRight = GameObject.Find("LeftToRightButton");
         LTR = LeftToRight.GetComponent<LeftToRightScript>();
-        GameObject RightToLeft = GameObject.Find("RightToLeft");
+        GameObject RightToLeft = GameObject.Find("RightToLeftButton");
         RTL = RightToLeft.GetComponent<RightToLeftScript>();
         setDate();
         setFishColor();
@@ -49,7 +49,7 @@ public class Fish : MonoBehaviour
     public void Update()
     {
         float randomYFront = Random.Range(-.9f, .9f);
-        float randomYBack = Random.Range(-.6f, 1f);
+        float randomYBack = Random.Range(-.6f, .9f);
         colorSprite.color = fishColor;
 
         Vector3 pos = transform.position;
@@ -165,7 +165,7 @@ public class Fish : MonoBehaviour
 
     if (gameObject.GetComponent<SpriteRenderer>().sortingLayerName == "Background")
     {
-        if (pos.y > .9 || pos.y < -0.6f)
+        if (pos.y > 1 || pos.y < -0.55f)
         { 
             direction1 *= -1f;
         }
@@ -173,7 +173,7 @@ public class Fish : MonoBehaviour
 
     if (gameObject.GetComponent<SpriteRenderer>().sortingLayerName == "Fish")
     {
-        if (pos.y > .9 || pos.y < -.9)
+        if (pos.y > 1 || pos.y < -1)
         { 
             direction1 *= -1f;
         }

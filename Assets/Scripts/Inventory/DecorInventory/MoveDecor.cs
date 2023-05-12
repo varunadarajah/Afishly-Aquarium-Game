@@ -12,7 +12,7 @@ public class MoveDecor : MonoBehaviour
     public GameObject parentObject;
 
     private void OnMouseDown()  
-{
+    {  
     // get child objects of the parent object
     Transform[] childObjects = parentObject.GetComponentsInChildren<Transform>();
 
