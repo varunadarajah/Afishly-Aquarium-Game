@@ -36,12 +36,15 @@ public class StoreItem : MonoBehaviour
         {
             if (plantRock.selected)
             {
-                string name = plantRock.transform.parent.gameObject.name;
+                // Get the parent object of the selected child
+                GameObject parent = plantRock.transform.parent.gameObject;
+                
+                string name = parent.name;
                 DecorManager decorManager;
                 if (decorManagers.TryGetValue(name, out decorManager))
                 {
-                    // Destroy the object
-                    Destroy(plantRock.gameObject);
+                    // Destroy the parent object
+                    Destroy(parent);
                     // Call the storeDecor function in the DecorManager script
                     decorManager.storeDecor();
                 }

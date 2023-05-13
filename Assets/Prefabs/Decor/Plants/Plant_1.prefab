@@ -538,7 +538,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4134348879850327876}
-  - component: {fileID: 8551777386576205208}
   m_Layer: 0
   m_Name: Plant_1
   m_TagString: Untagged
@@ -567,18 +566,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3.5596619, y: -834.37585}
   m_SizeDelta: {x: 180.75, y: 190}
   m_Pivot: {x: 0.48030612, y: 0.05591619}
---- !u!114 &8551777386576205208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1505896878976125313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81a3257975c9f6c45af6e7a6b9d93b78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7725975244167329385
 GameObject:
   m_ObjectHideFlags: 0
