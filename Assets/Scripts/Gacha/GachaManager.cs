@@ -16,6 +16,8 @@ public class GachaManager : MonoBehaviour
     public GameObject GachaBoxes;
     public List<GachaBox> boxes;
 
+    public List<FishHistoryRecord> fishHistory;
+
     public GachaBox selectedBox;
     public TMP_Text selectedText;
     public TMP_Text costText;
@@ -104,6 +106,16 @@ public class GachaManager : MonoBehaviour
             tempDisplayFish.SetActive(true);
             tempDisplayFish.GetComponent<Fish>().setFishColor();
             tempDisplayFish.GetComponent<Fish>().colorSprite.color = tempDisplayFish.GetComponent<Fish>().fishColor;
+
+            // add record in fish history
+            FishHistoryRecord newRecord = f.gameObject.AddComponent<FishHistoryRecord>();
+            newRecord.fishName = f.fishBreed;
+            newRecord.fishDate = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yy");
+            newRecord.fishSprite = f.gameObject.GetComponent<SpriteRenderer>().sprite;
+            newRecord.fishSilhouette = f.gameObject.GetComponentsInChildren<SpriteRenderer>()[1].sprite;
+            newRecord.fishColor = tempDisplayFish.GetComponent<Fish>().colorSprite.color;
+            newRecord.gachaSprite = selectedBox.GetComponent<SpriteRenderer>().sprite;
+            fishHistory.Add(newRecord);
 
             tempDisplayFish.GetComponent<SpriteRenderer>().sortingLayerName = "Transition";
             tempDisplayFish.GetComponent<Fish>().colorSprite.sortingLayerName = "Transition";

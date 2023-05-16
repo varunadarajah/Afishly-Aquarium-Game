@@ -22,12 +22,13 @@ public class PlantRock : MonoBehaviour
     public double midMaxHeight;
     public double sideMaxHeight;
 
-        private Transform parentTransform; // Reference to the parent transform
+    private Transform parentTransform; // reference to the parent transform
 
-private void Start() {
-            parentTransform = transform.parent; // Get the parent transform
 
-}
+    private void Start() {
+    parentTransform = transform.parent; // Get the parent transform
+
+    }
 
 
     void Update ()
