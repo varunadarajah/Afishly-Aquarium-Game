@@ -8,6 +8,13 @@ public class ColliderControllerScript : MonoBehaviour
     public GameObject editMode; 
     public GameObject editModeScreen;
 
+    private void Start() {
+      Animator[] childAnimators = parentObject.GetComponentsInChildren<Animator>(true);
+            foreach (Animator childAnimator in childAnimators)
+            {
+              childAnimator.enabled = false;
+            }
+    }
     private void Update() {
       if (editMode.activeSelf && editModeScreen.activeSelf) {
         Collider2D[] childColliders = parentObject.GetComponentsInChildren<Collider2D>(true);

@@ -13,11 +13,11 @@ public class DecreaseSize : MonoBehaviour
         {
             if (plantRock.selected == true)
             {
-                Vector3 currentScale = plantRock.transform.localScale;
-                currentScale -= new Vector3(1f, 1f, 1f);
-                if (currentScale.x >= 15 && currentScale.y >= 15 && currentScale.z >= 15)
+                Vector3 currentScale = plantRock.transform.parent.localScale;
+                currentScale -= new Vector3(.1f, .1f, .1f);
+                if (currentScale.x >= .5 && currentScale.y >= .5 && currentScale.z >= .5)
                 {
-                    plantRock.transform.localScale = currentScale;
+                    plantRock.transform.parent.localScale = currentScale;
                 }
             }
         }
