@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6953594600292481132}
+  - component: {fileID: 4762168113767868372}
   m_Layer: 0
   m_Name: Rock_1
   m_TagString: Untagged
@@ -121,6 +122,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -756.0144}
   m_SizeDelta: {x: 124, y: 89}
   m_Pivot: {x: 0.5, y: 0.09534321}
+--- !u!58 &4762168113767868372
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2572339817274613321}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.54}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1 &2641755504961788694
 GameObject:
   m_ObjectHideFlags: 0
