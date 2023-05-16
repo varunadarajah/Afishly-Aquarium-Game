@@ -20,15 +20,13 @@ public class ConfirmButton : MonoBehaviour
     private void Update()
     {
         greenOutlineActive = false; // Reset to false at the start of each frame
-        Transform[] childObjects = parentObject.GetComponentsInChildren<Transform>();
-        foreach (Transform childObject in childObjects)
+        PlantRock[] plantRocks = parentObject.GetComponentsInChildren<PlantRock>(true);
+        foreach (PlantRock plantRock in plantRocks)
         {
-            PlantRock plantRock = childObject.GetComponent<PlantRock>();
-            if (plantRock != null) 
+            if (plantRock.GreenOutline.activeSelf)
             {
-                if (plantRock.GreenOutline.activeSelf) {
-                    greenOutlineActive = true;
-                }
+                greenOutlineActive = true;
+                break; // No need to continue checking if red outline is active on any child
             }
         }
 
@@ -44,42 +42,35 @@ public class ConfirmButton : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Transform[] childObjects = parentObject.GetComponentsInChildren<Transform>();
-        foreach (Transform childObject in childObjects)
-        {
-            PlantRock plantRock = childObject.GetComponent<PlantRock>();
-            if (plantRock != null) 
+        PlantRock[] plantRocks = parentObject.GetComponentsInChildren<PlantRock>(true);
+            foreach (PlantRock plantRock in plantRocks)
             {
-                plantRock.canMove = false;
                 plantRock.selected = false;
+                plantRock.canMove = false;
                 plantRock.GreenOutline.SetActive(false);
                 plantRock.RedOutline.SetActive(false);
             }
-        }
 
-        for (int i = 0; i < parentObject.transform.childCount; i++)
-        {
-            Renderer childRenderer = parentObject.transform.GetChild(i).GetComponent<Renderer>();
-            if (childRenderer != null)
+       Renderer[] childRenderers = parentObject.GetComponentsInChildren<Renderer>(true);
+            foreach (Renderer childRenderer in childRenderers)
             {
                 Color childColor = childRenderer.material.color;
                 childColor.a = 1f;
                 childRenderer.material.color = childColor;
             }
-        }
-        
-        PlantRock[] plantRocks = FindObjectsOfType<PlantRock>();
-        foreach (PlantRock plantRock in plantRocks)
-        {
-            if (plantRock.gameObject != gameObject)
+
+         PlantRock[] allPlantRocks = FindObjectsOfType<PlantRock>();
+            foreach (PlantRock plantRock in allPlantRocks)
             {
-                Collider2D[] colliders = plantRock.GetComponents<Collider2D>();
-                foreach (Collider2D collider in colliders)
+                if (plantRock.gameObject != gameObject)
                 {
-                    collider.enabled = true;
+                    Collider2D[] colliders = plantRock.GetComponents<Collider2D>();
+                    foreach (Collider2D collider in colliders)
+                    {
+                        collider.enabled = true;
+                    }
                 }
             }
-        }
         greenOutlineActive = false;
         InvalidText.SetActive(false);
         EditModeButtons.SetActive(true);

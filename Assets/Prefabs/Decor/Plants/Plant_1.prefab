@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 205541918694813550}
   - component: {fileID: 3194224722474119483}
-  - component: {fileID: 5142414220975748441}
-  - component: {fileID: 4325511859153951678}
+  - component: {fileID: 4624680540810895113}
+  - component: {fileID: 3165147468174584379}
   m_Layer: 0
   m_Name: Plant_1_Sprite
   m_TagString: Untagged
@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4255106615046641}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1975498391
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 5ef1b645c6b96314b8f20edd2b7e2ef1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -93,35 +93,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5142414220975748441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4255106615046641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b7b961888b54b54cb5ab46d03c854a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectNameToCheck: EditMode
-  objectNameToCompare: RockCollider
-  selected: 0
-  GreenOutline: {fileID: 440700893176803097}
-  RedOutline: {fileID: 7725975244167329385}
-  canMove: 0
-  isPickedUp: 0
-  midMaxHeight: 0
-  sideMaxHeight: 0
---- !u!60 &4325511859153951678
+--- !u!60 &4624680540810895113
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4255106615046641}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -446,6 +425,26 @@ PolygonCollider2D:
       - {x: 0.015, y: -1.66}
       - {x: 0.005, y: -1.73}
       - {x: 0.015, y: -1.73}
+--- !u!114 &3165147468174584379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4255106615046641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b7b961888b54b54cb5ab46d03c854a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectNameToCheck: EditMode
+  selected: 0
+  GreenOutline: {fileID: 440700893176803097}
+  RedOutline: {fileID: 7725975244167329385}
+  canMove: 0
+  isPickedUp: 0
+  midMaxHeight: 0
+  sideMaxHeight: 0
 --- !u!1 &440700893176803097
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +553,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505896878976125313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.99693114}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

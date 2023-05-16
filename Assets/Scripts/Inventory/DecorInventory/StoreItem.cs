@@ -29,22 +29,23 @@ public class StoreItem : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // get child objects of the parent object
-        Transform[] childObjects = parentObject.GetComponentsInChildren<Transform>();
+        // Get all child objects of the parent object, including nested children
+        PlantRock[] childPlantRocks = parentObject.GetComponentsInChildren<PlantRock>(true);
 
-        foreach (Transform childObject in childObjects)
+        foreach (PlantRock plantRock in childPlantRocks)
         {
-            // check if the child object has a PlantRock component
-            PlantRock plantRock = childObject.GetComponent<PlantRock>();
-            if (plantRock != null && plantRock.selected)
+            if (plantRock.selected)
             {
-                string name = childObject.gameObject.name;
+                // Get the parent object of the selected child
+                GameObject parent = plantRock.transform.parent.gameObject;
+                
+                string name = parent.name;
                 DecorManager decorManager;
                 if (decorManagers.TryGetValue(name, out decorManager))
                 {
-                    // destroy the object
-                    Destroy(childObject.gameObject);
-                    // call the storeDecor function in the DecorManager script
+                    // Destroy the parent object
+                    Destroy(parent);
+                    // Call the storeDecor function in the DecorManager script
                     decorManager.storeDecor();
                 }
             }

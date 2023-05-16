@@ -15,78 +15,77 @@ public class ExitEditMode : MonoBehaviour
     public GameObject invalidText;
     private bool redOutlineActive = false;
 
-    void Update() 
+    private void Start()
     {
-        redOutlineActive = false; // Reset to false at the start of each frame
-
-        Transform[] childObjects = parentObject.GetComponentsInChildren<Transform>();
-        foreach (Transform childObject in childObjects)
+        // assign parentObject if not set
+        if (parentObject == null)
         {
-            PlantRock plantRock = childObject.GetComponent<PlantRock>();
-            if (plantRock != null) 
-            {
-                if (plantRock.RedOutline.activeSelf) {
-                    redOutlineActive = true;
-                }
-            }
-        }  
+            parentObject = transform.parent.gameObject;
+        }
     }
 
-      private IEnumerator ToggleInvalidText()
+    void Update()
+    {
+        redOutlineActive = false; // reset to false at the start of each frame
+
+        PlantRock[] plantRocks = parentObject.GetComponentsInChildren<PlantRock>(true);
+        foreach (PlantRock plantRock in plantRocks)
+        {
+            if (plantRock.RedOutline.activeSelf)
+            {
+                redOutlineActive = true;
+                break; // no need to continue checking if red outline is active on any child
+            }
+        }
+    }
+
+    private IEnumerator ToggleInvalidText()
     {
         invalidText.SetActive(true);
         yield return new WaitForSeconds(2f);
         invalidText.SetActive(false);
     }
+
     private void OnMouseDown()
     {
-    if (redOutlineActive == true) {
-        StartCoroutine(ToggleInvalidText());
-    } else {
-        invalidText.SetActive(false);
-        editModeButtons.SetActive(false);
-        homeButton.SetActive(true);
-
-        //deselects all child objects
-        foreach(Transform child in parentObject.transform)
+        if (redOutlineActive)
         {
-            PlantRock plantRock = child.GetComponent<PlantRock>();
-            if(plantRock != null)
+            StartCoroutine(ToggleInvalidText());
+        }
+        else
+        {
+            invalidText.SetActive(false);
+            editModeButtons.SetActive(false);
+            homeButton.SetActive(true);
+
+            // deselect all child objects
+            PlantRock[] plantRocks = parentObject.GetComponentsInChildren<PlantRock>(true);
+            foreach (PlantRock plantRock in plantRocks)
             {
                 plantRock.selected = false;
-                plantRock.canMove = false; 
+                plantRock.canMove = false;
                 plantRock.GreenOutline.SetActive(false);
                 plantRock.RedOutline.SetActive(false);
             }
-        }
 
-        // set all child objects of parentObject to full opacity
-        for (int i = 0; i < parentObject.transform.childCount; i++)
-        {
-            Renderer childRenderer = parentObject.transform.GetChild(i).GetComponent<Renderer>();
-            if (childRenderer != null)
+            // set all child objects of parentObject to full opacity
+            Renderer[] childRenderers = parentObject.GetComponentsInChildren<Renderer>(true);
+            foreach (Renderer childRenderer in childRenderers)
             {
                 Color childColor = childRenderer.material.color;
                 childColor.a = 1f;
                 childRenderer.material.color = childColor;
             }
-        }
 
-        PlantRock[] plantRocks = FindObjectsOfType<PlantRock>();
-        foreach (PlantRock plantRock in plantRocks)
-        {
-            if (plantRock.gameObject != gameObject)
+            // disable colliders of all child objects
+            Collider2D[] childColliders = parentObject.GetComponentsInChildren<Collider2D>(true);
+            foreach (Collider2D childCollider in childColliders)
             {
-                Collider2D[] colliders = plantRock.GetComponents<Collider2D>();
-                foreach (Collider2D collider in colliders)
-                {
-                    collider.enabled = true;
-                }
+                childCollider.enabled = false;
             }
-        }
 
-        EditModeScreen.SetActive(true);
-        MoveDecorScreen.SetActive(false);
-    }
+            EditModeScreen.SetActive(true);
+            MoveDecorScreen.SetActive(false);
+        }
     }
 }
