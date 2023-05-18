@@ -197,6 +197,9 @@ MonoBehaviour:
   isMovingRight: 1
   minY: 0
   verticalSpeed: 0.05
+  random: {fileID: 0}
+  LTR: {fileID: 0}
+  RTL: {fileID: 0}
 --- !u!1 &8085618989195328121
 GameObject:
   m_ObjectHideFlags: 0

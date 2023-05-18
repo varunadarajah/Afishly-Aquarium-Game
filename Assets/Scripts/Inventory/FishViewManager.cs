@@ -7,7 +7,7 @@ public class FishViewManager : MonoBehaviour
 {
     public Game game;
 
-    int ownedCount = 0;
+    public int ownedCount = 0;
     public int activeCount = 0;
 
     public TMP_Text breedText;
