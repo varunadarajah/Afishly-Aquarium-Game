@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8724421051848129880}
+  - component: {fileID: 6603630044856370035}
   m_Layer: 0
   m_Name: Plant_2
   m_TagString: Untagged
@@ -37,6 +38,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -835.56635}
   m_SizeDelta: {x: 173.25, y: 213}
   m_Pivot: {x: 0.5, y: 0.051333603}
+--- !u!58 &6603630044856370035
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494982900321632790}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1 &4743352318668831462
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +79,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4743352318668831462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.17, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -110,7 +127,7 @@ SpriteRenderer:
   m_SortingLayerID: -1975498391
   m_SortingLayer: 4
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: d5d6a1bb64f89be4c889b57147e36899, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d13d071d26edf1243915b801b77f9f73, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,7 +163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6874713387623044476}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.17, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -194,7 +211,7 @@ SpriteRenderer:
   m_SortingLayerID: -1975498391
   m_SortingLayer: 4
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: d5d6a1bb64f89be4c889b57147e36899, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d13d071d26edf1243915b801b77f9f73, type: 3}
   m_Color: {r: 0.1333332, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -217,6 +234,7 @@ GameObject:
   - component: {fileID: 8465474692020354613}
   - component: {fileID: 4366453423366801825}
   - component: {fileID: 3340546909941599763}
+  - component: {fileID: 3744877624284926340}
   m_Layer: 0
   m_Name: Plant_2_Sprite
   m_TagString: Untagged
@@ -1443,3 +1461,24 @@ PolygonCollider2D:
       - {x: -1.555, y: 0.53999996}
       - {x: -1.5649999, y: 0.53999996}
       - {x: -1.615, y: 0.48999998}
+--- !u!95 &3744877624284926340
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8465474692020354615}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b837fe1ea2810f543baddfb18751b839, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -22,55 +22,42 @@ public class PlantRock : MonoBehaviour
     public double midMaxHeight;
     public double sideMaxHeight;
 
-        private Transform parentTransform; // Reference to the parent transform
+    private Transform parentTransform; // reference to the parent transform
+    private Collider2D parentCollider;
 
-private void Start() {
-            parentTransform = transform.parent; // Get the parent transform
+    private void Start() {
+    parentTransform = transform.parent; // Get the parent transform
+    parentCollider = transform.parent.GetComponent<Collider2D>();
 
-}
+    }
 
 
     void Update ()
     {
         if (canMove == true && selected == true)
         {
-            if (transform.position.x < -.32 ||  transform.position.x > .32) 
+        // check for collisions with an object named "RockCollider"
+        bool isColliding = false;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(parentCollider.bounds.center, parentCollider.bounds.extents.x);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject.name == "RockCollider")
             {
-                if(gameObject.name.Contains("Plant"))
-                {
-                    sideMaxHeight = -.5;
-                } else if(gameObject.name.Contains("Rock"))
-                {
-                    sideMaxHeight = -.57;
-                }
-                if (transform.position.y < sideMaxHeight)
-                {
-                GreenOutline.SetActive(true);
-                RedOutline.SetActive(false);
-                } else {
-                GreenOutline.SetActive(false);
-                RedOutline.SetActive(true);
-                }
+                isColliding = true;
+                break;
             }
+        }
 
-            if (transform.position.x > -.32 && transform.position.x < .32) 
-            {
-                if(gameObject.name.Contains("Plant"))
-                {
-                    midMaxHeight = -.63;
-                } else if(gameObject.name.Contains("Rock"))
-                {
-                    midMaxHeight = -.7;
-                }
-                if (transform.position.y < midMaxHeight)
-                {
-                GreenOutline.SetActive(true);
-                RedOutline.SetActive(false);
-                } else {
-                GreenOutline.SetActive(false);
-                RedOutline.SetActive(true);
-                }
-            }
+        if (isColliding)
+        {
+            GreenOutline.SetActive(false);
+            RedOutline.SetActive(true);
+        }
+        else
+        {
+           GreenOutline.SetActive(true);
+            RedOutline.SetActive(false);
+        }
         }
         transform.parent.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.y - 0.001f);
 }

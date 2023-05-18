@@ -84,6 +84,12 @@ public class ExitEditMode : MonoBehaviour
                 childCollider.enabled = false;
             }
 
+            Animator[] childAnimators = parentObject.GetComponentsInChildren<Animator>(true);
+            foreach (Animator childAnimator in childAnimators)
+            {
+                childAnimator.enabled = true;
+            }
+
             EditModeScreen.SetActive(true);
             MoveDecorScreen.SetActive(false);
         }
