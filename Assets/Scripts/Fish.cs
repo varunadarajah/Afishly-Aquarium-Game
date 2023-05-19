@@ -7,13 +7,15 @@ public class Fish : MonoBehaviour
     public string fishBreed;
     public string fishName;
     public string dateObtained;
-    public Color fishColor;
+    public Color fishColor = Color.clear;
     public bool isActive = false;
 
     public SpriteRenderer colorSprite;
 
     public SpriteRenderer fishShadow;
     public float shadowStrengh = 0.83f; // 1f is full opacity, 0 is transparent
+
+    public float fishSize = 60f;
 
     public int rarity;
     public int sellPrice;
@@ -39,10 +41,16 @@ public class Fish : MonoBehaviour
         LTR = LeftToRight.GetComponent<LeftToRightScript>();
         GameObject RightToLeft = GameObject.Find("RightToLeftButton");
         RTL = RightToLeft.GetComponent<RightToLeftScript>();
+                
         setDate();
         setFishColor();
         setInitialSpeed();
         setFishPos();
+
+        if(!isActive)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -74,7 +82,7 @@ public class Fish : MonoBehaviour
             {
                 speed = .2f;
                 pos.y = randomYFront;
-                transform.localScale = new Vector3(60f, 60f, 1f);
+                transform.localScale = new Vector3(fishSize, fishSize, 1f);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Fish";
                 colorSprite.sortingLayerName = "Fish";
                 fishShadow.gameObject.SetActive(false); // disable shadow gameobject
@@ -98,7 +106,7 @@ public class Fish : MonoBehaviour
             {
                 speed = .2f;
                 pos.y = randomYFront;
-                transform.localScale = new Vector3(60f, 60f, 1f);
+                transform.localScale = new Vector3(fishSize, fishSize, 1f);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Fish";
                 colorSprite.sortingLayerName = "Fish";
                 fishShadow.gameObject.SetActive(false); // disable shadow gameobject
@@ -121,7 +129,7 @@ public class Fish : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 180, 0);
                 speed = .2f;
                 pos.y = randomYFront;
-                transform.localScale = new Vector3(60f, 60f, 1f);
+                transform.localScale = new Vector3(fishSize, fishSize, 1f);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Fish";
                 colorSprite.sortingLayerName = "Fish";
                 fishShadow.gameObject.SetActive(false); // disable shadow gameobject
@@ -134,7 +142,7 @@ public class Fish : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                 speed = .2f;
                 pos.y = randomYFront;
-                transform.localScale = new Vector3(60f, 60f, 1f);
+                transform.localScale = new Vector3(fishSize, fishSize, 1f);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Fish";
                 colorSprite.sortingLayerName = "Fish";
                 fishShadow.gameObject.SetActive(false); // disable shadow gameobject
@@ -206,26 +214,28 @@ public class Fish : MonoBehaviour
 
     public void setFishColor() 
     { 
-        HSBSliderScript hsbSliderScript = FindObjectOfType<HSBSliderScript>();
-        string hexColor = hsbSliderScript.hexText.text;
-        // check if hexColor is a valid hex string
-        Color newColor;
-        if (ColorUtility.TryParseHtmlString(hexColor, out newColor))
+        if(fishColor == Color.clear)
         {
-            fishColor = newColor;
-        }
-        else
-        {
-            fishColor = Color.white; // set to default color
+            HSBSliderScript hsbSliderScript = FindObjectOfType<HSBSliderScript>();
+            string hexColor = hsbSliderScript.hexText.text;
+            // check if hexColor is a valid hex string
+            Color newColor;
+            if (ColorUtility.TryParseHtmlString(hexColor, out newColor))
+            {
+                fishColor = newColor;
+            }
+            else
+            {
+                fishColor = Color.white; // set to default color
+            }
         }
 
-        colorSprite = GetComponentsInChildren<SpriteRenderer>()[1]; // gets silloute sprite
+        colorSprite.color = fishColor;
+
         fishShadow.color = new Color(0f, 0f, 0f, shadowStrengh); // sets shadow strength
 
         gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Fish";
-        colorSprite.sortingLayerName = "Fish";
-
-        gameObject.SetActive(false);
+        colorSprite.sortingLayerName = "Fish";        
     }
 
     public void setInitialSpeed()

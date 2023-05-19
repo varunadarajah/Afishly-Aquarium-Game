@@ -25,12 +25,6 @@ public class GachaBox : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public Fish OpenBox()
     {
         boxAnimation.SetTrigger("Active");

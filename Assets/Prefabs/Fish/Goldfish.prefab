@@ -272,11 +272,15 @@ MonoBehaviour:
   dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
-  colorSprite: {fileID: 0}
+  colorSprite: {fileID: 617909542610210279}
   fishShadow: {fileID: 6222531247414984822}
   shadowStrengh: 0.45
   rarity: 40
   sellPrice: 100
   speed: 0
   isMovingRight: 1
+  minY: 0
   verticalSpeed: 0.05
+  random: {fileID: 0}
+  LTR: {fileID: 0}
+  RTL: {fileID: 0}

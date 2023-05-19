@@ -102,10 +102,7 @@ public class GachaManager : MonoBehaviour
             transitionScreen.SetActive(true);
 
             // creates a temp fish for display
-            GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;
-            tempDisplayFish.SetActive(true);
-            tempDisplayFish.GetComponent<Fish>().setFishColor();
-            tempDisplayFish.GetComponent<Fish>().colorSprite.color = tempDisplayFish.GetComponent<Fish>().fishColor;
+            GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;                      
 
             // add record in fish history
             FishHistoryRecord newRecord = f.gameObject.AddComponent<FishHistoryRecord>();
@@ -117,6 +114,8 @@ public class GachaManager : MonoBehaviour
             newRecord.gachaSprite = selectedBox.GetComponent<SpriteRenderer>().sprite;
             fishHistory.Add(newRecord);
 
+            tempDisplayFish.GetComponent<Fish>().setFishColor();
+            tempDisplayFish.SetActive(false);
             tempDisplayFish.GetComponent<SpriteRenderer>().sortingLayerName = "Transition";
             tempDisplayFish.GetComponent<Fish>().colorSprite.sortingLayerName = "Transition";
             tempDisplayFish.GetComponent<Fish>().enabled = false; // disables movement script from fish

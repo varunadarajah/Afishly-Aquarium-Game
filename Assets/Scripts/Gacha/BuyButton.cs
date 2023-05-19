@@ -8,17 +8,6 @@ public class BuyButton : MonoBehaviour
 {
     public GachaManager gm;
 
-    [System.Serializable]
-    public class FishUnlockData
-    {
-        public string checkInventory;
-        public string unlockFishName;
-        public GameObject toggle;
-        public GameObject lockedToggle;
-        public TMP_Text text;
-        public GameObject objectToEnableCollider;
-    }
-
     public FishUnlockData[] fishUnlockDataArray;
 
     void OnMouseDown()
@@ -31,7 +20,7 @@ public class BuyButton : MonoBehaviour
         }
     }
 
-    void UnlockFish(FishUnlockData fishUnlockData)
+    public void UnlockFish(FishUnlockData fishUnlockData)
     {
         GameObject fishLocked = GameObject.Find(fishUnlockData.checkInventory);
 

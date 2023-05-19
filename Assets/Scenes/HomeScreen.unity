@@ -15228,6 +15228,17 @@ MonoBehaviour:
   activeFish: []
   activeFishMax: 10
   fishText: {fileID: 415332714}
+  allFishPrefabs:
+  - {fileID: 7266478742154036057, guid: d59c50e8ed6a59e48a4110f2cf16be78, type: 3}
+  - {fileID: 4351313684888160231, guid: ded50a9d2a867de418dc8ff740f511d1, type: 3}
+  - {fileID: 7839200941687872059, guid: 3e6c91d836f63d044a01a4d907cce527, type: 3}
+  - {fileID: 8507077224936150334, guid: 72ec5d197847f2e4ba0c8c886016647a, type: 3}
+  - {fileID: 8753742041258040649, guid: 248604eabffb5724087dcf7f58e1914f, type: 3}
+  - {fileID: 2964195923123645414, guid: 8e29e0610dfa29d46bd248f75c6967cd, type: 3}
+  - {fileID: 1900803985459047243, guid: ae4467690490b5e4b90681a467ee7554, type: 3}
+  - {fileID: 613152143043523492, guid: 4f1d5047669e7ea48aabea38001bf999, type: 3}
+  FishParentObject: {fileID: 1234081196}
+  fishUnlock: {fileID: 542153049}
   totalPearls: 0
   totalClicks: 0
 --- !u!4 &582521665

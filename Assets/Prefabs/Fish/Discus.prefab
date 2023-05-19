@@ -272,7 +272,7 @@ MonoBehaviour:
   dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
-  colorSprite: {fileID: 0}
+  colorSprite: {fileID: 459791299280213828}
   fishShadow: {fileID: 3144293554029738576}
   shadowStrengh: 0.45
   rarity: 15
