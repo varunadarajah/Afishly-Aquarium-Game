@@ -26787,7 +26787,7 @@ MonoBehaviour:
   targetYPosition: -2
   slideDuration: 0.25
   toggleFishview: {fileID: 775562840}
-  toggleFishBoxPage: {fileID: 0}
+  toggleFishBoxPage: {fileID: 137667269}
 --- !u!114 &940689543
 MonoBehaviour:
   m_ObjectHideFlags: 0
