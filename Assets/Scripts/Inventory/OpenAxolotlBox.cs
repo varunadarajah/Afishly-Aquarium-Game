@@ -5,14 +5,12 @@ using UnityEngine;
 public class OpenAxolotlBox : MonoBehaviour
 {
     public GameObject buttonToMove;
-    public float targetYPosition;
+    public float targetYPositionOpen;
+    public float targetYPositionClose;
     public float slideDuration = 1f;
     public GameObject toggleUpArrow;
     public GameObject toggleDownArrow;
     public GameObject expandWindow;
-    public GameObject toggleTurtleUpArrow;
-    public GameObject toggleTurtleDownArrow;
-    public GameObject closeTurtleBox;
 
     private bool isMoving = false;
 
@@ -20,7 +18,12 @@ public class OpenAxolotlBox : MonoBehaviour
     {
         if (!isMoving)
         {
+            if (toggleUpArrow.activeSelf) {
+                StartCoroutine(MenuClose(buttonToMove));
+            }
+            if (toggleDownArrow.activeSelf) {
             StartCoroutine(MenuOpen(buttonToMove));
+            }
         }
     }
 
@@ -28,9 +31,31 @@ public class OpenAxolotlBox : MonoBehaviour
     {
         isMoving = true;
         button.SetActive(true);
-
+        targetYPositionOpen = transform.position.y - .57f;
         Vector3 startPosition = button.transform.position;
-        Vector3 targetPosition = new Vector3(startPosition.x, targetYPosition, startPosition.z);
+        Vector3 targetPosition = new Vector3(startPosition.x, targetYPositionOpen, startPosition.z);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < slideDuration)
+        {
+            float t = elapsedTime / slideDuration;
+            button.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        button.transform.position = targetPosition;
+        isMoving = false;
+        toggleArrow();
+    }
+
+    private IEnumerator MenuClose(GameObject button)
+    {
+        isMoving = true;
+        button.SetActive(true);
+        targetYPositionClose = transform.position.y - 1.42f;
+        Vector3 startPosition = button.transform.position;
+        Vector3 targetPosition = new Vector3(startPosition.x, targetYPositionClose, startPosition.z);
         float elapsedTime = 0f;
 
         while (elapsedTime < slideDuration)
@@ -60,17 +85,5 @@ public class OpenAxolotlBox : MonoBehaviour
         {
             expandWindow.SetActive(!expandWindow.activeSelf);
         }
-        if (closeTurtleBox != null)
-        {
-            closeTurtleBox.SetActive(false);
-        }
-        if (toggleTurtleUpArrow != null)
-        {
-            toggleTurtleUpArrow.SetActive(true);
-        }
-        if (toggleTurtleDownArrow != null)
-        {
-            toggleTurtleDownArrow.SetActive(false);
     }
-}
 }

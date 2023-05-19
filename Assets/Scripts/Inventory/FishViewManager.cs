@@ -7,7 +7,7 @@ public class FishViewManager : MonoBehaviour
 {
     public Game game;
 
-    int ownedCount = 0;
+    public int ownedCount = 0;
     public int activeCount = 0;
 
     public TMP_Text breedText;
@@ -65,6 +65,16 @@ public class FishViewManager : MonoBehaviour
         game.fishInventory.Remove(f);
         Destroy(f.gameObject);
         SetFish(breedName);
+    }
+
+    public void StoreAllFish()
+    {
+        foreach(Fish f in game.activeFish)
+        {
+            f.isActive = false;
+            f.gameObject.SetActive(false);
+        }
+        game.activeFish.Clear();
     }
 
     void Reset()

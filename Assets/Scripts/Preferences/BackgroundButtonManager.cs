@@ -10,7 +10,7 @@ public class BackgroundButtonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SelectBackground(0); // selected original background
+        SelectBackground(9); // selected random background
     }
 
     // Update is called once per frame
@@ -21,7 +21,16 @@ public class BackgroundButtonManager : MonoBehaviour
 
     public void SelectBackground(int bg)
     {
-        bm.setBackground(bg);
+        if(bg == 8)
+        {
+            bm.AutoBackground();
+        } else if(bg == 9)
+        {
+            bm.RandomBackground();
+        } else
+        {
+            bm.setBackground(bg);
+        }
         
         for(int i = 0; i < selectedSprites.Count; i++)
         {

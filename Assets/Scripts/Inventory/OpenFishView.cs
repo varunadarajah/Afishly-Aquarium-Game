@@ -15,6 +15,5 @@ public class OpenFishView : MonoBehaviour
         fm.SetFish(FishBreedName);
         FishViewPage.SetActive(true);
         BoxesPage.SetActive(false);
-
     }
 }
