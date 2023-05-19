@@ -22,16 +22,23 @@ public class LevelUpClamScript : MonoBehaviour
 
     public Button button;
     public int pearlCost;
-    private int clickCount;
+    public int clickCount;
+
+    public UnlockMusselScript unlockMussel;
+    public UnlockOysterScript unlockOyster;
 
     // Start is called before the first frame update
     void Start()
     {
+        unlockMussel = GameObject.FindObjectOfType<UnlockMusselScript>();
+        unlockOyster = GameObject.FindObjectOfType<UnlockOysterScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
+    int musselCount = unlockMussel.clickCount;
+    int oysterCount = unlockOyster.clickCount;
     if (currentLevel == 1)
         pearlCost = 100;
     else if (currentLevel == 2)
@@ -73,6 +80,8 @@ public class LevelUpClamScript : MonoBehaviour
         if (clickCount == 1)
         {
             clamLevelText.text = "Confirm";
+            unlockMussel.clickCount = 0;
+            unlockOyster.clickCount = 0;
         }
         else if (clickCount == 2)
         {

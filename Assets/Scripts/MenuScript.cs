@@ -9,8 +9,16 @@ public class MenuScript : MonoBehaviour
 
     private bool isMoving = false;
 
+    public GachaManager gachaManager;
+
+    public void Start()
+    {
+        gachaManager = GameObject.FindObjectOfType<GachaManager>();
+    }
+
     private void OnMouseDown()
     {
+        gachaManager.clickCount = 0;
         if (!isMoving)
         {
             StartCoroutine(SlideObjectToTargetPosition());

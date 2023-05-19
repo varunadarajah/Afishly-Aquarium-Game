@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GachaManager : MonoBehaviour
@@ -24,6 +25,11 @@ public class GachaManager : MonoBehaviour
 
     public GameObject FishParentObject;
     string spriteAsset = "<sprite name=\"Pearl\">";
+
+    public GameObject GrayLayer;
+
+    public Button button;
+    public int clickCount;
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +65,16 @@ public class GachaManager : MonoBehaviour
     void Update()
     {
         selectedText.text = selectedBox.gachaName;
-        costText.text = "Open\n " + selectedBox.cost + " " + spriteAsset+ "";
+        if (clickCount == 0) {
+            costText.text = "Open\n " + selectedBox.cost + " " + spriteAsset+ "";
+        }
+        button.interactable = game.pearls >= selectedBox.cost;
+        GrayLayer.SetActive(!button.interactable);
+    }
+
+    private void OnDisable()
+    {
+        clickCount = 0;
     }
 
     public void ScrollLeft()
@@ -74,6 +89,7 @@ public class GachaManager : MonoBehaviour
             selectedBox = boxes[(boxes.IndexOf(selectedBox) - 1)];
         }
         selectedBox.gameObject.SetActive(true);
+        clickCount = 0;
     }
 
     public void ScrollRight()
@@ -88,12 +104,24 @@ public class GachaManager : MonoBehaviour
             selectedBox = boxes[(boxes.IndexOf(selectedBox) + 1)];
         }
         selectedBox.gameObject.SetActive(true);
+        clickCount = 0;
     }
 
     public void buyBox()
     {
         if (game.pearls >= selectedBox.cost)
         {
+            if (button.interactable == true)
+            {
+            clickCount++;
+            }
+            if (clickCount == 1)
+            {
+            costText.text = "Confirm";
+            }
+            else if (clickCount == 2)
+            {
+            clickCount = 0; 
             game.pearls -= selectedBox.cost;
             Fish newFish = selectedBox.OpenBox();
             Fish f = Instantiate(newFish, FishParentObject.transform);
@@ -127,6 +155,7 @@ public class GachaManager : MonoBehaviour
             transitionScreen.GetComponent<TransitionScript>().displayFish = tempDisplayFish;
 
             StartCoroutine(FadeInTransitionScreen());
+                }
         }
     }
 
