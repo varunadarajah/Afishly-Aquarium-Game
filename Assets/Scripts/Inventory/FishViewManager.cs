@@ -67,6 +67,16 @@ public class FishViewManager : MonoBehaviour
         SetFish(breedName);
     }
 
+    public void StoreAllFish()
+    {
+        foreach(Fish f in game.activeFish)
+        {
+            f.isActive = false;
+            f.gameObject.SetActive(false);
+        }
+        game.activeFish.Clear();
+    }
+
     void Reset()
     {
         ownedCount = 0;

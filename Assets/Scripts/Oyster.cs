@@ -27,13 +27,16 @@ public class Oyster : MonoBehaviour
         if (!isCooldown) // Check if not in cooldown state
         {
             if (curr.currentLevel == 1) {
-                pearlPerTap = 50;
-            }
-            if (curr.currentLevel == 2) {
                 pearlPerTap = 100;
             }
-             if (curr.currentLevel == 3) {
-                pearlPerTap = 300;
+            if (curr.currentLevel == 2) {
+                pearlPerTap = 250;
+            }
+            if (curr.currentLevel == 3) {
+                pearlPerTap = 500;
+            }
+            if (curr.currentLevel == 4) {
+                pearlPerTap = 1000;
             }
             game.pearls += pearlPerTap;
             ToggleObject();
@@ -44,7 +47,7 @@ public class Oyster : MonoBehaviour
     IEnumerator StartCooldown()
     {
         isCooldown = true; // Set cooldown state to true
-        yield return new WaitForSeconds(10f); // Wait for 10 seconds
+        yield return new WaitForSeconds(60f);
         isCooldown = false; // Set cooldown state to false after 10 seconds
         ToggleObject();
     }

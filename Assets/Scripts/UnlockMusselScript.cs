@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UnlockMusselScript : MonoBehaviour
@@ -15,6 +16,13 @@ public class UnlockMusselScript : MonoBehaviour
     bool accessLevel1 = true;
     bool accessLevel2 = true;
     bool accessLevel3 = true;
+    bool accessMaxLevel = true;
+
+    public GameObject GrayLayer;
+
+    public Button button;
+    public int pearlCost;
+    private int clickCount;
 
     // Start is called before the first frame update
     void Start()
@@ -22,26 +30,78 @@ public class UnlockMusselScript : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    void OnMouseDown()
-    {
-    if (currentLevel == 0)
-    {
-        unlockMussel();
-    }
+    if (currentLevel == 0) 
+        pearlCost = 500;
     else if (currentLevel == 1)
-    {
-        purchaseLevel2();
-    }
+        pearlCost = 2000;
     else if (currentLevel == 2)
+        pearlCost = 5000;
+    else if (currentLevel == 3)
+        pearlCost = 10000;
+
+    button.interactable = game.pearls >= pearlCost;
+    GrayLayer.SetActive(!button.interactable);
+
+    if (clickCount == 0)
     {
-        purchaseLevel3();
+       if (accessMaxLevel)
+        {
+            if (currentLevel == 0) {
+                musselLevelText.text = $"Unlock\n{pearlCost} {spriteAsset}";
+            } else {
+            musselLevelText.text = $"Level Up\n{pearlCost} {spriteAsset}";
+            }
+        }
+        else
+        {
+            button.interactable = false;
+            GrayLayer.SetActive(true);
+        }
     }
+    }
+
+  private void OnDisable()
+    {
+        clickCount = 0;
+    }
+
+
+     public void OnMouseDown()
+    {
+        if (button.interactable == true)
+        {
+            clickCount++;
+        }
+
+        if (clickCount == 1)
+        {
+            musselLevelText.text = "Confirm";
+        }
+        else if (clickCount == 2)
+        {
+            if (currentLevel == 0) {
+                unlockMussel();
+                clickCount = 0;
+            }
+            else if (currentLevel == 1)
+            {
+                purchaseLevel2();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 2)
+            {
+                purchaseLevel3();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 3)
+            {
+                purchaseMaxLevel();
+                clickCount = 0; 
+            }
+        }
     }
 
     void IncreaseLevel()
@@ -51,15 +111,14 @@ public class UnlockMusselScript : MonoBehaviour
 
     bool unlockMussel()
     {
-        if(game.pearls >= 50 && currentLevel == 0 && accessLevel1)
+        if(game.pearls >= 500 && currentLevel == 0 && accessLevel1)
         {
             ToggleObject();
             IncreaseLevel();
             accessLevel1 = false;
-            musselLevelText.text = "Level Up\n100 " + spriteAsset;
             musselLevelDescription.text = "Lv 1 Mussel\n5 " + spriteAsset + "per second";
-            musselUpgradeValue.text = "5 > 6 " + spriteAsset + "per second";
-            game.pearls -= 50;
+            musselUpgradeValue.text = "5 > 10 " + spriteAsset + "per second";
+            game.pearls -= 500;
             return true; 
         }
         return false; 
@@ -67,14 +126,13 @@ public class UnlockMusselScript : MonoBehaviour
 
     bool purchaseLevel2()
     {
-        if(game.pearls >= 100 && currentLevel == 1 && accessLevel2)
+        if(game.pearls >= 2000 && currentLevel == 1 && accessLevel2)
         {
             IncreaseLevel();
             accessLevel2 = false;
-            musselLevelText.text = "Level Up\n200 " + spriteAsset;
-            musselLevelDescription.text = "Lv 2 Mussel\n6 " + spriteAsset + "per second";
-            musselUpgradeValue.text = "6 > 8 " + spriteAsset + "per second";
-            game.pearls -= 100;
+            musselLevelDescription.text = "Lv 2 Mussel\n10 " + spriteAsset + "per second";
+            musselUpgradeValue.text = "10 > 20 " + spriteAsset + "per second";
+            game.pearls -= 2000;
             return true; 
         }
         return false; 
@@ -82,14 +140,28 @@ public class UnlockMusselScript : MonoBehaviour
 
     bool purchaseLevel3()
     {
-        if(game.pearls >= 200 && currentLevel == 2 && accessLevel3)
+        if(game.pearls >= 5000 && currentLevel == 2 && accessLevel3)
         {
             IncreaseLevel();
             accessLevel3 = false;
-            musselLevelText.text = "Level Up\n300 " + spriteAsset;
-            musselLevelDescription.text = "Lv 3 Mussel\n8 " + spriteAsset + "per second";
-            musselUpgradeValue.text = "8 > 10 " + spriteAsset + "per second";
-            game.pearls -= 200;
+            musselLevelDescription.text = "Lv 3 Mussel\n20 " + spriteAsset + "per second";
+            musselUpgradeValue.text = "20 > 30 " + spriteAsset + "per second";
+            game.pearls -= 5000;
+            return true;
+        }
+        return false;
+    }
+
+     bool purchaseMaxLevel()
+    {
+        if(game.pearls >= 10000 && currentLevel == 3 && accessMaxLevel)
+        {
+            IncreaseLevel();
+            accessMaxLevel = false;
+            musselLevelText.text = "Max";
+            musselLevelDescription.text = "Lv Max Mussel\n30 " + spriteAsset + "per second";
+            musselUpgradeValue.text = "";
+            game.pearls -= 10000;
             return true;
         }
         return false;

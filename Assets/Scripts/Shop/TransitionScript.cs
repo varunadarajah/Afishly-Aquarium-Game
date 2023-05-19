@@ -12,6 +12,7 @@ public class TransitionScript : MonoBehaviour
 
     public GameObject displayFish;
     public GameObject continueText;
+    public GameObject objectToEnableCollider;
 
     public void OnMouseDown()
     {
@@ -26,7 +27,7 @@ public class TransitionScript : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         inputEnabled = true;
     }
-    
+
     private IEnumerator HideTransitionScreen()
     {
         Destroy(displayFish);
@@ -37,8 +38,7 @@ public class TransitionScript : MonoBehaviour
         screenColor = screenMaterial.color;
         screenColor.a = 0f;
         screenMaterial.color = screenColor;
-        
+
         yield return new WaitForSeconds(1.0f);
     }
 }
-
