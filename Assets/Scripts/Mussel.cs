@@ -44,15 +44,19 @@ public class Mussel : MonoBehaviour
 
             int pearlsPerSecond = 5;
 
-            // Increase pearls per second to 6 at level 2
             if (curr.currentLevel == 2)
             {
-                pearlsPerSecond = 6;
+                pearlsPerSecond = 10;
             }
 
             if (curr.currentLevel == 3)
             {
-                pearlsPerSecond = 8;
+                pearlsPerSecond = 20;
+            }
+
+             if (curr.currentLevel == 4)
+            {
+                pearlsPerSecond = 30;
             }
 
             // Increase pearls in the other object by pearlsPerSecond

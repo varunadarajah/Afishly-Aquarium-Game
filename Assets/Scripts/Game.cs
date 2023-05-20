@@ -9,8 +9,9 @@ public class Game : MonoBehaviour
     public TMP_Text pearlText;
 
     public List<Fish> fishInventory;
-    public DecorInventory decorInventory;
+    public List<FishHistoryRecord> fishHistory;
 
+    public DecorInventory decorInventory;
     public List<GameObject> activeDecor;
 
     public List<Fish> activeFish;
@@ -22,9 +23,7 @@ public class Game : MonoBehaviour
     public GameObject FishParentObject; // where to instantiate fish
     public BuyButton fishUnlock; // to unlock fish in inventory
 
-    // stats variables
-    public int totalPearls = 0;
-    public int totalClicks = 0;
+    public BackgroundButtonManager bg;
 
     // Start is called before the first frame update
     void Start()
@@ -52,16 +51,17 @@ public class Game : MonoBehaviour
     public void LoadGame()
     {
         SaveData data = SaveManager.Load();
-        if(data != null)
+        if (data != null)
         {
+            // load pearls
             pearls = data.pearls;
 
             // load fish data
-            foreach(FishData fishData in data.fishInventory)
+            foreach (FishData fishData in data.fishInventory)
             {
-                foreach(Fish prefab in allFishPrefabs) // find matching prefab to instantiate
+                foreach (Fish prefab in allFishPrefabs) // find matching prefab to instantiate
                 {
-                    if(fishData.fishBreed == prefab.fishBreed)
+                    if (fishData.fishBreed == prefab.fishBreed)
                     {
                         Fish f = Instantiate(prefab, FishParentObject.transform); // instantiate
                         f.gameObject.SetActive(true);
@@ -70,7 +70,7 @@ public class Game : MonoBehaviour
                         f.fishName = fishData.fishName;
                         f.dateObtained = fishData.dateObtained;
                         f.fishColor = fishData.fishColor;
-                        f.isActive = fishData.isActive;                        
+                        f.isActive = fishData.isActive;
                         fishInventory.Add(f);
 
                         // unlock fish in inventory
@@ -89,6 +89,73 @@ public class Game : MonoBehaviour
                     }
                 }
             }
-        }       
+
+            // load plant data
+            foreach (DecorData decorData in data.plants)
+            {
+                foreach (DecorManager decor in decorInventory.plants)
+                {
+                    if(decorData.decorName == decor.decorName)
+                    {
+                        decor.inactiveCount = decorData.inactiveCount + decorData.activeCount;
+                        for (int i = 0; i < decorData.activeCount; i++)
+                        {
+                            decor.placeDecor();
+                        }
+                    }
+                }
+            }
+
+            // load rock data
+            foreach (DecorData decorData in data.rocks)
+            {
+                foreach (DecorManager decor in decorInventory.rocks)
+                {
+                    if (decorData.decorName == decor.decorName)
+                    {
+                        decor.inactiveCount = decorData.inactiveCount + decorData.activeCount;
+                        for(int i = 0; i < decorData.activeCount; i++)
+                        {
+                            decor.placeDecor();
+                        }
+                    }
+                }
+            }
+
+            // load active decor data
+            List<int> loadedDecor = new();            
+            for (int i = 0; i < data.activeDecor.Count; i++)
+            {                
+                ActiveDecorData decorData = data.activeDecor[i];
+
+                for(int j = 0; j < activeDecor.Count; j++)
+                {
+                    if((activeDecor[j].name == decorData.decorName) && !(loadedDecor.Contains(j)))
+                    {
+                        activeDecor[j].transform.position = decorData.decorPosition;
+                        activeDecor[j].transform.localScale = decorData.decorScale;
+
+                        loadedDecor.Add(j);
+                        j = activeDecor.Count;
+                    }
+                }
+            }
+
+            // load background
+            bg.currentBackground = data.currentBg;
+        }
+    }
+
+    // when app is exited
+    // this currently kinda bugged atleast in unity, it saves right when the game starts before previous save is loaded
+    void OnApplicationPause() 
+    {
+        //SaveGame();
+    }
+
+    // when app is closed out
+    void OnApplicationQuit() // this works
+    {
+        SaveGame();
     }
 }

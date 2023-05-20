@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering;
 
 public class GachaManager : MonoBehaviour
 {
@@ -16,14 +18,17 @@ public class GachaManager : MonoBehaviour
     public GameObject GachaBoxes;
     public List<GachaBox> boxes;
 
-    public List<FishHistoryRecord> fishHistory;
-
     public GachaBox selectedBox;
     public TMP_Text selectedText;
     public TMP_Text costText;
 
     public GameObject FishParentObject;
     string spriteAsset = "<sprite name=\"Pearl\">";
+
+    public GameObject GrayLayer;
+
+    public Button button;
+    public int clickCount;
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +64,16 @@ public class GachaManager : MonoBehaviour
     void Update()
     {
         selectedText.text = selectedBox.gachaName;
-        costText.text = "Open\n " + selectedBox.cost + " " + spriteAsset+ "";
+        if (clickCount == 0) {
+            costText.text = "Open\n " + selectedBox.cost + " " + spriteAsset+ "";
+        }
+        button.interactable = game.pearls >= selectedBox.cost;
+        GrayLayer.SetActive(!button.interactable);
+    }
+
+    private void OnDisable()
+    {
+        clickCount = 0;
     }
 
     public void ScrollLeft()
@@ -74,6 +88,7 @@ public class GachaManager : MonoBehaviour
             selectedBox = boxes[(boxes.IndexOf(selectedBox) - 1)];
         }
         selectedBox.gameObject.SetActive(true);
+        clickCount = 0;
     }
 
     public void ScrollRight()
@@ -88,44 +103,58 @@ public class GachaManager : MonoBehaviour
             selectedBox = boxes[(boxes.IndexOf(selectedBox) + 1)];
         }
         selectedBox.gameObject.SetActive(true);
+        clickCount = 0;
     }
 
     public void buyBox()
     {
         if (game.pearls >= selectedBox.cost)
         {
-            game.pearls -= selectedBox.cost;
-            Fish newFish = selectedBox.OpenBox();
-            Fish f = Instantiate(newFish, FishParentObject.transform);
-            game.fishInventory.Add(f);
+            if (button.interactable == true)
+            {
+                clickCount++;
+            }
+            if (clickCount == 1)
+            {
+                costText.text = "Confirm";
+            }
+            else if (clickCount == 2)
+            {
+                clickCount = 0;
+                game.pearls -= selectedBox.cost;
+                Fish newFish = selectedBox.OpenBox();
+                Fish f = Instantiate(newFish, FishParentObject.transform);
+                game.fishInventory.Add(f);
 
-            transitionScreen.SetActive(true);
+                transitionScreen.SetActive(true);
 
-            // creates a temp fish for display
-            GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;                      
+                // creates a temp fish for display
+                GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;
 
-            // add record in fish history
-            FishHistoryRecord newRecord = f.gameObject.AddComponent<FishHistoryRecord>();
-            newRecord.fishName = f.fishBreed;
-            newRecord.fishDate = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yy");
-            newRecord.fishSprite = f.gameObject.GetComponent<SpriteRenderer>().sprite;
-            newRecord.fishSilhouette = f.gameObject.GetComponentsInChildren<SpriteRenderer>()[1].sprite;
-            newRecord.fishColor = tempDisplayFish.GetComponent<Fish>().colorSprite.color;
-            newRecord.gachaSprite = selectedBox.GetComponent<SpriteRenderer>().sprite;
-            fishHistory.Add(newRecord);
+                // add record in fish history
+                FishHistoryRecord newRecord = f.gameObject.AddComponent<FishHistoryRecord>();
+                newRecord.fishName = f.fishBreed;
+                newRecord.fishDate = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yy");
+                newRecord.fishSprite = f.gameObject.GetComponent<SpriteRenderer>().sprite;
+                newRecord.fishSilhouette = f.gameObject.GetComponentsInChildren<SpriteRenderer>()[1].sprite;
+                newRecord.fishColor = tempDisplayFish.GetComponent<Fish>().colorSprite.color;
+                newRecord.gachaSprite = selectedBox.GetComponent<SpriteRenderer>().sprite;
+                game.fishHistory.Add(newRecord);
 
-            tempDisplayFish.GetComponent<Fish>().setFishColor();
-            tempDisplayFish.SetActive(false);
-            tempDisplayFish.GetComponent<SpriteRenderer>().sortingLayerName = "Transition";
-            tempDisplayFish.GetComponent<Fish>().colorSprite.sortingLayerName = "Transition";
-            tempDisplayFish.GetComponent<Fish>().enabled = false; // disables movement script from fish
+                tempDisplayFish.GetComponent<Fish>().setFishColor();
+                tempDisplayFish.SetActive(false);
+                tempDisplayFish.GetComponent<SpriteRenderer>().sortingLayerName = "Transition";
+                tempDisplayFish.GetComponent<SortingGroup>().sortingLayerName = "Transition";
+                tempDisplayFish.GetComponent<Fish>().colorSprite.sortingLayerName = "Transition";
+                tempDisplayFish.GetComponent<Fish>().enabled = false; // disables movement script from fish
 
-            tempDisplayFish.transform.localPosition = new Vector3(0, 0, -3);
-            tempDisplayFish.transform.localScale = new Vector3(1.05f, 1.5f, 1.5f);
+                tempDisplayFish.transform.localPosition = new Vector3(0, 0, -3);
+                tempDisplayFish.transform.localScale = new Vector3(1.05f, 1.5f, 1.5f);
 
-            transitionScreen.GetComponent<TransitionScript>().displayFish = tempDisplayFish;
+                transitionScreen.GetComponent<TransitionScript>().displayFish = tempDisplayFish;
 
-            StartCoroutine(FadeInTransitionScreen());
+                StartCoroutine(FadeInTransitionScreen());
+            }
         }
     }
 

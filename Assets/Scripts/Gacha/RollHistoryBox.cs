@@ -5,6 +5,8 @@ using TMPro;
 
 public class RollHistoryBox : MonoBehaviour
 {
+    public Game game;
+
     public FishHistoryRecord record;
 
     public TMP_Text fishName;
@@ -14,6 +16,10 @@ public class RollHistoryBox : MonoBehaviour
     public SpriteRenderer fishSprite;
     public SpriteRenderer fishSilhouette;
     public SpriteRenderer gachaBoxSprite;
+
+    private void Start()
+    {
+    }
 
     // Update is called once per frame
     void Update()

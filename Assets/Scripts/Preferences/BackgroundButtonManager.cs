@@ -7,10 +7,12 @@ public class BackgroundButtonManager : MonoBehaviour
     public BackgroundManager bm;
     public List<GameObject> selectedSprites;
 
+    public int currentBackground = 9;
+
     // Start is called before the first frame update
     void Start()
     {
-        SelectBackground(9); // selected random background
+        SelectBackground(currentBackground); // selected random background
     }
 
     // Update is called once per frame
@@ -43,5 +45,7 @@ public class BackgroundButtonManager : MonoBehaviour
                 selectedSprites[i].SetActive(false);
             }
         }
+
+        currentBackground = bg;
     }
 }
