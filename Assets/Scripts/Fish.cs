@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class Fish : MonoBehaviour
 {
@@ -32,6 +33,9 @@ public class Fish : MonoBehaviour
     public RandomScript random;
     public LeftToRightScript LTR;
     public RightToLeftScript RTL;
+
+    public string copiedText = "";
+
 
 
     public void Start()
@@ -234,8 +238,9 @@ public class Fish : MonoBehaviour
     {
         if (fishColor == Color.clear)
         {
-            HSBSliderScript hsbSliderScript = FindObjectOfType<HSBSliderScript>();
-            string hexColor = hsbSliderScript.hexText.text;
+            Text textObject = GameObject.Find("ColorText")?.GetComponent<Text>();
+            // HSBSliderScript hsbSliderScript = FindObjectOfType<HSBSliderScript>();
+            string hexColor = textObject.text;
             // check if hexColor is a valid hex string
             Color newColor;
             if (ColorUtility.TryParseHtmlString(hexColor, out newColor))

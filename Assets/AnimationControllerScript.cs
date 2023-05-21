@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class AnimationControllerScript : MonoBehaviour
 {
-    public GameObject parentObject;
+    public GameObject plantParentObject;
 
     public GameObject EditModeScreen;
+    public GameObject fish;
 
     private void Update() 
     {
     if (!EditModeScreen.activeSelf)
     {
-    Animator[] childAnimators = parentObject.GetComponentsInChildren<Animator>(true);
+        Animator[] childAnimators = plantParentObject.GetComponentsInChildren<Animator>(true);
             foreach (Animator childAnimator in childAnimators)
             {
                 childAnimator.enabled = true;
             }
+
+            fish.SetActive(true);
+    } else {
+        fish.SetActive(false);
     }
     }
 }
