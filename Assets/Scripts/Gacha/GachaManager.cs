@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering;
 
 public class GachaManager : MonoBehaviour
 {
@@ -16,8 +17,6 @@ public class GachaManager : MonoBehaviour
 
     public GameObject GachaBoxes;
     public List<GachaBox> boxes;
-
-    public List<FishHistoryRecord> fishHistory;
 
     public GachaBox selectedBox;
     public TMP_Text selectedText;
@@ -113,49 +112,49 @@ public class GachaManager : MonoBehaviour
         {
             if (button.interactable == true)
             {
-            clickCount++;
+                clickCount++;
             }
             if (clickCount == 1)
             {
-            costText.text = "Confirm";
+                costText.text = "Confirm";
             }
             else if (clickCount == 2)
             {
-            clickCount = 0; 
-            game.pearls -= selectedBox.cost;
-            Fish newFish = selectedBox.OpenBox();
-            Fish f = Instantiate(newFish, FishParentObject.transform);
-            game.fishInventory.Add(f);
+                clickCount = 0;
+                game.pearls -= selectedBox.cost;
+                Fish newFish = selectedBox.OpenBox();
+                Fish f = Instantiate(newFish, FishParentObject.transform);
+                game.fishInventory.Add(f);
 
-            transitionScreen.SetActive(true);
+                transitionScreen.SetActive(true);
 
-            // creates a temp fish for display
-            GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;
-            tempDisplayFish.SetActive(true);
-            tempDisplayFish.GetComponent<Fish>().setFishColor();
-            tempDisplayFish.GetComponent<Fish>().colorSprite.color = tempDisplayFish.GetComponent<Fish>().fishColor;
+                // creates a temp fish for display
+                GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;
 
-            // add record in fish history
-            FishHistoryRecord newRecord = f.gameObject.AddComponent<FishHistoryRecord>();
-            newRecord.fishName = f.fishBreed;
-            newRecord.fishDate = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yy");
-            newRecord.fishSprite = f.gameObject.GetComponent<SpriteRenderer>().sprite;
-            newRecord.fishSilhouette = f.gameObject.GetComponentsInChildren<SpriteRenderer>()[1].sprite;
-            newRecord.fishColor = tempDisplayFish.GetComponent<Fish>().colorSprite.color;
-            newRecord.gachaSprite = selectedBox.GetComponent<SpriteRenderer>().sprite;
-            fishHistory.Add(newRecord);
+                // add record in fish history
+                FishHistoryRecord newRecord = f.gameObject.AddComponent<FishHistoryRecord>();
+                newRecord.fishName = f.fishBreed;
+                newRecord.fishDate = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yy");
+                newRecord.fishSprite = f.gameObject.GetComponent<SpriteRenderer>().sprite;
+                newRecord.fishSilhouette = f.gameObject.GetComponentsInChildren<SpriteRenderer>()[1].sprite;
+                newRecord.fishColor = tempDisplayFish.GetComponent<Fish>().colorSprite.color;
+                newRecord.gachaSprite = selectedBox.GetComponent<SpriteRenderer>().sprite;
+                game.fishHistory.Add(newRecord);
 
-            tempDisplayFish.GetComponent<SpriteRenderer>().sortingLayerName = "Transition";
-            tempDisplayFish.GetComponent<Fish>().colorSprite.sortingLayerName = "Transition";
-            tempDisplayFish.GetComponent<Fish>().enabled = false; // disables movement script from fish
+                tempDisplayFish.GetComponent<Fish>().setFishColor();
+                tempDisplayFish.SetActive(false);
+                tempDisplayFish.GetComponent<SpriteRenderer>().sortingLayerName = "Transition";
+                tempDisplayFish.GetComponent<SortingGroup>().sortingLayerName = "Transition";
+                tempDisplayFish.GetComponent<Fish>().colorSprite.sortingLayerName = "Transition";
+                tempDisplayFish.GetComponent<Fish>().enabled = false; // disables movement script from fish
 
-            tempDisplayFish.transform.localPosition = new Vector3(0, 0, -3);
-            tempDisplayFish.transform.localScale = new Vector3(1.05f, 1.5f, 1.5f);
+                tempDisplayFish.transform.localPosition = new Vector3(0, 0, -3);
+                tempDisplayFish.transform.localScale = new Vector3(1.05f, 1.5f, 1.5f);
 
-            transitionScreen.GetComponent<TransitionScript>().displayFish = tempDisplayFish;
+                transitionScreen.GetComponent<TransitionScript>().displayFish = tempDisplayFish;
 
-            StartCoroutine(FadeInTransitionScreen());
-                }
+                StartCoroutine(FadeInTransitionScreen());
+            }
         }
     }
 

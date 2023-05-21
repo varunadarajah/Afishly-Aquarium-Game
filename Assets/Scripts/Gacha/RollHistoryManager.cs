@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RollHistoryManager : MonoBehaviour
 {
-    public GachaManager gm;
+    public Game game;
 
     public List<GameObject> boxes;
     public GameObject RollHistoryBox; // prefab
@@ -18,7 +18,7 @@ public class RollHistoryManager : MonoBehaviour
 
     public void addHistoryBoxes()
     {
-        foreach (FishHistoryRecord f in gm.fishHistory)
+        foreach (FishHistoryRecord f in game.fishHistory)
         {
             GameObject newBox = Instantiate(RollHistoryBox, boxesObj.transform);
             newBox.GetComponent<RollHistoryBox>().record = f;

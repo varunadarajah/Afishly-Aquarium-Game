@@ -43,6 +43,7 @@ public class StoreItem : MonoBehaviour
                 DecorManager decorManager;
                 if (decorManagers.TryGetValue(name, out decorManager))
                 {
+                    game.activeDecor.Remove(parent);
                     // Destroy the parent object
                     Destroy(parent);
                     // Call the storeDecor function in the DecorManager script

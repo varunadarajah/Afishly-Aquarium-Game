@@ -26,6 +26,7 @@ public class BackgroundManager : MonoBehaviour
 
     public void RandomBackground()
     {
+        CancelInvoke();
         int random = UnityEngine.Random.Range(0, topLayers.Count - 1);
         setBackground(random);
 
@@ -46,7 +47,7 @@ public class BackgroundManager : MonoBehaviour
 
         float fishColorAvg = 0;
 
-        foreach (Fish f in game.fishInventory)
+        foreach (Fish f in game.activeFish)
         {
             float H, S, V;
             Color.RGBToHSV(f.fishColor, out H, out S, out V);
@@ -54,17 +55,46 @@ public class BackgroundManager : MonoBehaviour
             fishColorAvg += H;
         }
 
-        fishColorAvg /= game.fishInventory.Count;
+        fishColorAvg /= game.activeFish.Count;
 
         Debug.Log(fishColorAvg);
 
-        if(fishColorAvg <= 0.13 || fishColorAvg >= 0.9)
+        if(fishColorAvg <= 0.12 || fishColorAvg >= 0.92) // red
         {
             setBackground(5);
         } 
+        else if(fishColorAvg > 0.12 && fishColorAvg <= 0.34) // green
+        {
+            setBackground(2);
+        }
+        else if (fishColorAvg > 0.34 && fishColorAvg <= 0.42) // bluegreen 1
+        {
+            setBackground(6);
+        }
+        else if (fishColorAvg > 0.42 && fishColorAvg <= 0.5) // bluegreen 2
+        {
+            setBackground(7);
+        }
+        else if (fishColorAvg > 0.5 && fishColorAvg <= 0.74) // blue
+        {
+            setBackground(0);
+        }
+        else if (fishColorAvg > 0.74 && fishColorAvg <= 0.8) // purple
+        {
+            setBackground(1);
+        }
+        else if (fishColorAvg > 0.8 && fishColorAvg <= 0.88) // light purple/pink?
+        {
+            setBackground(3);
+        }
+        else if (fishColorAvg > 0.88 && fishColorAvg < 0.92) // light red/pink
+        {
+            setBackground(4);
+        }
         else
         {
             setBackground(0);
         }
+        Invoke("AutoBackground", 0f);
     }
 }

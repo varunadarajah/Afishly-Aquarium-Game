@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -795093919
-  m_SortingLayer: 1
+  m_SortingLayerID: -1700887817
+  m_SortingLayer: 5
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d73cd5d7e81c33c4089c2875c8aa79e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 8507077224936150329}
   - component: {fileID: 8507077224936150335}
   - component: {fileID: 8507077224936150334}
+  - component: {fileID: 5391554801142371636}
   m_Layer: 0
   m_Name: Discus
   m_TagString: Untagged
@@ -241,8 +242,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -795093919
-  m_SortingLayer: 1
+  m_SortingLayerID: -1700887817
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cb232943ccbcefb4a933266c60909225, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -272,9 +273,10 @@ MonoBehaviour:
   dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
-  colorSprite: {fileID: 0}
+  colorSprite: {fileID: 459791299280213828}
   fishShadow: {fileID: 3144293554029738576}
   shadowStrengh: 0.45
+  fishSize: 67
   rarity: 15
   sellPrice: 100
   speed: 0
@@ -284,3 +286,14 @@ MonoBehaviour:
   random: {fileID: 0}
   LTR: {fileID: 0}
   RTL: {fileID: 0}
+--- !u!210 &5391554801142371636
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8507077224936150328}
+  m_Enabled: 1
+  m_SortingLayerID: -1700887817
+  m_SortingLayer: 5
+  m_SortingOrder: 0

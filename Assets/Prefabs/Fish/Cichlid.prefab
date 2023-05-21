@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7839200941687872056}
   - component: {fileID: 7839200941687872058}
   - component: {fileID: 7839200941687872059}
+  - component: {fileID: 5456922315399949989}
   m_Layer: 0
   m_Name: Cichlid
   m_TagString: Untagged
@@ -157,8 +158,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -795093919
-  m_SortingLayer: 1
+  m_SortingLayerID: -1700887817
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a63f6459d1ac0134d9583402da596b54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,9 +189,10 @@ MonoBehaviour:
   dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
-  colorSprite: {fileID: 0}
+  colorSprite: {fileID: 7993302334038013404}
   fishShadow: {fileID: 2285564888711235390}
   shadowStrengh: 0.45
+  fishSize: 67
   rarity: 15
   sellPrice: 100
   speed: 0
@@ -200,6 +202,17 @@ MonoBehaviour:
   random: {fileID: 0}
   LTR: {fileID: 0}
   RTL: {fileID: 0}
+--- !u!210 &5456922315399949989
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7839200941687872057}
+  m_Enabled: 1
+  m_SortingLayerID: -1700887817
+  m_SortingLayer: 5
+  m_SortingOrder: 0
 --- !u!1 &7993302334038013394
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,8 +283,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -795093919
-  m_SortingLayer: 1
+  m_SortingLayerID: -1700887817
+  m_SortingLayer: 5
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 884ba56381bb965429747a678697bdef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

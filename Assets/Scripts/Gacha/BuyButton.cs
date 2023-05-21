@@ -7,18 +7,6 @@ using TMPro;
 public class BuyButton : MonoBehaviour
 {
     public GachaManager gm;
-    public GameObject TransitionScreen; 
-
-    [System.Serializable]
-    public class FishUnlockData
-    {
-        public string checkInventory;
-        public string unlockFishName;
-        public GameObject toggle;
-        public GameObject lockedToggle;
-        public TMP_Text text;
-        public GameObject objectToEnableCollider;
-    }
 
     public FishUnlockData[] fishUnlockDataArray;
 
@@ -32,17 +20,7 @@ public class BuyButton : MonoBehaviour
         }
     }
 
-    private void Update() {
-        Collider2D colliderToEnable = GetComponent<Collider2D>();
-        if (TransitionScreen.activeSelf) {
-            colliderToEnable.enabled = false;
-        } 
-        if (!TransitionScreen.activeSelf) {
-            colliderToEnable.enabled = true;
-        }
-    }
-
-    void UnlockFish(FishUnlockData fishUnlockData)
+    public void UnlockFish(FishUnlockData fishUnlockData)
     {
         GameObject fishLocked = GameObject.Find(fishUnlockData.checkInventory);
 
