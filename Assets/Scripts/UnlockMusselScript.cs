@@ -128,6 +128,7 @@ public class UnlockMusselScript : MonoBehaviour
             musselLevelDescription.text = "Lv 1 Mussel\n5 " + spriteAsset + "per second";
             musselUpgradeValue.text = "5 > 10 " + spriteAsset + "per second";
             game.pearls -= 500;
+            pearlCost = 2000;
             return true; 
         }
         return false; 
@@ -142,6 +143,7 @@ public class UnlockMusselScript : MonoBehaviour
             musselLevelDescription.text = "Lv 2 Mussel\n10 " + spriteAsset + "per second";
             musselUpgradeValue.text = "10 > 20 " + spriteAsset + "per second";
             game.pearls -= 2000;
+            pearlCost = 5000;
             return true; 
         }
         return false; 
@@ -156,6 +158,7 @@ public class UnlockMusselScript : MonoBehaviour
             musselLevelDescription.text = "Lv 3 Mussel\n20 " + spriteAsset + "per second";
             musselUpgradeValue.text = "20 > 30 " + spriteAsset + "per second";
             game.pearls -= 5000;
+            pearlCost = 10000;
             return true;
         }
         return false;

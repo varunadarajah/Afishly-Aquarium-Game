@@ -23,6 +23,9 @@ public class Game : MonoBehaviour
     public GameObject FishParentObject; // where to instantiate fish
     public BuyButton fishUnlock; // to unlock fish in inventory
 
+    public LevelUpClamScript clamData;
+    public ExpandScript expandData;
+
     public BackgroundButtonManager bg;
 
     // Start is called before the first frame update
@@ -55,6 +58,14 @@ public class Game : MonoBehaviour
         {
             // load pearls
             pearls = data.pearls;
+
+            // load expand data
+            for(int i = 1; i < data.expandLevel; i++)
+            {
+                pearls += expandData.pearlCost;
+                expandData.OnMouseDown();
+                expandData.OnMouseDown();
+            }
 
             // load fish data
             foreach (FishData fishData in data.fishInventory)
@@ -139,6 +150,32 @@ public class Game : MonoBehaviour
                         j = activeDecor.Count;
                     }
                 }
+            }
+
+            // load mollusk data
+            MolluskData molluskData = data.molluskData;
+            // clam
+            for (int i = 1; i < molluskData.clamLevel; i++)
+            {
+                pearls += clamData.pearlCost;
+                clamData.OnMouseDown();
+                clamData.OnMouseDown();
+            }
+
+            // mussel
+            for (int i = 0; i < molluskData.musselLevel; i++)
+            {
+                pearls += clamData.unlockMussel.pearlCost;
+                clamData.unlockMussel.OnMouseDown();
+                clamData.unlockMussel.OnMouseDown();
+            }
+
+            // oyster
+            for (int i = 0; i < molluskData.oysterLevel; i++)
+            {
+                pearls += clamData.unlockOyster.pearlCost;
+                clamData.unlockOyster.OnMouseDown();
+                clamData.unlockOyster.OnMouseDown();
             }
 
             // load background

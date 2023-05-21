@@ -7,6 +7,8 @@ public class SaveData
 {
     public int pearls = 0;
 
+    public int expandLevel = 1;
+
     public List<FishData> fishInventory = new List<FishData>();
     public List<FishHistoryData> fishHistory = new List<FishHistoryData>();
 
@@ -15,12 +17,17 @@ public class SaveData
 
     public List<ActiveDecorData> activeDecor = new List<ActiveDecorData>();
 
+    public MolluskData molluskData;
+
     public int currentBg = 0;
 
     public SaveData(Game g)
     {
         // pearls
         pearls = g.pearls;
+
+        // expand level
+        expandLevel = g.expandData.currentLevel;
 
         // fish
         foreach (Fish f in g.fishInventory)
@@ -54,7 +61,10 @@ public class SaveData
         {
             ActiveDecorData activeDecorData = new ActiveDecorData(d);
             activeDecor.Add(activeDecorData);
-        }        
+        }
+
+        // mollusk data
+        molluskData = new MolluskData(g.clamData);
 
         // background
         currentBg = g.bg.currentBackground;

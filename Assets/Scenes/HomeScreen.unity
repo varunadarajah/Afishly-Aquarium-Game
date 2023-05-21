@@ -692,7 +692,7 @@ MonoBehaviour:
   accessMaxLevel: 1
   GrayLayer: {fileID: 1300577482}
   button: {fileID: 21755680}
-  pearlCost: 0
+  pearlCost: 100
   clickCount: 0
   unlockMussel: {fileID: 1883587397}
   unlockOyster: {fileID: 871391138}
@@ -13202,6 +13202,8 @@ MonoBehaviour:
   - {fileID: 613152143043523492, guid: 4f1d5047669e7ea48aabea38001bf999, type: 3}
   FishParentObject: {fileID: 1234081196}
   fishUnlock: {fileID: 542153049}
+  clamData: {fileID: 21755676}
+  expandData: {fileID: 1299727069}
   bg: {fileID: 935888680}
 --- !u!4 &582521665
 Transform:
@@ -24986,7 +24988,7 @@ MonoBehaviour:
   objectToToggle: {fileID: 8959033617289597531}
   GrayLayer: {fileID: 849192779}
   button: {fileID: 871391140}
-  pearlCost: 0
+  pearlCost: 1000
   clickCount: 0
   levelUpClam: {fileID: 21755676}
   unlockMussel: {fileID: 1883587397}
@@ -25147,6 +25149,7 @@ MonoBehaviour:
   - {fileID: 2964195923123645414, guid: 8e29e0610dfa29d46bd248f75c6967cd, type: 3}
   - {fileID: 7839200941687872059, guid: 3e6c91d836f63d044a01a4d907cce527, type: 3}
   - {fileID: 7266478742154036057, guid: d59c50e8ed6a59e48a4110f2cf16be78, type: 3}
+  - {fileID: 6357761201898173534, guid: 51f9639b86c31d14d961c65fe069b537, type: 3}
   fishRarity: 
   boxAnimation: {fileID: 876286349}
 --- !u!212 &876286348
@@ -35657,7 +35660,7 @@ MonoBehaviour:
   accessMaxLevel: 1
   GrayLayer: {fileID: 955300116}
   button: {fileID: 1299727071}
-  pearlCost: 0
+  pearlCost: 10000
 --- !u!114 &1299727070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58967,7 +58970,7 @@ MonoBehaviour:
   objectToToggle: {fileID: 1998451443}
   GrayLayer: {fileID: 1818652964}
   button: {fileID: 1883587399}
-  pearlCost: 0
+  pearlCost: 500
   clickCount: 0
   levelUpClam: {fileID: 21755676}
   unlockOyster: {fileID: 871391138}
