@@ -27,7 +27,7 @@ public class FishView : MonoBehaviour
     void Update()
     {
         nameText.text = fish.fishName;
-        dateText.text = fish.dateObtained;
+        dateText.text = fish.dateObtained.ToString("MM/dd/yy");
         colorText.text = "#" + ColorUtility.ToHtmlStringRGB(fish.fishColor);
 
         fishSprite.sprite = fish.GetComponent<SpriteRenderer>().sprite;

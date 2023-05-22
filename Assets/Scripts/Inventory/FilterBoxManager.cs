@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,23 +75,60 @@ public class FilterBoxManager : MonoBehaviour
         }
     }
 
-    public void sortAsc()
+    public void ResetSort()
     {
         fm.SetFish(fm.breedText.text);
     }
 
+    public void sortAsc()
+    {
+        List<DateTime> dateList = new List<DateTime>();
+
+        foreach (GameObject box in fm.boxes)
+        {
+            dateList.Add(box.GetComponent<FishView>().fish.dateObtained);
+        }
+
+        dateList.Sort();
+
+        foreach (DateTime fishDate in dateList)
+        {
+            foreach (GameObject box in fm.boxes)
+            {
+                if (fishDate.Equals(box.GetComponent<FishView>().fish.dateObtained))
+                {
+                    box.transform.SetAsLastSibling();
+                }
+            }
+        }
+    }
+
     public void sortDesc()
     {
-        sortAsc();
-        foreach(GameObject box in fm.boxes)
+        List<DateTime> dateList = new List<DateTime>();
+
+        foreach (GameObject box in fm.boxes)
         {
-            box.transform.SetAsFirstSibling();
+            dateList.Add(box.GetComponent<FishView>().fish.dateObtained);
+        }
+
+        dateList.Sort();
+
+        foreach (DateTime fishDate in dateList)
+        {
+            foreach (GameObject box in fm.boxes)
+            {
+                if (fishDate.Equals(box.GetComponent<FishView>().fish.dateObtained))
+                {
+                    box.transform.SetAsFirstSibling();
+                }
+            }
         }
     }
 
     public void sortActive()
     {
-        sortAsc();
+        ResetSort();
         foreach (GameObject box in fm.boxes)
         {
             if(box.GetComponent<FishView>().fish.isActive)
@@ -102,7 +140,7 @@ public class FilterBoxManager : MonoBehaviour
 
     public void sortInvactive()
     {
-        sortAsc();
+        ResetSort();
         foreach (GameObject box in fm.boxes)
         {
             if (!box.GetComponent<FishView>().fish.isActive)
@@ -114,7 +152,7 @@ public class FilterBoxManager : MonoBehaviour
 
     public void sortAlphabetical()
     {
-        sortAsc();
+        ResetSort();
         List<string> nameList = new List<string>();
 
         foreach (GameObject box in fm.boxes)

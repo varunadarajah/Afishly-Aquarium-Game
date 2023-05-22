@@ -8,7 +8,7 @@ public class Fish : MonoBehaviour
 {
     public string fishBreed;
     public string fishName;
-    public string dateObtained;
+    public System.DateTime dateObtained;
     public Color fishColor = Color.clear;
     public bool isActive = false;
 
@@ -49,8 +49,7 @@ public class Fish : MonoBehaviour
         LTR = LeftToRight.GetComponent<LeftToRightScript>();
         GameObject RightToLeft = GameObject.Find("RightToLeftButton");
         RTL = RightToLeft.GetComponent<RightToLeftScript>();        
-
-        setDate();
+                
         setFishColor();
         setInitialSpeed();
         setFishPos();
@@ -239,7 +238,7 @@ public class Fish : MonoBehaviour
 
     public void setDate()
     {
-        dateObtained = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yy");
+        dateObtained = System.DateTime.UtcNow.ToLocalTime();
     }
 
     public void setFishColor()

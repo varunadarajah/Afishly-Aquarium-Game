@@ -83,7 +83,7 @@ public class Game : MonoBehaviour
 
                         // load data
                         f.fishName = fishData.fishName;
-                        f.dateObtained = fishData.dateObtained;
+                        f.dateObtained = System.DateTime.Parse(fishData.dateObtained);
                         f.fishColor = fishData.fishColor;
                         f.isActive = fishData.isActive;
                         fishInventory.Add(f);

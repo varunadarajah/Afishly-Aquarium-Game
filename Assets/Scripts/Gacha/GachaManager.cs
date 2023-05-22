@@ -124,6 +124,7 @@ public class GachaManager : MonoBehaviour
                 game.pearls -= selectedBox.cost;
                 Fish newFish = selectedBox.OpenBox();
                 Fish f = Instantiate(newFish, FishParentObject.transform);
+                f.setDate();
                 game.fishInventory.Add(f);
 
                 transitionScreen.SetActive(true);
