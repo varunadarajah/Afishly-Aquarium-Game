@@ -21,6 +21,8 @@ public class SaveData
 
     public int currentBg = 0;
 
+    public float musicVolume = 0.1f;
+
     public SaveData(Game g)
     {
         // pearls
@@ -69,5 +71,7 @@ public class SaveData
         // background
         currentBg = g.bg.currentBackground;
 
+        // music volume
+        musicVolume = g.bgMusic.volume;
     }
 }

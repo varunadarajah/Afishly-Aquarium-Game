@@ -57,7 +57,7 @@ public class BackgroundManager : MonoBehaviour
 
         fishColorAvg /= game.activeFish.Count;
 
-        Debug.Log(fishColorAvg);
+        //Debug.Log(fishColorAvg);
 
         if(fishColorAvg <= 0.12 || fishColorAvg >= 0.92) // red
         {

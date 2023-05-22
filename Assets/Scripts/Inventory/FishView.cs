@@ -16,9 +16,11 @@ public class FishView : MonoBehaviour
     public SpriteRenderer fishColorSprite;
     public SpriteRenderer colorBox;
 
+    public Sprite turtleSprite;
+
     void Start()
     {
-        fm = GameObject.Find("FishViewPage").GetComponent<FishViewManager>();
+        fm = GameObject.Find("FishViewPage").GetComponent<FishViewManager>();        
     }
 
     // Update is called once per frame
@@ -33,6 +35,16 @@ public class FishView : MonoBehaviour
 
         fishColorSprite.sprite = fish.colorSprite.sprite;
         fishColorSprite.color = fish.fishColor;
+
+        if (fish.fishBreed == "Turtle")
+        {
+            fishSprite.sprite = turtleSprite;
+            fishSprite.gameObject.transform.localPosition = new Vector3(0f, -0.08f, 0f);
+            fishSprite.gameObject.transform.localScale = new Vector3(0.06f, 0.06f, 0.06f);
+
+            fishColorSprite.gameObject.transform.localPosition = new Vector3(-0.08999979f, 0.03880119f, -0.0002441406f);
+            fishColorSprite.gameObject.transform.localScale = new Vector3(0.1092f, 0.1092f, 0.1092f);
+        }
     }
 
     public void Sell()

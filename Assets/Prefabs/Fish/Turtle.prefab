@@ -78,7 +78,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.69, y: 1.46}
+  m_Size: {x: 6.9, y: 3.45}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -95,12 +95,12 @@ GameObject:
   - component: {fileID: 8624289186033464613}
   - component: {fileID: 2389450752305539831}
   m_Layer: 0
-  m_Name: Turtle_shadow
+  m_Name: Turtle_shadowShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8624289186033464613
 Transform:
   m_ObjectHideFlags: 0
@@ -109,12 +109,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6235524090183151646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.5087, y: 1.9671, z: 0}
+  m_LocalScale: {x: 1.827819, y: 1.825201, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6357761201898173535}
-  m_RootOrder: 2
+  m_Father: {fileID: 2814236002497464231}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2389450752305539831
 SpriteRenderer:
@@ -158,11 +158,11 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 15ae642e1a6cd5648b51eea6d1f1632c, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.4509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.69, y: 1.46}
+  m_Size: {x: 6.9, y: 3.45}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 6357761201898173529}
   - component: {fileID: 6357761201898173534}
   - component: {fileID: 2203158302893463126}
+  - component: {fileID: 7016056927897358422}
   m_Layer: 0
   m_Name: Turtle
   m_TagString: Untagged
@@ -194,14 +195,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6357761201898173532}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 832, y: -692, z: 0}
   m_LocalScale: {x: 23, y: 23, z: 23}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2345521228445760898}
   - {fileID: 2814236002497464231}
-  - {fileID: 8624289186033464613}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -275,18 +275,20 @@ MonoBehaviour:
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
   colorSprite: {fileID: 2345521228445760925}
-  fishShadow: {fileID: 2389450752305539831}
+  fishShadow: {fileID: 6369155485776711348}
   shadowStrengh: 0.45
   fishSize: 23
+  fishBackgroundSize: 8
   rarity: 4
   sellPrice: 100
-  speed: 0
+  speed: 0.1
   isMovingRight: 1
   minY: 0
   verticalSpeed: 0.05
   random: {fileID: 0}
   LTR: {fileID: 0}
   RTL: {fileID: 0}
+  copiedText: 
 --- !u!210 &2203158302893463126
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -298,6 +300,27 @@ SortingGroup:
   m_SortingLayerID: -1700887817
   m_SortingLayer: 5
   m_SortingOrder: 0
+--- !u!95 &7016056927897358422
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6357761201898173532}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2aa95145de540634da8a1b85a229a116, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6569386387464926303
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,13 +331,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2814236002497464231}
   - component: {fileID: 6369155485776711348}
+  - component: {fileID: 8588088644530606246}
   m_Layer: 0
-  m_Name: Turtle_shadow (1)
+  m_Name: Turtle_shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2814236002497464231
 Transform:
   m_ObjectHideFlags: 0
@@ -326,7 +350,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 8624289186033464613}
   m_Father: {fileID: 6357761201898173535}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -376,9 +401,30 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.69, y: 1.46}
+  m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8588088644530606246
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6569386387464926303}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2aa95145de540634da8a1b85a229a116, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

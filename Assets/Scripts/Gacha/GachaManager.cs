@@ -129,7 +129,7 @@ public class GachaManager : MonoBehaviour
                 transitionScreen.SetActive(true);
 
                 // creates a temp fish for display
-                GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;
+                GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;                             
 
                 // add record in fish history
                 FishHistoryRecord newRecord = f.gameObject.AddComponent<FishHistoryRecord>();
@@ -150,6 +150,12 @@ public class GachaManager : MonoBehaviour
 
                 tempDisplayFish.transform.localPosition = new Vector3(0, 0, -3);
                 tempDisplayFish.transform.localScale = new Vector3(1.05f, 1.5f, 1.5f);
+
+                // if turtle adjust size and disable animation
+                if (newFish.fishBreed == "Turtle")
+                {
+                    tempDisplayFish.transform.localScale = new Vector3(0.33f, 0.4714286f, 0.4714286f);
+                }
 
                 transitionScreen.GetComponent<TransitionScript>().displayFish = tempDisplayFish;
 

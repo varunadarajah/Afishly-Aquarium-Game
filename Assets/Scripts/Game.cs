@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Game : MonoBehaviour
@@ -27,6 +28,9 @@ public class Game : MonoBehaviour
     public ExpandScript expandData;
 
     public BackgroundButtonManager bg;
+
+    public AudioSource bgMusic;
+    public Slider musicVolumeSlider;
 
     // Start is called before the first frame update
     void Start()
@@ -180,6 +184,10 @@ public class Game : MonoBehaviour
 
             // load background
             bg.currentBackground = data.currentBg;
+
+            // load music volume
+            bgMusic.volume = data.musicVolume;
+            musicVolumeSlider.value = bgMusic.volume;
         }
     }
 
