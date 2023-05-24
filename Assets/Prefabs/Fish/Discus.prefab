@@ -270,7 +270,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishBreed: Discus
   fishName: Discus
-  dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
   colorSprite: {fileID: 459791299280213828}
@@ -279,7 +278,7 @@ MonoBehaviour:
   fishSize: 67
   fishBackgroundSize: 15
   rarity: 15
-  sellPrice: 100
+  sellPrice: 500
   speed: 0.22
   isMovingRight: 1
   minY: 0

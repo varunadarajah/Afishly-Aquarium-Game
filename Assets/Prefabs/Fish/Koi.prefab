@@ -186,7 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishBreed: Koi
   fishName: Koi
-  dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
   colorSprite: {fileID: 4248203998568334039}
@@ -195,7 +194,7 @@ MonoBehaviour:
   fishSize: 75
   fishBackgroundSize: 15
   rarity: 30
-  sellPrice: 100
+  sellPrice: 500
   speed: 0.14
   isMovingRight: 1
   minY: 0

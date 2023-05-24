@@ -186,7 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishBreed: Cichlid
   fishName: Cichlid
-  dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
   colorSprite: {fileID: 7993302334038013404}
@@ -195,8 +194,8 @@ MonoBehaviour:
   fishSize: 67
   fishBackgroundSize: 15
   rarity: 15
-  sellPrice: 100
-  speed: 0.2
+  sellPrice: 1000
+  speed: 0.19
   isMovingRight: 1
   minY: 0
   verticalSpeed: 0.05

@@ -14,11 +14,11 @@ public class SellFishButton : MonoBehaviour
         fishPage = GameObject.Find("FishViewPage");
     }
 
-    void OnMouseDown()
+    public void OpenSellFishBox()
     {
         GameObject newSellBox = Instantiate(sellBox, fishPage.transform);
         newSellBox.GetComponent<SellBox>().fishNameText.text = box.fish.fishName;
-        newSellBox.GetComponent<SellBox>().priceText.text = box.fish.sellPrice + " <sprite name=\"Pearl\">";
+        newSellBox.GetComponent<SellBox>().priceText.text = "For " + box.fish.sellPrice + " <sprite name=\"Pearl\">";
         newSellBox.GetComponent<SellBox>().box = box;
     }
 }

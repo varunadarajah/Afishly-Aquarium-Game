@@ -270,7 +270,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishBreed: Arowana
   fishName: Arowana
-  dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
   colorSprite: {fileID: 1191078162027797061}
@@ -279,7 +278,7 @@ MonoBehaviour:
   fishSize: 74
   fishBackgroundSize: 15
   rarity: 15
-  sellPrice: 100
+  sellPrice: 1000
   speed: 0.13
   isMovingRight: 1
   minY: 0

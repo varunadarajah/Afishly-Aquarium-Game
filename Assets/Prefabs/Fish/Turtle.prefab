@@ -271,7 +271,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishBreed: Turtle
   fishName: Turtle
-  dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
   colorSprite: {fileID: 2345521228445760925}
@@ -280,7 +279,7 @@ MonoBehaviour:
   fishSize: 23
   fishBackgroundSize: 8
   rarity: 4
-  sellPrice: 100
+  sellPrice: 50000
   speed: 0.1
   isMovingRight: 1
   minY: 0

@@ -186,7 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishBreed: Tetra
   fishName: Tetra
-  dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
   colorSprite: {fileID: 8085618989195328103}
@@ -195,7 +194,7 @@ MonoBehaviour:
   fishSize: 60
   fishBackgroundSize: 15
   rarity: 40
-  sellPrice: 100
+  sellPrice: 200
   speed: 0.25
   isMovingRight: 1
   minY: 0
