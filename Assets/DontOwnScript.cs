@@ -7,29 +7,37 @@ public class DontOwnScript : MonoBehaviour
 {
     private FishViewManager fishViewManager;
     public TMP_Text textObject;
+    public BuyButton buyButton;
 
     private void Update()
     {
         fishViewManager = FindObjectOfType<FishViewManager>();
 
-        if (fishViewManager != null)
+        if (fishViewManager != null && buyButton != null && buyButton.fishUnlockDataArray != null)
         {
-            int ownedCount = fishViewManager.ownedCount;
+            bool anyFishFound = false;
 
-            if (ownedCount == 0)
+            foreach (FishUnlockData fishUnlockData in buyButton.fishUnlockDataArray)
             {
-                textObject.gameObject.SetActive(true); 
-                // Debug.Log(ownedCount);
+                if (fishUnlockData.isFound)
+                {
+                    anyFishFound = true;
+                    break;
+                }
+            }
+
+            if (anyFishFound && fishViewManager.ownedCount == 0)
+            {
+                textObject.gameObject.SetActive(true);
             }
             else
             {
                 textObject.gameObject.SetActive(false);
-                // Debug.Log(ownedCount + "False");
             }
         }
         else
         {
-            Debug.LogWarning("FishViewManager not found in the scene.");
+            Debug.LogWarning("FishViewManager or BuyButton or fishUnlockDataArray not found.");
         }
     }
 }

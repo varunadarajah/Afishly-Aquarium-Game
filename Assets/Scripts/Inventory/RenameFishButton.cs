@@ -14,7 +14,7 @@ public class RenameFishButton : MonoBehaviour
         fishPage = GameObject.Find("FishViewPage");
     }
 
-    void OnMouseDown()
+    public void openRenameBox()
     {
         GameObject newRenameBox = Instantiate(renameBox, fishPage.transform);
         newRenameBox.GetComponent<RenameBox>().box = box;

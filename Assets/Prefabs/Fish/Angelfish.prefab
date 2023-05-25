@@ -102,22 +102,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishBreed: Angelfish
   fishName: Angelfish
-  dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
   colorSprite: {fileID: 2461043381486517573}
   fishShadow: {fileID: 8066718571466335622}
   shadowStrengh: 0.45
   fishSize: 67
-  rarity: 15
-  sellPrice: 100
-  speed: 0
+  fishBackgroundSize: 15
+  rarity: 11
+  sellPrice: 1500
+  speed: 0.21
   isMovingRight: 1
   minY: 0
   verticalSpeed: 0.05
   random: {fileID: 0}
   LTR: {fileID: 0}
   RTL: {fileID: 0}
+  copiedText: 
 --- !u!210 &5805354914072731006
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -229,7 +230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &885860452035759107
 Transform:
   m_ObjectHideFlags: 0

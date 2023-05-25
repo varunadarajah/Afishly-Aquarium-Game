@@ -100,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4226873291938793951
 Transform:
   m_ObjectHideFlags: 0
@@ -277,15 +277,17 @@ MonoBehaviour:
   fishShadow: {fileID: 6222531247414984822}
   shadowStrengh: 0.45
   fishSize: 60
+  fishBackgroundSize: 15
   rarity: 40
   sellPrice: 100
-  speed: 0
+  speed: 0.2
   isMovingRight: 1
   minY: 0
   verticalSpeed: 0.05
   random: {fileID: 0}
   LTR: {fileID: 0}
   RTL: {fileID: 0}
+  copiedText: 
 --- !u!210 &4081406828547501320
 SortingGroup:
   m_ObjectHideFlags: 0

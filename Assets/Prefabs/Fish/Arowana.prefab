@@ -100,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1326721469247320781
 Transform:
   m_ObjectHideFlags: 0
@@ -270,22 +270,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishBreed: Arowana
   fishName: Arowana
-  dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
   colorSprite: {fileID: 1191078162027797061}
   fishShadow: {fileID: 8872052300021718046}
   shadowStrengh: 0.45
   fishSize: 74
+  fishBackgroundSize: 15
   rarity: 15
-  sellPrice: 100
-  speed: 0
+  sellPrice: 1000
+  speed: 0.13
   isMovingRight: 1
   minY: 0
   verticalSpeed: 0.05
   random: {fileID: 0}
   LTR: {fileID: 0}
   RTL: {fileID: 0}
+  copiedText: 
 --- !u!210 &1496854862385667475
 SortingGroup:
   m_ObjectHideFlags: 0

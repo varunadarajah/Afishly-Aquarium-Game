@@ -106,6 +106,7 @@ public class ExpandScript : MonoBehaviour
             expandLevelDescription.text = "Lv 2 Freshwater Tank\nCurrent: 15 max fish";
             expandUpgradeValue.text = "15 > 20 max fish";
             game.pearls -= 10000;
+            pearlCost = 20000;
             return true;
         }
         return false;
@@ -121,6 +122,7 @@ public class ExpandScript : MonoBehaviour
             expandLevelDescription.text = "Lv 3 Freshwater Tank\nCurrent: 20 max fish";
             expandUpgradeValue.text = "20 > 25 max fish";
             game.pearls -= 20000;
+            pearlCost = 30000;
             //close menu
             return true;
         }

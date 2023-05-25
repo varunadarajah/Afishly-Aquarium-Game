@@ -30,6 +30,7 @@ public class GachaManager : MonoBehaviour
     public Button button;
     public int clickCount;
 
+    public GameObject buyButtonObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -124,12 +125,13 @@ public class GachaManager : MonoBehaviour
                 game.pearls -= selectedBox.cost;
                 Fish newFish = selectedBox.OpenBox();
                 Fish f = Instantiate(newFish, FishParentObject.transform);
+                f.setDate();
                 game.fishInventory.Add(f);
 
                 transitionScreen.SetActive(true);
 
                 // creates a temp fish for display
-                GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;
+                GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;                             
 
                 // add record in fish history
                 FishHistoryRecord newRecord = f.gameObject.AddComponent<FishHistoryRecord>();
@@ -151,9 +153,25 @@ public class GachaManager : MonoBehaviour
                 tempDisplayFish.transform.localPosition = new Vector3(0, 0, -3);
                 tempDisplayFish.transform.localScale = new Vector3(1.05f, 1.5f, 1.5f);
 
+                // if turtle adjust size and disable animation
+                if (newFish.fishBreed == "Turtle")
+                {
+                    tempDisplayFish.transform.localScale = new Vector3(0.33f, 0.4714286f, 0.4714286f);
+                }
+
                 transitionScreen.GetComponent<TransitionScript>().displayFish = tempDisplayFish;
 
                 StartCoroutine(FadeInTransitionScreen());
+                Button buyButton = buyButtonObject.GetComponent<Button>();
+                if (buyButton != null)
+                {
+                buyButton.enabled = false; // Disable the collider
+                Debug.Log("Button disabled for " + buyButtonObject.name);
+                }
+                else
+                {
+                 Debug.LogWarning("Target object does not have a button!");
+                }
             }
         }
     }

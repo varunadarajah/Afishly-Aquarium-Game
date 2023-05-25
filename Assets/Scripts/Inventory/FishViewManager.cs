@@ -55,7 +55,9 @@ public class FishViewManager : MonoBehaviour
             }
         }
 
-        breedText.text = breedName;        
+        breedText.text = breedName;
+
+        filter.sortAsc();
     }
 
     public void SellFish(Fish f)

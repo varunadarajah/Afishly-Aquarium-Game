@@ -7,7 +7,7 @@ public class BackgroundButtonManager : MonoBehaviour
     public BackgroundManager bm;
     public List<GameObject> selectedSprites;
 
-    public int currentBackground = 9;
+    public int currentBackground = 0;
 
     // Start is called before the first frame update
     void Start()

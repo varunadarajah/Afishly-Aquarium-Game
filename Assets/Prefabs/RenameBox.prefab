@@ -705,7 +705,7 @@ SortingGroup:
   m_GameObject: {fileID: 2538300199165271032}
   m_Enabled: 1
   m_SortingLayerID: -2138463879
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 1
 --- !u!1 &2538300199507476477
 GameObject:
@@ -852,7 +852,7 @@ SortingGroup:
   m_GameObject: {fileID: 2538300199507476477}
   m_Enabled: 1
   m_SortingLayerID: -2138463879
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 1
 --- !u!1 &2538300199519223446
 GameObject:
@@ -1175,7 +1175,7 @@ RectTransform:
   m_GameObject: {fileID: 3705288543435602552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -372.00003}
-  m_LocalScale: {x: 11.287799, y: 3.597397, z: 4.1639566}
+  m_LocalScale: {x: 18.31, y: 3.597397, z: 4.1639566}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5989197753026685044}

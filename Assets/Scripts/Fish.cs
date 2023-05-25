@@ -8,7 +8,7 @@ public class Fish : MonoBehaviour
 {
     public string fishBreed;
     public string fishName;
-    public string dateObtained;
+    public System.DateTime dateObtained;
     public Color fishColor = Color.clear;
     public bool isActive = false;
 
@@ -18,11 +18,14 @@ public class Fish : MonoBehaviour
     public float shadowStrengh = 0.83f; // 1f is full opacity, 0 is transparent
 
     public float fishSize = 60f;
+    public float fishBackgroundSize = 15f;
 
     public int rarity;
     public int sellPrice;
 
-    public float speed;
+    float currentSpeed = 0.2f;
+    public float speed = 0.2f;
+    float backgroundSpeed = 0.1f;
     public bool isMovingRight = true;
 
     // Add new variables for the fish's vertical movement
@@ -36,8 +39,6 @@ public class Fish : MonoBehaviour
 
     public string copiedText = "";
 
-
-
     public void Start()
     {
         GameObject Random = GameObject.Find("RandomButton");
@@ -45,9 +46,8 @@ public class Fish : MonoBehaviour
         GameObject LeftToRight = GameObject.Find("LeftToRightButton");
         LTR = LeftToRight.GetComponent<LeftToRightScript>();
         GameObject RightToLeft = GameObject.Find("RightToLeftButton");
-        RTL = RightToLeft.GetComponent<RightToLeftScript>();
-
-        setDate();
+        RTL = RightToLeft.GetComponent<RightToLeftScript>();        
+                
         setFishColor();
         setInitialSpeed();
         setFishPos();
@@ -67,6 +67,19 @@ public class Fish : MonoBehaviour
 
         Vector3 pos = transform.position;
 
+        if(fishBreed == "Turtle")
+        {
+            if(isActive)
+            {
+                gameObject.GetComponent<Animator>().enabled = true;
+                fishShadow.gameObject.GetComponent<Animator>().enabled = true;
+            } else
+            {
+                gameObject.GetComponent<Animator>().enabled = false;
+                fishShadow.gameObject.GetComponent<Animator>().enabled = false;
+            }
+        }
+
         if (random == true)
         {
             //change the fishes orientation when it hits the right edge of the screen
@@ -78,23 +91,21 @@ public class Fish : MonoBehaviour
                 //randomizes whether the fish will come back in the background or front of screen
                 if (direction == 1)
                 {
-                    speed = .1f;
+                    currentSpeed = backgroundSpeed;
                     pos.y = randomYBack;
-                    transform.localScale = new Vector3(15f, 15, 1f);
+                    transform.localScale = new Vector3(fishBackgroundSize, fishBackgroundSize, 1f);
                     gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
                     gameObject.GetComponent<SortingGroup>().sortingLayerName = "Background";
                     colorSprite.sortingLayerName = "Background";
-                    fishShadow.gameObject.SetActive(true); // enable shadow gameobject
                 }
                 else if (direction == 0)
                 {
-                    speed = .2f;
+                    currentSpeed = speed;
                     pos.y = randomYFront;
                     transform.localScale = new Vector3(fishSize, fishSize, 1f);
                     gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Fish";
                     gameObject.GetComponent<SortingGroup>().sortingLayerName = "Fish";
                     colorSprite.sortingLayerName = "Fish";
-                    fishShadow.gameObject.SetActive(false); // disable shadow gameobject
                 }
             }
             //change the fishes orientation if it hits the left edge of the screen
@@ -105,23 +116,21 @@ public class Fish : MonoBehaviour
                 int direction = Random.Range(0, 2);
                 if (direction == 1)
                 {
-                    speed = .1f;
+                    currentSpeed = backgroundSpeed;
                     pos.y = randomYBack;
-                    transform.localScale = new Vector3(15f, 15, 1f);
+                    transform.localScale = new Vector3(fishBackgroundSize, fishBackgroundSize, 1f);
                     gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
                     gameObject.GetComponent<SortingGroup>().sortingLayerName = "Background";
                     colorSprite.sortingLayerName = "Background";
-                    fishShadow.gameObject.SetActive(true); // enable shadow gameobject
                 }
                 else if (direction == 0)
                 {
-                    speed = .2f;
+                    currentSpeed = speed;
                     pos.y = randomYFront;
                     transform.localScale = new Vector3(fishSize, fishSize, 1f);
                     gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Fish";
                     gameObject.GetComponent<SortingGroup>().sortingLayerName = "Fish";
                     colorSprite.sortingLayerName = "Fish";
-                    fishShadow.gameObject.SetActive(false); // disable shadow gameobject
                 }
             }
         }
@@ -131,25 +140,23 @@ public class Fish : MonoBehaviour
             {
                 isMovingRight = false;
                 transform.rotation = Quaternion.Euler(0, 0, 0);
-                speed = .1f;
+                currentSpeed = backgroundSpeed;
                 pos.y = randomYBack;
-                transform.localScale = new Vector3(15f, 15, 1f);
+                transform.localScale = new Vector3(fishBackgroundSize, fishBackgroundSize, 1f);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
                 gameObject.GetComponent<SortingGroup>().sortingLayerName = "Background";
                 colorSprite.sortingLayerName = "Background";
-                fishShadow.gameObject.SetActive(true); // enable shadow gameobject
             }
             else if (pos.x < -1)
             {
                 isMovingRight = true;
                 transform.rotation = Quaternion.Euler(0, 180, 0);
-                speed = .2f;
+                currentSpeed = speed;
                 pos.y = randomYFront;
                 transform.localScale = new Vector3(fishSize, fishSize, 1f);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Fish";
                 gameObject.GetComponent<SortingGroup>().sortingLayerName = "Fish";
                 colorSprite.sortingLayerName = "Fish";
-                fishShadow.gameObject.SetActive(false); // disable shadow gameobject
             }
         }
         if (RTL.RightToLeft == true)
@@ -158,36 +165,34 @@ public class Fish : MonoBehaviour
             {
                 isMovingRight = false;
                 transform.rotation = Quaternion.Euler(0, 0, 0);
-                speed = .2f;
+                currentSpeed = speed;
                 pos.y = randomYFront;
                 transform.localScale = new Vector3(fishSize, fishSize, 1f);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Fish";
                 gameObject.GetComponent<SortingGroup>().sortingLayerName = "Fish";
                 colorSprite.sortingLayerName = "Fish";
-                fishShadow.gameObject.SetActive(false); // disable shadow gameobject
             }
             else if (pos.x < -1)
             {
                 isMovingRight = true;
                 transform.rotation = Quaternion.Euler(0, 180, 0);
-                speed = .1f;
+                currentSpeed = backgroundSpeed;
                 pos.y = randomYBack;
-                transform.localScale = new Vector3(15f, 15, 1f);
+                transform.localScale = new Vector3(fishBackgroundSize, fishBackgroundSize, 1f);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
                 gameObject.GetComponent<SortingGroup>().sortingLayerName = "Background";
                 colorSprite.sortingLayerName = "Background";
-                fishShadow.gameObject.SetActive(true); // enable shadow gameobject
 
             }
         }
 
         if (isMovingRight)
         {
-            pos.x += speed * Time.deltaTime;
+            pos.x += currentSpeed * Time.deltaTime;
         }
         else
         {
-            pos.x -= speed * Time.deltaTime;
+            pos.x -= currentSpeed * Time.deltaTime;
         }
 
 
@@ -231,19 +236,19 @@ public class Fish : MonoBehaviour
 
     public void setDate()
     {
-        dateObtained = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yy");
+        dateObtained = System.DateTime.UtcNow.ToLocalTime();
     }
 
     public void setFishColor()
     {
-        if (fishColor == Color.clear)
+          if (fishColor == Color.clear)
         {
-            Text textObject = GameObject.Find("ColorText")?.GetComponent<Text>();
-            // HSBSliderScript hsbSliderScript = FindObjectOfType<HSBSliderScript>();
-            string hexColor = textObject.text;
-            // check if hexColor is a valid hex string
-            Color newColor;
-            if (ColorUtility.TryParseHtmlString(hexColor, out newColor))
+        InputField hexInput = GameObject.Find("HexInput")?.GetComponent<InputField>();
+        // HSBSliderScript hsbSliderScript = FindObjectOfType<HSBSliderScript>();
+        string hexColor = hexInput.text;
+         // check if hexColor is a valid hex string
+        Color newColor;
+        if (ColorUtility.TryParseHtmlString(hexColor, out newColor))
             {
                 fishColor = newColor;
             }
@@ -263,7 +268,8 @@ public class Fish : MonoBehaviour
 
     public void setInitialSpeed()
     {
-        speed = .2f;
+        currentSpeed = speed;
+        backgroundSpeed = speed / 2;
     }
 
     public void setFishPos()

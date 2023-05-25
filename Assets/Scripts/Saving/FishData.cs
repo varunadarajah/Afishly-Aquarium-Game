@@ -15,7 +15,7 @@ public class FishData
     {
         fishBreed = f.fishBreed;
         fishName = f.fishName;
-        dateObtained = f.dateObtained;
+        dateObtained = f.dateObtained.ToString("G");
         fishColor = f.fishColor;
         isActive = f.isActive;
     }

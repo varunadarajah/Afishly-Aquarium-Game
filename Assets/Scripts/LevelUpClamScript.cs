@@ -123,6 +123,7 @@ public class LevelUpClamScript : MonoBehaviour
             clamLevelDescription.text = "Lv 2 Regular Clam\n5 " + spriteAsset + "per tap";
             clamUpgradeValue.text = "5 > 10 " + spriteAsset + "per tap";
             game.pearls -= 100;
+            pearlCost = 1000;
             return true;
         }
         return false;
@@ -130,14 +131,15 @@ public class LevelUpClamScript : MonoBehaviour
 
     public bool purchaseLevel3()
     {
-        if (game.pearls >= 500 && currentLevel == 2 && accessLevel3)
+        if (game.pearls >= 1000 && currentLevel == 2 && accessLevel3)
         {
             IncreaseLevel();
             clamUpgrade.pearlPerTap += 5;
             accessLevel3 = false;
             clamLevelDescription.text = "Lv 3 Regular Clam\n10 " + spriteAsset + "per tap";
             clamUpgradeValue.text = "10 > 20 " + spriteAsset + "per tap";
-            game.pearls -= 500;
+            game.pearls -= 1000;
+            pearlCost = 2000;
             //close menu
             return true;
         }
@@ -154,6 +156,7 @@ public class LevelUpClamScript : MonoBehaviour
         clamLevelDescription.text = "Lv 4 Regular Clam\n20 " + spriteAsset + "per tap";
         clamUpgradeValue.text = "20 > 50 " + spriteAsset + "per tap";
         game.pearls -= 2000;
+        pearlCost = 5000;
 
         return true;
     }

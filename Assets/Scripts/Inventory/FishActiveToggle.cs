@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FishActiveToggle : MonoBehaviour
 {
@@ -32,16 +33,11 @@ public class FishActiveToggle : MonoBehaviour
     {
         if (isActive)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = activeSlider;
+            gameObject.GetComponent<Image>().sprite = activeSlider;
         } else
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = inactiveSlider;
+            gameObject.GetComponent<Image>().sprite = inactiveSlider;
         }
-    }
-
-    void OnMouseDown()
-    {
-        toggleActive();
     }
 
     public void toggleActive()

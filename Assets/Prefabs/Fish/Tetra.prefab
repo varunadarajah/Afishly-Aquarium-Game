@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2816638534662894303
 Transform:
   m_ObjectHideFlags: 0
@@ -186,22 +186,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishBreed: Tetra
   fishName: Tetra
-  dateObtained: 
   fishColor: {r: 0, g: 0, b: 0, a: 0}
   isActive: 0
   colorSprite: {fileID: 8085618989195328103}
   fishShadow: {fileID: 8183071637452647693}
   shadowStrengh: 0.45
   fishSize: 60
+  fishBackgroundSize: 15
   rarity: 40
-  sellPrice: 100
-  speed: 0
+  sellPrice: 200
+  speed: 0.25
   isMovingRight: 1
   minY: 0
   verticalSpeed: 0.05
   random: {fileID: 0}
   LTR: {fileID: 0}
   RTL: {fileID: 0}
+  copiedText: 
 --- !u!210 &5632354199014248876
 SortingGroup:
   m_ObjectHideFlags: 0
