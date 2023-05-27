@@ -8,16 +8,17 @@ public class FishActiveToggle : MonoBehaviour
     public bool isActive = true;
     public FishView box;
 
-    public Sprite activeSlider;
-    public Sprite inactiveSlider;
+    public Sprite activeSprite;
+    public Sprite inactiveSprite;
 
-    public GameObject sliderCircle;
+    // public GameObject sliderCircle;
 
     // Start is called before the first frame update
     void Start()
     {
         isActive = box.fish.isActive;
         
+        /*
         if(isActive)
         {
             sliderCircleOn();
@@ -26,6 +27,7 @@ public class FishActiveToggle : MonoBehaviour
         {
             sliderCircleOff();
         }
+        */
     }
 
     // Update is called once per frame
@@ -33,10 +35,10 @@ public class FishActiveToggle : MonoBehaviour
     {
         if (isActive)
         {
-            gameObject.GetComponent<Image>().sprite = activeSlider;
+            gameObject.GetComponent<Image>().sprite = activeSprite;
         } else
         {
-            gameObject.GetComponent<Image>().sprite = inactiveSlider;
+            gameObject.GetComponent<Image>().sprite = inactiveSprite;
         }
     }
 
@@ -51,7 +53,7 @@ public class FishActiveToggle : MonoBehaviour
             box.fm.game.activeFish.Remove(box.fish);
 
             // move slider circle
-            sliderCircleOff();
+            //sliderCircleOff();
         }
         else if (box.fm.game.activeFish.Count < box.fm.game.activeFishMax)
         {
@@ -62,7 +64,7 @@ public class FishActiveToggle : MonoBehaviour
             box.fm.game.activeFish.Add(box.fish);
 
             // move slider circle
-            sliderCircleOn();
+            //sliderCircleOn();
         }
 
         // sorting
@@ -70,6 +72,7 @@ public class FishActiveToggle : MonoBehaviour
         filter.SelectTab(filter.curSelectedTab);
     }
 
+    /*
     void sliderCircleOff()
     {
         Vector3 startPosition = sliderCircle.transform.localPosition;
@@ -83,4 +86,5 @@ public class FishActiveToggle : MonoBehaviour
         Vector3 targetPosition = new Vector3((float)0.568, startPosition.y, startPosition.z);
         sliderCircle.transform.localPosition = targetPosition;
     }
+    */
 }

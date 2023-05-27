@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class FishViewManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class FishViewManager : MonoBehaviour
     public List<GameObject> boxes;
 
     public FilterBoxManager filter; // sorting after updates
+
+    public ScrollRect scroll; // to reset scroll position
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +60,8 @@ public class FishViewManager : MonoBehaviour
 
         breedText.text = breedName;
 
-        filter.sortAsc();
+        filter.setDefaultTab();
+        scroll.verticalNormalizedPosition = 0f;
     }
 
     public void SellFish(Fish f)

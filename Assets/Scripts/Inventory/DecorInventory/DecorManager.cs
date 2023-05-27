@@ -46,8 +46,8 @@ public class DecorManager : MonoBehaviour
         inactiveCount++;
     }
 
-    private void Update()
+    public int getTotalCount()
     {
-        
+        return activeCount + inactiveCount;
     }
 }

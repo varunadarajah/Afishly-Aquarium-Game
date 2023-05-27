@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class RollHistoryManager : MonoBehaviour
+public class FishHistoryManager : MonoBehaviour
 {
     public Game game;
 
@@ -10,10 +11,13 @@ public class RollHistoryManager : MonoBehaviour
     public GameObject RollHistoryBox; // prefab
     public GameObject boxesObj; // gameobject to where boxes are instantiated
 
+    public ScrollRect scroll; // to reset scroll position
+
     public void display()
     {
         Clear();
         addHistoryBoxes();
+        scroll.verticalNormalizedPosition = 0f;
     }
 
     public void addHistoryBoxes()
@@ -21,7 +25,7 @@ public class RollHistoryManager : MonoBehaviour
         foreach (FishHistoryRecord f in game.fishHistory)
         {
             GameObject newBox = Instantiate(RollHistoryBox, boxesObj.transform);
-            newBox.GetComponent<RollHistoryBox>().record = f;
+            newBox.GetComponent<FishHistoryBox>().record = f;
             boxes.Add(newBox);
         }
     }

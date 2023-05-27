@@ -39,8 +39,6 @@ public class Fish : MonoBehaviour
 
     public string copiedText = "";
 
-
-
     public void Start()
     {
         GameObject Random = GameObject.Find("RandomButton");
@@ -243,14 +241,14 @@ public class Fish : MonoBehaviour
 
     public void setFishColor()
     {
-        if (fishColor == Color.clear)
+          if (fishColor == Color.clear)
         {
-            Text textObject = GameObject.Find("ColorText")?.GetComponent<Text>();
-            // HSBSliderScript hsbSliderScript = FindObjectOfType<HSBSliderScript>();
-            string hexColor = textObject.text;
-            // check if hexColor is a valid hex string
-            Color newColor;
-            if (ColorUtility.TryParseHtmlString(hexColor, out newColor))
+        InputField hexInput = GameObject.Find("HexInput")?.GetComponent<InputField>();
+        // HSBSliderScript hsbSliderScript = FindObjectOfType<HSBSliderScript>();
+        string hexColor = hexInput.text;
+         // check if hexColor is a valid hex string
+        Color newColor;
+        if (ColorUtility.TryParseHtmlString(hexColor, out newColor))
             {
                 fishColor = newColor;
             }

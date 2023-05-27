@@ -10,10 +10,23 @@ public class BuyButton : MonoBehaviour
 
     public FishUnlockData[] fishUnlockDataArray;
 
+    void Start()
+    {
+        LoadFishUnlockData();
+    }
+
+    void OnApplicationQuit()
+    {
+        SaveFishUnlockData();
+    }
+
     void OnMouseDown()
     {
         gm.buyBox();
-
+    }
+    
+    void Update() 
+    { 
         foreach (FishUnlockData fishUnlockData in fishUnlockDataArray)
         {
             UnlockFish(fishUnlockData);
@@ -26,18 +39,46 @@ public class BuyButton : MonoBehaviour
 
         if (fishLocked != null && !fishUnlockData.toggle.activeSelf)
         {
-            fishUnlockData.toggle.SetActive(true);
-            fishUnlockData.lockedToggle.SetActive(false);
-            fishUnlockData.text.text = fishUnlockData.unlockFishName;
+            fishUnlockData.isFound = true;
+        }
 
-            if (fishUnlockData.objectToEnableCollider != null)
+            if (fishUnlockData.isFound)
             {
-                Button colliderToEnable = fishUnlockData.objectToEnableCollider.GetComponent<Button>();
-                if (colliderToEnable != null)
+                fishUnlockData.toggle.SetActive(true);
+                fishUnlockData.lockedToggle.SetActive(false);
+                fishUnlockData.text.text = fishUnlockData.unlockFishName;
+
+                if (fishUnlockData.objectToEnableCollider != null)
                 {
-                    colliderToEnable.enabled = true;
+                    Button colliderToEnable = fishUnlockData.objectToEnableCollider.GetComponent<Button>();
+                    if (colliderToEnable != null)
+                    {
+                        colliderToEnable.enabled = true;
+                    }
                 }
             }
+    }
+
+    private void SaveFishUnlockData()
+    {
+        for (int i = 0; i < fishUnlockDataArray.Length; i++)
+        {
+            string key = "FishUnlockData_" + i.ToString();
+            int value = fishUnlockDataArray[i].isFound ? 1 : 0;
+            PlayerPrefs.SetInt(key, value);
+        }
+
+        PlayerPrefs.Save();
+    }
+
+    private void LoadFishUnlockData()
+    {
+        for (int i = 0; i < fishUnlockDataArray.Length; i++)
+        {
+            string key = "FishUnlockData_" + i.ToString();
+            int value = PlayerPrefs.GetInt(key, 0);
+            fishUnlockDataArray[i].isFound = value == 1;
         }
     }
 }
+

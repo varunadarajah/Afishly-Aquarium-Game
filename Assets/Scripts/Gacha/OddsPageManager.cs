@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class OddsPageManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class OddsPageManager : MonoBehaviour
     public List<GameObject> oddsBoxes;
     public GameObject FishOddsBox; // prefab
     public GameObject oddsBoxesObj; // gameobject to where boxes are instantiated
+
+    public ScrollRect scroll;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,16 @@ public class OddsPageManager : MonoBehaviour
         gachaSprite.sprite = gm.selectedBox.gameObject.GetComponent<SpriteRenderer>().sprite;
         gachaName.text = gm.selectedBox.gachaName;
         addFishOddsBoxes();
+
+        scroll.verticalNormalizedPosition = 0f;
+        if (oddsBoxes.Count < 5)
+        {
+            scroll.enabled = false;
+        }
+        else
+        {
+            scroll.enabled = true;
+        }
     }
 
     public void addFishOddsBoxes()
@@ -47,7 +60,7 @@ public class OddsPageManager : MonoBehaviour
             GameObject newBox = Instantiate(FishOddsBox, oddsBoxesObj.transform);
             newBox.GetComponent<FishOddsBox>().fish = f;
             oddsBoxes.Add(newBox);
-        }
+        }       
     }
 
     void Reset()

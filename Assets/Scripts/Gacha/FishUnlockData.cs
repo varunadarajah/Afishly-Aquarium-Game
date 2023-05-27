@@ -12,4 +12,5 @@ public class FishUnlockData
     public GameObject lockedToggle;
     public TMP_Text text;
     public GameObject objectToEnableCollider;
+    public bool isFound = false;
 }

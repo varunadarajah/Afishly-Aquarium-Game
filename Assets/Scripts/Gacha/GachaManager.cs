@@ -30,6 +30,7 @@ public class GachaManager : MonoBehaviour
     public Button button;
     public int clickCount;
 
+    public GameObject buyButtonObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -130,17 +131,7 @@ public class GachaManager : MonoBehaviour
                 transitionScreen.SetActive(true);
 
                 // creates a temp fish for display
-                GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;                             
-
-                // add record in fish history
-                FishHistoryRecord newRecord = f.gameObject.AddComponent<FishHistoryRecord>();
-                newRecord.fishName = f.fishBreed;
-                newRecord.fishDate = System.DateTime.UtcNow.ToLocalTime().ToString("MM/dd/yy");
-                newRecord.fishSprite = f.gameObject.GetComponent<SpriteRenderer>().sprite;
-                newRecord.fishSilhouette = f.gameObject.GetComponentsInChildren<SpriteRenderer>()[1].sprite;
-                newRecord.fishColor = tempDisplayFish.GetComponent<Fish>().colorSprite.color;
-                newRecord.gachaSprite = selectedBox.GetComponent<SpriteRenderer>().sprite;
-                game.fishHistory.Add(newRecord);
+                GameObject tempDisplayFish = Instantiate(newFish, transitionScreen.transform).gameObject;                
 
                 tempDisplayFish.GetComponent<Fish>().setFishColor();
                 tempDisplayFish.SetActive(false);
@@ -159,8 +150,27 @@ public class GachaManager : MonoBehaviour
                 }
 
                 transitionScreen.GetComponent<TransitionScript>().displayFish = tempDisplayFish;
+                transitionScreen.GetComponent<TransitionScript>().fishName.GetComponent<TMP_Text>().text = f.fishBreed;
+
+                // add record in fish history
+                FishHistoryRecord newRecord = new FishHistoryRecord();
+                newRecord.fishBreed = f.fishBreed;
+                newRecord.fishDate = f.dateObtained.ToString("MM/d/yyyy");
+                newRecord.fishColor = tempDisplayFish.GetComponent<Fish>().colorSprite.color;
+                newRecord.gacha = selectedBox.gachaName;
+                game.fishHistory.Add(newRecord);
 
                 StartCoroutine(FadeInTransitionScreen());
+                Button buyButton = buyButtonObject.GetComponent<Button>();
+                if (buyButton != null)
+                {
+                buyButton.enabled = false; // Disable the collider
+                Debug.Log("Button disabled for " + buyButtonObject.name);
+                }
+                else
+                {
+                 Debug.LogWarning("Target object does not have a button!");
+                }
             }
         }
     }
@@ -171,9 +181,10 @@ public class GachaManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        GameObject displayFish = transitionScreen.GetComponent<TransitionScript>().displayFish;
+        GameObject displayFish = transitionScreen.GetComponent<TransitionScript>().displayFish;        
         displayFish.SetActive(true);
-        
+        transitionScreen.GetComponent<TransitionScript>().fishName.SetActive(true);
+
         //Color fishOutlineColor = displayFish.GetComponent<SpriteRenderer>().color;
         //Color fishColor = displayFish.GetComponent<Fish>().colorSprite.color;
         //fishColor.a = 0f;
