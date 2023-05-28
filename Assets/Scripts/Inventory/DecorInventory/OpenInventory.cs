@@ -12,7 +12,7 @@ public class OpenInventory : MonoBehaviour
     public float slideDuration = 1f;
 
     private bool isMoving = false;
-   private void OnMouseDown()
+    private void OnMouseDown()
     {
         if (!isMoving)
         {

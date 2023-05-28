@@ -14,6 +14,7 @@ public class PlantRock : MonoBehaviour
     private new Renderer renderer; // Use 'new' keyword to hide the inherited member 'Component.renderer'
 
     private static GameObject prevClickedObject;
+    
 
     public bool canMove = false;
     public bool isPickedUp = false;
@@ -26,7 +27,7 @@ public class PlantRock : MonoBehaviour
     private Collider2D parentCollider;
 
     public GameObject objectToFlash; // Reference to the object to flash
-    public float flashInterval = 0.5f; // Interval between flashes in seconds
+    public float flashInterval = 1.5f; // Interval between flashes in seconds
 
     private bool isFlashing = false;
 
@@ -36,7 +37,6 @@ public class PlantRock : MonoBehaviour
     {
         parentTransform = transform.parent; // Get the parent transform
         parentCollider = transform.parent.GetComponent<Collider2D>();
-        objectToFlash.SetActive(false);
     }
 
     private void Update()
@@ -89,17 +89,37 @@ public class PlantRock : MonoBehaviour
 
     private IEnumerator FlashCoroutine()
     {
-        isFlashing = true;
+    isFlashing = true;
 
-        while (true)
-        {
-            // toggle the visibility of the object
-            objectToFlash.SetActive(!objectToFlash.activeSelf);
+    Color originalColor = objectToFlash.GetComponent<Renderer>().material.color;
+    float targetAlpha = originalColor.a == 0f ? 1f : 0f;
+    float currentAlpha = originalColor.a;
+    float elapsedTime = 0f;
 
-            // wait for the specified flash interval
-            yield return new WaitForSeconds(flashInterval);
-        }
+    while (elapsedTime < flashInterval)
+    {
+        elapsedTime += Time.deltaTime;
+
+        // Calculate the new alpha value based on the elapsed time
+        float t = elapsedTime / flashInterval;
+        float newAlpha = Mathf.Lerp(currentAlpha, targetAlpha, t);
+
+        // Update the alpha value of the object's color
+        Color newColor = originalColor;
+        newColor.a = newAlpha;
+        objectToFlash.GetComponent<Renderer>().material.color = newColor;
+
+        yield return null;
     }
+
+    // Ensure the final alpha value is set correctly
+    Color finalColor = originalColor;
+    finalColor.a = targetAlpha;
+    objectToFlash.GetComponent<Renderer>().material.color = finalColor;
+
+    isFlashing = false;
+}
+
 
     private bool CheckFlashingCondition()
     {
@@ -134,24 +154,25 @@ public class PlantRock : MonoBehaviour
                     prevPlantRock.selected = false;
                     Renderer prevRenderer = prevClickedObject.GetComponent<Renderer>();
                     Color prevColor = prevRenderer.material.color;
-                    prevColor.a = prevPlantRock.selected ? 0.3f : 1f;
+                    prevColor.a = prevPlantRock.selected ? 0f : 1f;
                     prevRenderer.material.color = prevColor;
                 }
 
                 // sets the transparency of the current object to half
                 selected = true;
                 Color color = renderer.material.color;
-                color.a = selected ? 0.3f : 1f;
+                color.a = selected ? 0f : 1f;
                 renderer.material.color = color;
 
                 // sets the current object as the previously clicked object
                 prevClickedObject = gameObject;
+                objectToFlash.SetActive(true);
 
                 if (canMove)
                 {
                     isPickedUp = true;
                     mousePositionOffset = parentTransform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+                    objectToFlash.SetActive(false);
                     // disables colliders of all other prefabs
                     PlantRock[] plantRocks = FindObjectsOfType<PlantRock>();
                     foreach (PlantRock plantRock in plantRocks)
