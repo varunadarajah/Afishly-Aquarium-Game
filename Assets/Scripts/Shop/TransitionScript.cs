@@ -10,6 +10,7 @@ public class TransitionScript : MonoBehaviour
     private bool inputEnabled;
 
     public GameObject displayFish;
+    public GameObject fishName;
     public GameObject continueText;
 
     public GameObject buyButtonObject;
@@ -39,6 +40,7 @@ public class TransitionScript : MonoBehaviour
         Destroy(displayFish);
         Renderer screenRenderer = transitionScreen.GetComponent<Renderer>();
         continueText.SetActive(false);
+        fishName.SetActive(false);
         transitionScreen.SetActive(false);
         screenMaterial = screenRenderer.material;
         screenColor = screenMaterial.color;

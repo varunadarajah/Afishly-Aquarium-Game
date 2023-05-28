@@ -10,7 +10,7 @@ public class SaveData
     public int expandLevel = 1;
 
     public List<FishData> fishInventory = new List<FishData>();
-    public List<FishHistoryData> fishHistory = new List<FishHistoryData>();
+    public List<FishHistoryRecord> fishHistory = new List<FishHistoryRecord>();
 
     public List<DecorData> plants = new List<DecorData>();
     public List<DecorData> rocks = new List<DecorData>();
@@ -39,10 +39,7 @@ public class SaveData
         }
 
         // fish history
-        foreach (FishHistoryRecord r in g.fishHistory)
-        {
-
-        }
+        fishHistory = g.fishHistory;
 
         // plant data
         foreach (DecorManager d in g.decorInventory.plants)

@@ -17,7 +17,7 @@ public class FilterBoxManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setDefaultTab();
+        //setDefaultTab();
     }
 
     public void setDefaultTab()
@@ -59,11 +59,6 @@ public class FilterBoxManager : MonoBehaviour
         }
     }
 
-     public void UnselectTab()
-    {
-        ResetTabs();
-    }
-
     public void ResetTabs()
     {
         foreach(FilterTabButton t in tabButtons)
@@ -78,6 +73,11 @@ public class FilterBoxManager : MonoBehaviour
     public void ResetSort()
     {
         fm.SetFish(fm.breedText.text);
+    }
+
+    public void sort()
+    {
+        SelectTab(curSelectedTab);
     }
 
     public void sortAsc()
@@ -105,6 +105,7 @@ public class FilterBoxManager : MonoBehaviour
 
     public void sortDesc()
     {
+        sortAsc();
         List<DateTime> dateList = new List<DateTime>();
 
         foreach (GameObject box in fm.boxes)
@@ -128,7 +129,7 @@ public class FilterBoxManager : MonoBehaviour
 
     public void sortActive()
     {
-        ResetSort();
+        sortAsc();
         foreach (GameObject box in fm.boxes)
         {
             if(box.GetComponent<FishView>().fish.isActive)
@@ -140,19 +141,19 @@ public class FilterBoxManager : MonoBehaviour
 
     public void sortInvactive()
     {
-        ResetSort();
+        sortAsc();
         foreach (GameObject box in fm.boxes)
         {
-            if (!box.GetComponent<FishView>().fish.isActive)
+            if (box.GetComponent<FishView>().fish.isActive)
             {
-                box.transform.SetAsFirstSibling();
+                box.transform.SetAsLastSibling();
             }
         }
     }
 
     public void sortAlphabetical()
     {
-        ResetSort();
+        sortAsc();
         List<string> nameList = new List<string>();
 
         foreach (GameObject box in fm.boxes)

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 976514021677713014}
   - component: {fileID: 976514021677713009}
   m_Layer: 5
-  m_Name: FishName
+  m_Name: FishBreed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,13 +339,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb771b88b2e685542bbddaa99569e0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  record: {fileID: 0}
-  fishName: {fileID: 976514021677713014}
+  game: {fileID: 0}
+  record:
+    fishBreed: 
+    fishDate: 
+    gacha: 
+    fishColor: {r: 0, g: 0, b: 0, a: 0}
+  fishBreed: {fileID: 976514021677713014}
   fishDate: {fileID: 3070214987068351716}
   fishColor: {fileID: 1274260682555332379}
   fishSprite: {fileID: 976514021863198002}
   fishSilhouette: {fileID: 976514022401906825}
   gachaBoxSprite: {fileID: 3070214987051051105}
+  vanillaBoxSprite: {fileID: 21300000, guid: 7ce2bb35be970a54e81254cc748ce7ce, type: 3}
+  turtleBoxSprite: {fileID: 21300000, guid: 44f5fcfdae4583540b993e3af6e7e4b0, type: 3}
 --- !u!1 &976514022401906827
 GameObject:
   m_ObjectHideFlags: 0

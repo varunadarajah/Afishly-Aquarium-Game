@@ -105,6 +105,9 @@ public class Game : MonoBehaviour
                 }
             }
 
+            // load fish history
+            fishHistory = data.fishHistory;
+
             // load plant data
             foreach (DecorData decorData in data.plants)
             {

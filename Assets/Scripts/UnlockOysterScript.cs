@@ -125,7 +125,7 @@ public class UnlockOysterScript : MonoBehaviour
             IncreaseLevel();
             accessLevel1 = false;
             oysterLevelDescription.text = "Lv 1 Oyster\n100 " + spriteAsset + "per tap";
-            oysterUpgradeValue.text = "100 > 250 " + spriteAsset + "per tap\n1 minute cooldown";
+            oysterUpgradeValue.text = "100 > 250 " + spriteAsset + "per bunch\n1 minute cooldown";
             game.pearls -= 1000;
             pearlCost = 5000;
             return true; 
@@ -140,7 +140,7 @@ public class UnlockOysterScript : MonoBehaviour
             IncreaseLevel();
             accessLevel2 = false;
             oysterLevelDescription.text = "Lv 2 Oyster\n250 " + spriteAsset + "per tap";
-            oysterUpgradeValue.text = "250 > 500 " + spriteAsset + "per tap\n1 minute cooldown";
+            oysterUpgradeValue.text = "250 > 500 " + spriteAsset + "per bunch\n1 minute cooldown";
             game.pearls -= 5000;
             pearlCost = 10000;
             return true; 
@@ -155,7 +155,7 @@ public class UnlockOysterScript : MonoBehaviour
             IncreaseLevel();
             accessLevel3 = false;
             oysterLevelDescription.text = "Lv 3 Oyster\n500 " + spriteAsset + "per tap";
-            oysterUpgradeValue.text = "500 > 1000 " + spriteAsset + "per tap\n1 minute cooldown";
+            oysterUpgradeValue.text = "500 > 1000 " + spriteAsset + "per bunch\n1 minute cooldown";
             game.pearls -= 10000;
             pearlCost = 30000;
             //close menu
@@ -171,7 +171,7 @@ public class UnlockOysterScript : MonoBehaviour
             IncreaseLevel();
             accessMaxLevel = false;
             oysterLevelText.text = "Max";
-            oysterLevelDescription.text = "Lv Max Oyster\n1000 " + spriteAsset + "per tap";
+            oysterLevelDescription.text = "Lv Max Oyster\n1000 " + spriteAsset + "per bunch";
             oysterUpgradeValue.text = "1 minute cooldown";
             game.pearls -= 30000;
             return true;

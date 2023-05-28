@@ -11,8 +11,12 @@ public class ExitEditMode : MonoBehaviour
     public GameObject MoveDecorScreen;
     public GameObject parentObject;
     private PlantRock plantRock;
+    public GameObject disabledTab;
+    public GameObject fishTab;
+
 
     public GameObject invalidText;
+    public GameObject exitText;
     private bool redOutlineActive = false;
 
     private void Start()
@@ -55,8 +59,11 @@ public class ExitEditMode : MonoBehaviour
         else
         {
             invalidText.SetActive(false);
+            exitText.SetActive(false);
             editModeButtons.SetActive(false);
             homeButton.SetActive(true);
+            fishTab.SetActive(true);
+            disabledTab.SetActive(false);
 
             // deselect all child objects
             PlantRock[] plantRocks = parentObject.GetComponentsInChildren<PlantRock>(true);

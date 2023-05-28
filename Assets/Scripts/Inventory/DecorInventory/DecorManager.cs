@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class DecorManager : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class DecorManager : MonoBehaviour
     public GameObject decorPrefab;
 
     public GameObject decorPlace; // where to place decor in hierarchy
+
+    public GameObject GrayLayer;
+    public Button button;
 
     public int inactiveCount = 0;
     public int activeCount = 0;
@@ -23,6 +28,12 @@ public class DecorManager : MonoBehaviour
     public void buy()
     {
         inactiveCount++;
+    }
+
+    public void Update()
+    {
+        button.interactable = inactiveCount > 0;
+        GrayLayer.SetActive(!button.interactable);
     }
 
     public void placeDecor()
@@ -46,8 +57,8 @@ public class DecorManager : MonoBehaviour
         inactiveCount++;
     }
 
-    private void Update()
+    public int getTotalCount()
     {
-        
+        return activeCount + inactiveCount;
     }
 }
