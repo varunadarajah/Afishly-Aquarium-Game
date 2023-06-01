@@ -689,6 +689,11 @@ MonoBehaviour:
   accessLevel2: 1
   accessLevel3: 1
   accessLevel4: 1
+  accessLevel5: 1
+  accessLevel6: 1
+  accessLevel7: 1
+  accessLevel8: 1
+  accessLevel9: 1
   accessMaxLevel: 1
   GrayLayer: {fileID: 1300577482}
   button: {fileID: 21755680}
@@ -13150,7 +13155,7 @@ MonoBehaviour:
   GrayLayer: {fileID: 80382994}
   buyText: {fileID: 571839887}
   button: {fileID: 528966429}
-  cost: 500
+  cost: 1000
 --- !u!114 &528966426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23995,7 +24000,7 @@ MonoBehaviour:
   GrayLayer: {fileID: 431681221}
   buyText: {fileID: 891138625}
   button: {fileID: 732164444}
-  cost: 500
+  cost: 1000
 --- !u!114 &732164444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27228,7 +27233,7 @@ MonoBehaviour:
   GrayLayer: {fileID: 2021907896}
   buyText: {fileID: 2023713198}
   button: {fileID: 870104638}
-  cost: 750
+  cost: 1000
 --- !u!114 &870104635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31507,7 +31512,7 @@ MonoBehaviour:
   GrayLayer: {fileID: 1265016436}
   buyText: {fileID: 827262056}
   button: {fileID: 981348008}
-  cost: 750
+  cost: 1000
 --- !u!114 &981348005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39224,6 +39229,12 @@ MonoBehaviour:
   expandUpgradeValue: {fileID: 148633287}
   accessLevel2: 1
   accessLevel3: 1
+  accessLevel4: 1
+  accessLevel5: 1
+  accessLevel6: 1
+  accessLevel7: 1
+  accessLevel8: 1
+  accessLevel9: 1
   accessMaxLevel: 1
   GrayLayer: {fileID: 955300116}
   button: {fileID: 1299727071}
