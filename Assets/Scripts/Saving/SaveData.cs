@@ -19,9 +19,13 @@ public class SaveData
 
     public MolluskData molluskData;
 
+    public List<int> boxLevels = new List<int>();
+
     public int currentBg = 0;
 
-    public float musicVolume = 0.1f;
+    public float musicVolume = 0.4f;
+
+    public float sfxVolume = 0.6f;    
 
     public SaveData(Game g)
     {
@@ -65,10 +69,19 @@ public class SaveData
         // mollusk data
         molluskData = new MolluskData(g.clamData);
 
+        // box level data
+        foreach(GachaBox b in g.gacha.boxes)
+        {
+            boxLevels.Add(b.boxLevel);
+        }
+
         // background
         currentBg = g.bg.currentBackground;
 
         // music volume
         musicVolume = g.bgMusic.volume;
+
+        // sfx volume
+        sfxVolume = g.sfxVolumeSlider.value;
     }
 }

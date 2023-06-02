@@ -15,6 +15,12 @@ public class UnlockOysterScript : MonoBehaviour
     bool accessLevel1 = true;
     bool accessLevel2 = true;
     bool accessLevel3 = true;
+    bool accessLevel4 = true;
+    bool accessLevel5 = true;
+    bool accessLevel6 = true;
+    bool accessLevel7 = true;
+    bool accessLevel8 = true;
+    bool accessLevel9 = true;
     bool accessMaxLevel = true;
 
 
@@ -26,6 +32,9 @@ public class UnlockOysterScript : MonoBehaviour
 
     public LevelUpClamScript levelUpClam;
     public UnlockMusselScript unlockMussel;
+
+    //  buy sound effect
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -41,13 +50,25 @@ public class UnlockOysterScript : MonoBehaviour
         int clamCount = levelUpClam.clickCount;
         int musselCount = unlockMussel.clickCount;
     if (currentLevel == 0) 
-        pearlCost = 1000;
+        pearlCost = 5000;
     else if (currentLevel == 1)
         pearlCost = 5000;
     else if (currentLevel == 2)
         pearlCost = 10000;
     else if (currentLevel == 3)
-        pearlCost = 30000;
+        pearlCost = 20000;
+    else if (currentLevel == 4)
+        pearlCost = 25000;
+    else if (currentLevel == 5)
+        pearlCost = 50000;
+    else if (currentLevel == 6)
+        pearlCost = 125000;
+    else if (currentLevel == 7)
+        pearlCost = 250000;
+    else if (currentLevel == 8)
+        pearlCost = 375000;
+    else if (currentLevel == 9)
+        pearlCost = 500000;
 
     button.interactable = game.pearls >= pearlCost;
     GrayLayer.SetActive(!button.interactable);
@@ -57,10 +78,10 @@ public class UnlockOysterScript : MonoBehaviour
         if (accessMaxLevel)
         {
             if (currentLevel == 0) {
-                oysterLevelText.text = $"Unlock Up\n{pearlCost} {spriteAsset}";
+                oysterLevelText.text = $"Unlock\n{pearlCost} {spriteAsset}";
+            } else {
+                oysterLevelText.text = $"Level Up\n{pearlCost} {spriteAsset}";
             }
-
-            oysterLevelText.text = $"Level Up\n{pearlCost} {spriteAsset}";
         }
         else
         {
@@ -76,7 +97,7 @@ public class UnlockOysterScript : MonoBehaviour
     }
 
     public void OnMouseDown()
-{
+    {
         if (button.interactable == true)
         {
             clickCount++;
@@ -106,6 +127,36 @@ public class UnlockOysterScript : MonoBehaviour
             }
             else if (currentLevel == 3)
             {
+                purchaseLevel4();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 4)
+            {
+                purchaseLevel5();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 5)
+            {
+                purchaseLevel6();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 6)
+            {
+                purchaseLevel7();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 7)
+            {
+                purchaseLevel8();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 8)
+            {
+                purchaseLevel9();
+                clickCount = 0; 
+            }
+             else if (currentLevel == 9)
+            {
                 purchaseMaxLevel();
                 clickCount = 0; 
             }
@@ -115,18 +166,23 @@ public class UnlockOysterScript : MonoBehaviour
     void IncreaseLevel()
     {
         currentLevel++; // Increase the level of the object by 1
+
+        if (game.gameLoaded)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+        }
     }
 
     bool unlockOyster()
     {
-        if(game.pearls >= 1000 && currentLevel == 0 && accessLevel1)
+        if(game.pearls >= 5000 && currentLevel == 0 && accessLevel1)
         {
             ToggleObject();
             IncreaseLevel();
             accessLevel1 = false;
-            oysterLevelDescription.text = "Lv 1 Oyster\n100 " + spriteAsset + "per tap";
-            oysterUpgradeValue.text = "100 > 250 " + spriteAsset + "per bunch\n1 minute cooldown";
-            game.pearls -= 1000;
+            oysterLevelDescription.text = "Lv 1 Oyster\n1500 " + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "1500 > 3000 " + spriteAsset + "per bunch\n20 minute cooldown";
+            game.pearls -= 5000;
             pearlCost = 5000;
             return true; 
         }
@@ -139,8 +195,8 @@ public class UnlockOysterScript : MonoBehaviour
         {
             IncreaseLevel();
             accessLevel2 = false;
-            oysterLevelDescription.text = "Lv 2 Oyster\n250 " + spriteAsset + "per tap";
-            oysterUpgradeValue.text = "250 > 500 " + spriteAsset + "per bunch\n1 minute cooldown";
+            oysterLevelDescription.text = "Lv 2 Oyster\n3000 " + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "3000 > 4500 " + spriteAsset + "per bunch\n20 minute cooldown";
             game.pearls -= 5000;
             pearlCost = 10000;
             return true; 
@@ -154,11 +210,99 @@ public class UnlockOysterScript : MonoBehaviour
         {
             IncreaseLevel();
             accessLevel3 = false;
-            oysterLevelDescription.text = "Lv 3 Oyster\n500 " + spriteAsset + "per tap";
-            oysterUpgradeValue.text = "500 > 1000 " + spriteAsset + "per bunch\n1 minute cooldown";
+            oysterLevelDescription.text = "Lv 3 Oyster\n4500 " + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "4500 > 6000 " + spriteAsset + "per bunch\n20 minute cooldown";
             game.pearls -= 10000;
-            pearlCost = 30000;
-            //close menu
+            pearlCost = 20000;
+            return true;
+        }
+        return false;
+    }
+    bool purchaseLevel4()
+    {
+        if(game.pearls >= 20000 && currentLevel == 3 && accessLevel4)
+        {
+            IncreaseLevel();
+            accessLevel4 = false;
+            oysterLevelDescription.text = "Lv 4 Oyster\n6000" + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "6000 > 7500 " + spriteAsset + "per bunch\n20 minute cooldown";
+            game.pearls -= 20000;
+            pearlCost = 25000;
+            return true;
+        }
+        return false;
+    }
+
+    bool purchaseLevel5()
+    {
+        if(game.pearls >= 25000 && currentLevel == 4 && accessLevel5)
+        {
+            IncreaseLevel();
+            accessLevel5 = false;
+            oysterLevelDescription.text = "Lv 5 Oyster\n7500 " + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "7500 > 10500 " + spriteAsset + "per bunch\n20 minute cooldown";
+            game.pearls -= 25000;
+            pearlCost = 50000;
+            return true;
+        }
+        return false;
+    }
+
+    bool purchaseLevel6()
+    {
+        if(game.pearls >= 50000 && currentLevel == 5 && accessLevel6)
+        {
+            IncreaseLevel();
+            accessLevel6 = false;
+            oysterLevelDescription.text = "Lv 6 Oyster\n10500 " + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "10500 > 14000 " + spriteAsset + "per bunch\n20 minute cooldown";
+            game.pearls -= 50000;
+            pearlCost = 125000;
+            return true;
+        }
+        return false;
+    }
+
+    bool purchaseLevel7()
+    {
+        if(game.pearls >= 125000 && currentLevel == 6 && accessLevel7)
+        {
+            IncreaseLevel();
+            accessLevel7 = false;
+            oysterLevelDescription.text = "Lv 7 Oyster\n14000 " + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "14000 > 18000 " + spriteAsset + "per bunch\n20 minute cooldown";
+            game.pearls -= 125000;
+            pearlCost = 250000;
+            return true;
+        }
+        return false;
+    }
+
+    bool purchaseLevel8()
+    {
+        if(game.pearls >= 250000 && currentLevel == 7 && accessLevel8)
+        {
+            IncreaseLevel();
+            accessLevel8 = false;
+            oysterLevelDescription.text = "Lv 8 Oyster\n18000 " + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "18000 > 26000 " + spriteAsset + "per bunch\n20 minute cooldown";
+            game.pearls -= 250000;
+            pearlCost = 375000;
+            return true;
+        }
+        return false;
+    }
+
+    bool purchaseLevel9()
+    {
+        if(game.pearls >= 375000 && currentLevel == 8 && accessLevel9)
+        {
+            IncreaseLevel();
+            accessLevel9 = false;
+            oysterLevelDescription.text = "Lv 9 Oyster\n26000 " + spriteAsset + "per tap";
+            oysterUpgradeValue.text = "26000 > 36000 " + spriteAsset + "per bunch\n20 minute cooldown";
+            game.pearls -= 375000;
+            pearlCost = 500000;            
             return true;
         }
         return false;
@@ -166,14 +310,14 @@ public class UnlockOysterScript : MonoBehaviour
 
      bool purchaseMaxLevel()
     {
-        if(game.pearls >= 30000 && currentLevel == 3 && accessMaxLevel)
+        if(game.pearls >= 500000 && currentLevel == 9 && accessMaxLevel)
         {
             IncreaseLevel();
             accessMaxLevel = false;
             oysterLevelText.text = "Max";
-            oysterLevelDescription.text = "Lv Max Oyster\n1000 " + spriteAsset + "per bunch";
-            oysterUpgradeValue.text = "1 minute cooldown";
-            game.pearls -= 30000;
+            oysterLevelDescription.text = "Lv Max Oyster\n36000 " + spriteAsset + "per bunch";
+            oysterUpgradeValue.text = "20 minute cooldown";
+            game.pearls -= 500000;
             return true;
         }
         return false;

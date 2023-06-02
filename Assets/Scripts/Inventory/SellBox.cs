@@ -22,6 +22,7 @@ public class SellBox : MonoBehaviour
 
     public void noPress()
     {
+        box.fm.buttonSFX.Play();
         Destroy(gameObject);
     }
 

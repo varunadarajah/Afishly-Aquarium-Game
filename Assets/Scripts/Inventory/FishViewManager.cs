@@ -24,6 +24,12 @@ public class FishViewManager : MonoBehaviour
 
     public ScrollRect scroll; // to reset scroll position
 
+    //  sell sound effect
+    public AudioSource audioSource;
+
+    //  button effect
+    public AudioSource buttonSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +72,8 @@ public class FishViewManager : MonoBehaviour
 
     public void SellFish(Fish f)
     {
+        audioSource.PlayOneShot(audioSource.clip);
+
         string breedName = f.fishBreed;
         game.pearls += f.sellPrice;
         game.fishInventory.Remove(f);

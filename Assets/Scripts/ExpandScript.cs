@@ -14,6 +14,12 @@ public class ExpandScript : MonoBehaviour
     string spriteAsset = "<sprite name=\"Pearl\">";
     public bool accessLevel2 = true;
     public bool accessLevel3 = true;
+    public bool accessLevel4 = true;
+    public bool accessLevel5 = true;
+    public bool accessLevel6 = true;
+    public bool accessLevel7 = true;
+    public bool accessLevel8 = true;
+    public bool accessLevel9 = true;
     public bool accessMaxLevel = true;
 
     public GameObject GrayLayer;
@@ -21,6 +27,9 @@ public class ExpandScript : MonoBehaviour
     public Button button;
     public int pearlCost;
     private int clickCount;
+
+    //  buy sound effect
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +41,23 @@ public class ExpandScript : MonoBehaviour
     void Update()
     {
     if (currentLevel == 1)
-        pearlCost = 10000;
+        pearlCost = 4500;
     else if (currentLevel == 2)
-        pearlCost = 20000;
+        pearlCost = 9000;
     else if (currentLevel == 3)
-        pearlCost = 30000;
+        pearlCost = 15000;
+    else if (currentLevel == 4)
+        pearlCost = 21250;
+    else if (currentLevel == 5)
+        pearlCost = 32500;
+    else if (currentLevel == 6)
+        pearlCost = 45000;
+    else if (currentLevel == 7)
+        pearlCost = 70000;
+    else if (currentLevel == 8)
+        pearlCost = 125000;
+    else if (currentLevel == 9)
+        pearlCost = 250000;
 
     button.interactable = game.pearls >= pearlCost;
     GrayLayer.SetActive(!button.interactable);
@@ -73,7 +94,7 @@ public class ExpandScript : MonoBehaviour
         }
         else if (clickCount == 2)
         {
-            if (currentLevel == 1)
+             if (currentLevel == 1)
             {
                 purchaseLevel2();
                 clickCount = 0; 
@@ -88,25 +109,60 @@ public class ExpandScript : MonoBehaviour
                 purchaseLevel4();
                 clickCount = 0; 
             }
+            else if (currentLevel == 4)
+            {
+                purchaseLevel5();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 5)
+            {
+                purchaseLevel6();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 6)
+            {
+                purchaseLevel7();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 7)
+            {
+                purchaseLevel8();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 8)
+            {
+                purchaseLevel9();
+                clickCount = 0; 
+            }
+            else if (currentLevel == 9)
+            {
+                purchaseMaxLevel();
+                clickCount = 0; 
+            }
         }
     }
 
     public void IncreaseLevel()
     {
         currentLevel++; // Increase the level of the object by 1
+
+        if (game.gameLoaded)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+        }
     }
 
     public bool purchaseLevel2()
     {
-        if (game.pearls >= 10000 && currentLevel == 1 && accessLevel2)
+        if (game.pearls >= 4500 && currentLevel == 1 && accessLevel2)
         {
             IncreaseLevel();
-            game.activeFishMax = 15;
+            game.activeFishMax = 10;
             accessLevel2 = false;
-            expandLevelDescription.text = "Lv 2 Freshwater Tank\nCurrent: 15 max fish";
-            expandUpgradeValue.text = "15 > 20 max fish";
-            game.pearls -= 10000;
-            pearlCost = 20000;
+            expandLevelDescription.text = "Lv 2 Freshwater Tank\nCurrent: 10 max fish";
+            expandUpgradeValue.text = "10 > 15 max fish";
+            game.pearls -= 4500;
+            pearlCost = 9000;
             return true;
         }
         return false;
@@ -114,32 +170,127 @@ public class ExpandScript : MonoBehaviour
 
     public bool purchaseLevel3()
     {
-        if (game.pearls >= 20000 && currentLevel == 2 && accessLevel3)
+        if (game.pearls >= 9000 && currentLevel == 2 && accessLevel3)
         {
             IncreaseLevel();
-            game.activeFishMax = 20;
+            game.activeFishMax = 15;
             accessLevel3 = false;
-            expandLevelDescription.text = "Lv 3 Freshwater Tank\nCurrent: 20 max fish";
-            expandUpgradeValue.text = "20 > 25 max fish";
-            game.pearls -= 20000;
-            pearlCost = 30000;
-            //close menu
+            expandLevelDescription.text = "Lv 3 Freshwater Tank\nCurrent: 15 max fish";
+            expandUpgradeValue.text = "15 > 20 max fish";
+            game.pearls -= 9000;
+            pearlCost = 15000;
             return true;
         }
         return false;
     }
 
-   public bool purchaseLevel4()
+    public bool purchaseLevel4()
     {
-    if (game.pearls >= 30000 && currentLevel == 3 && accessMaxLevel)
+        if (game.pearls >= 15000 && currentLevel == 3 && accessLevel4)
+        {
+            IncreaseLevel();
+            game.activeFishMax = 20;
+            accessLevel4 = false;
+            expandLevelDescription.text = "Lv 4 Freshwater Tank\nCurrent: 20 max fish";
+            expandUpgradeValue.text = "20 > 25 max fish";
+            game.pearls -= 15000;
+            pearlCost = 21250;
+            return true;
+        }
+        return false;
+    }
+
+    public bool purchaseLevel5()
+    {
+        if (game.pearls >= 21250 && currentLevel == 4 && accessLevel5)
+        {
+            IncreaseLevel();
+            game.activeFishMax = 25;
+            accessLevel5 = false;
+            expandLevelDescription.text = "Lv 5 Freshwater Tank\nCurrent: 25 max fish";
+            expandUpgradeValue.text = "25 > 30 max fish";
+            game.pearls -= 21250;
+            pearlCost = 32500;
+            return true;
+        }
+        return false;
+    }
+
+    public bool purchaseLevel6()
+    {
+        if (game.pearls >= 32500 && currentLevel == 5 && accessLevel6)
+        {
+            IncreaseLevel();
+            game.activeFishMax = 30;
+            accessLevel6 = false;
+            expandLevelDescription.text = "Lv 6 Freshwater Tank\nCurrent: 30 max fish";
+            expandUpgradeValue.text = "30 > 35 max fish";
+            game.pearls -= 32500;
+            pearlCost = 45000;
+            return true;
+        }
+        return false;
+    }
+
+    public bool purchaseLevel7()
+    {
+        if (game.pearls >= 45000 && currentLevel == 6 && accessLevel7)
+        {
+            IncreaseLevel();
+            game.activeFishMax = 35;
+            accessLevel7 = false;
+            expandLevelDescription.text = "Lv 7 Freshwater Tank\nCurrent: 35 max fish";
+            expandUpgradeValue.text = "35 > 40 max fish";
+            game.pearls -= 45000;
+            pearlCost = 70000;
+            return true;
+        }
+        return false;
+    }
+
+    public bool purchaseLevel8()
+    {
+        if (game.pearls >= 70000 && currentLevel == 7 && accessLevel8)
+        {
+            IncreaseLevel();
+            game.activeFishMax = 40;
+            accessLevel8 = false;
+            expandLevelDescription.text = "Lv 8 Freshwater Tank\nCurrent: 40 max fish";
+            expandUpgradeValue.text = "40 > 45 max fish";
+            game.pearls -= 70000;
+            pearlCost = 125000;
+            return true;
+        }
+        return false;
+    }
+
+    public bool purchaseLevel9()
+    {
+        if (game.pearls >= 125000 && currentLevel == 8 && accessLevel9)
+        {
+            IncreaseLevel();
+            game.activeFishMax = 45;
+            accessLevel9 = false;
+            expandLevelDescription.text = "Lv 9 Freshwater Tank\nCurrent: 45 max fish";
+            expandUpgradeValue.text = "45 > 50 max fish";
+            game.pearls -= 125000;
+            pearlCost = 250000;
+            return true;
+        }
+        return false;
+    }
+
+   public bool purchaseMaxLevel()
+    {
+    if (game.pearls >= 250000 && currentLevel == 9 && accessMaxLevel)
     {
         IncreaseLevel();
-        game.activeFishMax = 25;
+        game.activeFishMax = 50;
         accessMaxLevel = false;
         expandLevelText.text = "Max";
-        expandLevelDescription.text = "Lv Max Freshwater Tank\nCurrent: 25 max fish";
+        expandLevelDescription.text = "Lv Max Freshwater Tank\nCurrent: 50 max fish";
         expandUpgradeValue.text = "Max Level";
-        game.pearls -= 30000;
+        game.pearls -= 250000;
 
         return true;
     }

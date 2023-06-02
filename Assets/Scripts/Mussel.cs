@@ -42,21 +42,51 @@ public class Mussel : MonoBehaviour
         {
             yield return new WaitForSeconds(1f); // Wait for 1 second
 
-            int pearlsPerSecond = 5;
+            int pearlsPerSecond = 1;
 
             if (curr.currentLevel == 2)
             {
-                pearlsPerSecond = 10;
+                pearlsPerSecond = 2;
             }
 
             if (curr.currentLevel == 3)
             {
-                pearlsPerSecond = 20;
+                pearlsPerSecond = 3;
             }
 
-             if (curr.currentLevel == 4)
+            if (curr.currentLevel == 4)
             {
-                pearlsPerSecond = 30;
+                pearlsPerSecond = 4;
+            }
+
+            if (curr.currentLevel == 5)
+            {
+                pearlsPerSecond = 5;
+            }
+
+            if (curr.currentLevel == 6)
+            {
+                pearlsPerSecond = 7;
+            }
+
+            if (curr.currentLevel == 7)
+            {
+                pearlsPerSecond = 9;
+            }
+
+            if (curr.currentLevel == 8)
+            {
+                pearlsPerSecond = 12;
+            }
+
+            if (curr.currentLevel == 9)
+            {
+                pearlsPerSecond = 25;
+            }
+
+            if (curr.currentLevel == 10)
+            {
+                pearlsPerSecond = 50;
             }
 
             // Increase pearls in the other object by pearlsPerSecond

@@ -17,6 +17,9 @@ public class BuyDecor : MonoBehaviour
     public int cost;
     string spriteAsset = "<sprite name=\"Pearl\">";
 
+    //  buy sound effect
+    public AudioSource audioSource;
+
     void Update()
     {
         if (clickCount == 0) 
@@ -55,6 +58,8 @@ public class BuyDecor : MonoBehaviour
                 }
                 else if (clickCount == 2)
                 {
+                    audioSource.PlayOneShot(audioSource.clip);
+
                     game.pearls -= cost;
                     decor.buy();
                     clickCount = 0;

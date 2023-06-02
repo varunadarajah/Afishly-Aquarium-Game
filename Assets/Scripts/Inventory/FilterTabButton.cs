@@ -8,14 +8,21 @@ public class FilterTabButton : MonoBehaviour
     public FilterBoxManager tabs;
 
     public Image img;
+
+    //  button effect
+    public AudioSource buttonSFX;
     // Start is called before the first frame update
     void Start()
     {
-        
+        buttonSFX = GameObject.Find("ButtonSFX").GetComponent<AudioSource>();
     }
 
     void OnMouseDown()
     {
-        tabs.SelectTab(this);
+        if(tabs.curSelectedTab != this)
+        {
+            buttonSFX.Play();
+            tabs.SelectTab(this);
+        }        
     }
 }

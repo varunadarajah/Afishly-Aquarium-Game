@@ -5,11 +5,14 @@ using UnityEngine;
 public class OpenInventory : MonoBehaviour
 {
     public GameObject buttonToMove;
+    public GameObject pageCloser;
+    public GameObject fishTab;
+    public GameObject fishDisabled;
     public float targetYPosition;
     public float slideDuration = 1f;
 
     private bool isMoving = false;
-   private void OnMouseDown()
+    private void OnMouseDown()
     {
         if (!isMoving)
         {
@@ -21,6 +24,9 @@ public class OpenInventory : MonoBehaviour
     {
         isMoving = true;
         button.SetActive(true);
+        pageCloser.SetActive(true);
+        fishTab.SetActive(false);
+        fishDisabled.SetActive(true);
 
         Vector3 startPosition = button.transform.position;
         Vector3 targetPosition = new Vector3(startPosition.x, targetYPosition, startPosition.z);

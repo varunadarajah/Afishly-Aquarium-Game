@@ -15,6 +15,42 @@ public class StoreItem : MonoBehaviour
     public DecorManager Rock_2;
     public DecorManager Rock_3;
 
+    private Renderer buttonRenderer;
+    private Color originalColor;
+
+
+    private void Update()
+    {
+        bool anyChildSelected = false;
+
+        PlantRock[] allPlantRocks = parentObject.GetComponentsInChildren<PlantRock>(true);
+
+        foreach (PlantRock plantRock in allPlantRocks)
+        {
+            if (plantRock.selected)
+            {
+                anyChildSelected = true;
+                break;
+            }
+        }
+
+        if (anyChildSelected)
+        {
+            SetOpacity(1f);
+        }
+        else
+        {
+            SetOpacity(0f);
+        }
+    }
+
+    private void SetOpacity(float alpha)
+    {
+        Color color = buttonRenderer.material.color;
+        color.a = alpha;
+        buttonRenderer.material.color = color;
+    }
+
     private void Start()
     {
         // Initialize the decorManagers dictionary
@@ -25,6 +61,9 @@ public class StoreItem : MonoBehaviour
         decorManagers.Add("Rock_1(Clone)", Rock_1);
         decorManagers.Add("Rock_2(Clone)", Rock_2);
         decorManagers.Add("Rock_3(Clone)", Rock_3);
+
+        buttonRenderer = GetComponent<Renderer>();
+        originalColor = buttonRenderer.material.color;
     }
 
     private void OnMouseDown()

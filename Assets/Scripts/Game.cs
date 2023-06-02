@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using TMPro;
 
 public class Game : MonoBehaviour
@@ -27,10 +28,17 @@ public class Game : MonoBehaviour
     public LevelUpClamScript clamData;
     public ExpandScript expandData;
 
+    public GachaManager gacha;
+
     public BackgroundButtonManager bg;
 
     public AudioSource bgMusic;
     public Slider musicVolumeSlider;
+
+    public AudioMixer audioMixer;
+    public Slider sfxVolumeSlider;
+
+    public bool gameLoaded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -185,13 +193,35 @@ public class Game : MonoBehaviour
                 clamData.unlockOyster.OnMouseDown();
             }
 
+            // load box level data
+            for (int i = 0; i < data.boxLevels.Count; i++)
+            {
+                GachaBox box = gacha.boxes[i];
+                int boxLevel = data.boxLevels[i];
+
+                for(int j = 1; j < boxLevel; j++)
+                {
+                    box.levelUp();
+                }
+            }
+
             // load background
             bg.currentBackground = data.currentBg;
 
             // load music volume
             bgMusic.volume = data.musicVolume;
             musicVolumeSlider.value = bgMusic.volume;
+
+            // load sfx volume
+            sfxVolumeSlider.value = data.sfxVolume;
         }
+
+        gameLoaded = true;
+    }
+
+    public void setSfxVolume(float volume)
+    {
+        audioMixer.SetFloat("sfxVolume", Mathf.Log10(volume) * 20);
     }
 
     // when app is exited

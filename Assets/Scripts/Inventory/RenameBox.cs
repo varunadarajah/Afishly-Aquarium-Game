@@ -17,6 +17,8 @@ public class RenameBox : MonoBehaviour
 
     public void saveName()
     {
+        box.fm.buttonSFX.Play();
+
         string newName = inputField.text;
 
         if(newName.Length <= maxCharLength)

@@ -13,11 +13,20 @@ public class FishActiveToggle : MonoBehaviour
 
     // public GameObject sliderCircle;
 
+    // add fish sound
+    public AudioSource addFishSFX;
+
+    // remove fish sound
+    public AudioSource removeFishSFX;
+
     // Start is called before the first frame update
     void Start()
     {
         isActive = box.fish.isActive;
-        
+
+        addFishSFX = GameObject.Find("FishAddSFX").GetComponent<AudioSource>();
+        removeFishSFX = GameObject.Find("FishRemoveSFX").GetComponent<AudioSource>();
+
         /*
         if(isActive)
         {
@@ -46,6 +55,12 @@ public class FishActiveToggle : MonoBehaviour
     {
         if (isActive)
         {
+            if(removeFishSFX != null)
+            {
+                removeFishSFX.PlayOneShot(removeFishSFX.clip);
+            }
+            
+
             box.fish.isActive = false;
             box.fish.gameObject.SetActive(false);
             isActive = false;
@@ -57,6 +72,8 @@ public class FishActiveToggle : MonoBehaviour
         }
         else if (box.fm.game.activeFish.Count < box.fm.game.activeFishMax)
         {
+            addFishSFX.PlayOneShot(addFishSFX.clip);
+
             box.fish.isActive = true;
             box.fish.gameObject.SetActive(true);
             isActive = true;
