@@ -33,6 +33,9 @@ public class UnlockOysterScript : MonoBehaviour
     public LevelUpClamScript levelUpClam;
     public UnlockMusselScript unlockMussel;
 
+    //  buy sound effect
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -163,6 +166,11 @@ public class UnlockOysterScript : MonoBehaviour
     void IncreaseLevel()
     {
         currentLevel++; // Increase the level of the object by 1
+
+        if (game.gameLoaded)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+        }
     }
 
     bool unlockOyster()

@@ -22,7 +22,7 @@ public class TransitionScript : MonoBehaviour
 
     private IEnumerator EnableInputWithDelay()
     {
-        yield return new WaitForSeconds(2.0f); // Add a delay of 2 seconds
+        yield return new WaitForSeconds(1.6f); // Add a delay of 2 seconds
 
         inputEnabled = true;
     }

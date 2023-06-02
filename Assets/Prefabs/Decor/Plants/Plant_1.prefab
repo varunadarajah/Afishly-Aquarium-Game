@@ -449,6 +449,7 @@ MonoBehaviour:
   sideMaxHeight: 0
   objectToFlash: {fileID: 5049494105807759486}
   flashInterval: 0.7
+  buttonSFX: {fileID: 0}
 --- !u!95 &3753693599842776496
 Animator:
   serializedVersion: 5

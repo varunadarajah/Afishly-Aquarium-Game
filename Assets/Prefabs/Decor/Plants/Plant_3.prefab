@@ -117,6 +117,7 @@ MonoBehaviour:
   sideMaxHeight: 0
   objectToFlash: {fileID: 3094381255923872294}
   flashInterval: 0.7
+  buttonSFX: {fileID: 0}
 --- !u!70 &7376024613403961558
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

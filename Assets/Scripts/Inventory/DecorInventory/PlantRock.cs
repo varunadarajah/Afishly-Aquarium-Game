@@ -33,10 +33,15 @@ public class PlantRock : MonoBehaviour
 
     private Coroutine flashCoroutine; // store the reference to the flash coroutine
 
+    //  button effect
+    public AudioSource buttonSFX;
+
     private void Start()
     {
         parentTransform = transform.parent; // Get the parent transform
         parentCollider = transform.parent.GetComponent<Collider2D>();
+
+        buttonSFX = GameObject.Find("ButtonSFX").GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -138,6 +143,8 @@ public class PlantRock : MonoBehaviour
 
         if (objectToCheck != null && objectToCheck.activeSelf)
         {
+            buttonSFX.Play();
+
             if (selected && !canMove)
             {
                 // If already selected, deselect the object

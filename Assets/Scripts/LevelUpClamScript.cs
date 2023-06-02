@@ -32,6 +32,9 @@ public class LevelUpClamScript : MonoBehaviour
     public UnlockMusselScript unlockMussel;
     public UnlockOysterScript unlockOyster;
 
+    //  buy sound effect
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -151,6 +154,11 @@ public class LevelUpClamScript : MonoBehaviour
     public void IncreaseLevel()
     {
         currentLevel++; // Increase the level of the object by 1
+
+        if(game.gameLoaded)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+        }
     }
 
     public bool purchaseLevel2()
@@ -227,6 +235,7 @@ public class LevelUpClamScript : MonoBehaviour
         clamLevelDescription.text = "Lv 6 Regular Clam\n10 " + spriteAsset + "per tap";
         clamUpgradeValue.text = "10 > 15 " + spriteAsset + "per tap";
         game.pearls -= 10500;
+        pearlCost = 30000;
         return true;
     }
     return false;

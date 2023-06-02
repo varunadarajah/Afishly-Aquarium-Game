@@ -423,6 +423,7 @@ MonoBehaviour:
   sideMaxHeight: 0
   objectToFlash: {fileID: 4067388378373123041}
   flashInterval: 0.7
+  buttonSFX: {fileID: 0}
 --- !u!60 &3340546909941599763
 PolygonCollider2D:
   m_ObjectHideFlags: 0

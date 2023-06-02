@@ -10,6 +10,8 @@ public class Oyster : MonoBehaviour
     private bool isCooldown = false; // Flag to track cooldown state
     public GameObject objectToToggle;
 
+    public AudioSource buttonSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +25,11 @@ public class Oyster : MonoBehaviour
     }
 
     void OnMouseDown()
-    {
+    {      
         if (!isCooldown) // Check if not in cooldown state
         {
+            buttonSFX.Play();
+
             if (curr.currentLevel == 1) {
                 pearlPerTap = 1500;
             }

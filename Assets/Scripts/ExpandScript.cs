@@ -28,6 +28,9 @@ public class ExpandScript : MonoBehaviour
     public int pearlCost;
     private int clickCount;
 
+    //  buy sound effect
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -142,6 +145,11 @@ public class ExpandScript : MonoBehaviour
     public void IncreaseLevel()
     {
         currentLevel++; // Increase the level of the object by 1
+
+        if (game.gameLoaded)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+        }
     }
 
     public bool purchaseLevel2()

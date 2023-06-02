@@ -201,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6775613228215044511}
   - component: {fileID: 8520883745010541055}
+  - component: {fileID: 5539770360669398111}
   m_Layer: 0
   m_Name: Rock_3
   m_TagString: Untagged
@@ -245,6 +246,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 2.91}
   serializedVersion: 2
   m_Radius: 2
+--- !u!114 &5539770360669398111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708490255180846687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c09c37b22a3191468168a6a57cb6ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!1 &5132727674106772960
 GameObject:
   m_ObjectHideFlags: 0

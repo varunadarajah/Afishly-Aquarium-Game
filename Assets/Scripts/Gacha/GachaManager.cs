@@ -31,6 +31,14 @@ public class GachaManager : MonoBehaviour
     public int clickCount;
 
     public GameObject buyButtonObject;
+
+    //  buy sound effect
+    public AudioSource buySound;
+
+    // box swap sound effect
+    public AudioSource swapSound;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +87,8 @@ public class GachaManager : MonoBehaviour
 
     public void ScrollLeft()
     {
+        swapSound.PlayOneShot(swapSound.clip);
+
         selectedBox.gameObject.SetActive(false);
         if (boxes.IndexOf(selectedBox) == 0)
         {
@@ -94,6 +104,8 @@ public class GachaManager : MonoBehaviour
 
     public void ScrollRight()
     {
+        swapSound.PlayOneShot(swapSound.clip);
+
         selectedBox.gameObject.SetActive(false);
         if (boxes.IndexOf(selectedBox) == boxes.Count-1)
         {
@@ -121,6 +133,9 @@ public class GachaManager : MonoBehaviour
             }
             else if (clickCount == 2)
             {
+                // play sound effect
+                buySound.PlayOneShot(buySound.clip);
+
                 clickCount = 0;
                 game.pearls -= selectedBox.cost;
                 Fish newFish = selectedBox.OpenBox();

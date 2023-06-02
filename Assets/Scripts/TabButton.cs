@@ -9,10 +9,13 @@ public class TabButton : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
+    //  button effect
+    public AudioSource buttonSFX;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        buttonSFX = GameObject.Find("ButtonSFX").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,6 +26,10 @@ public class TabButton : MonoBehaviour
 
     void OnMouseDown()
     {
-        tabs.SelectTab(this);
+        if(tabs.curSelectedTab != this)
+        {
+            buttonSFX.Play();
+            tabs.SelectTab(this);
+        }        
     }
 }
