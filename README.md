@@ -2,7 +2,9 @@
 
 ![Comfy Aquarium - Varun Nadarajah](https://github.com/user-attachments/assets/bb139e0d-cd6b-4063-b9b0-00ea7c6bcb34)
 
+### [Capstone Presentation](https://docs.google.com/presentation/d/1tocv9ZMYSQtQPkKLqRObwcD9W_9NVJu8UXhUO9I5lS0/edit?usp=embed_facebook&usp=embed_facebook)
 
+## Abstract
 Comfy Aquarium is a 2D idle-style IOS game designed for players to unwind and relieve stress. The app was built on the Unity game engine and scripted in C#, with fellow CSSE major Anthony Vu as co-developer. This project was done in conjunction with an Interactive Media Design (IMD) capstone group consisting of Spencer Jong, Hanyue Shi, and Spencer Pruitt, who provided all the designs, assets, and requirements for the game. They had created the initial designs for the game but were in need of developers to actualize it, which they enlisted us to do.
 
 The primary goal of this project was to implement the Comfy Aquarium game and meet the requirements of the IMD group within the one-quarter time constraint, while also practicing software engineering and game design principles to create an appealing and intuitive final product.
